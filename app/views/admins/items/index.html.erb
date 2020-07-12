@@ -1,0 +1,42 @@
+<div class="container">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="title">
+            <h2>商品一覧</h2>
+        </div>
+    </div>
+</div>
+
+ <%# 共通ボディー開始タグここまで%>
+<%# クライアント一覧 %>
+<div class="row">
+<table class="table table-sm table-bordered">
+					<tr>
+						<th class="table-success" style="width:10%"></th>
+						<th class="table-success" style="width:5%">商品ID</th>
+						<th class="table-success" style="width:25%">式場名</th>
+						<th class="table-success" style="width:30%">商品名</th>
+                        <th class="table-success" style="width:10%">単価</th>
+						<th class="table-success" style="width:10%">詳細</th>
+						<th class="table-success" style="width:10%">削除</th>
+						
+                    </tr>
+					<% @items.each do |item| %>
+					<tr class="position-relative">
+						<td style="width:10%"><%= attachment_image_tag item, :item_image, format: 'jpeg', size: "100x100"%></td>
+						<td style="width:5%"><%= item.id %></td>
+						<td style="width:25%"><%= item.client.name %></td>
+						<td style="width:30%"><%= item.name %></td>
+                        <td style="width:10%"><%= item.unit_price.to_s(:delimited) %></td>
+						<td style="width:10%"><%= link_to('商品詳細', admins_item_path(item), {class: "btn-sm btn-success"}) %></td>
+						<td style="width:10%"><%= link_to "削除する", admins_item_path(item), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
+					</tr>	
+					<% end %>	
+</table>
+</div>
+<%= paginate @items %>
+<%# クライアント一覧ここまで %>
+
+<%# 登録フォーム %>
+<%# 共通ボディー閉じタグ %>
+</div>

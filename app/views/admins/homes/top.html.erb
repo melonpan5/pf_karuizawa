@@ -1,0 +1,60 @@
+<div class="container">
+ <%# 共通ボディー開始タグ%>
+ <%# 管理メニューここから %>
+ <div class="title">
+    <h2>管理メニュー</h2>
+</div>
+<ul>
+    <li>
+        <div class= "m-2">
+            <%= link_to "式場新規登録", new_admins_client_path, class: "btn btn-success" %>
+        </div>
+    </li>
+    <li>
+        <div class= "m-2">
+            <%= link_to "式場一覧", admins_clients_path, class: "btn btn-success" %>
+        </div>
+    </li>
+    <li>
+        <div class= "m-2">
+            <%= link_to "式場プラン登録", admins_client_plans_client_select_path, class: "btn btn-success" %>
+        </div>
+    </li>
+    <li>
+        <div class= "m-2">
+            <%= link_to "式場プラン一覧", admins_client_plans_path, class: "btn btn-success" %>
+        </div>
+    </li>
+    <li>
+        <div class= "m-2">
+            <%= link_to "OKプランタグ登録＆一覧", admins_plan_tags_path, class: "btn btn-success" %>
+        </div>
+    </li>
+    <li>
+        <div class= "m-2">
+            <%= link_to "OKプランに含める商品名＆一覧", admins_item_categories_path, class: "btn btn-success" %>
+        </div>
+       
+    </li>
+    <li>
+        <div class= "m-2">
+            <%= link_to "各式場ごとのプラン商品新規登録", new_admins_item_path, class: "btn btn-success" %>
+        </div>
+    </li>
+    <li>
+        <div class= "m-2">
+            <%= link_to "各式場ごとのプラン商品一覧", admins_items_path, class: "btn btn-success" %>
+        </div>
+    </li>
+    <li>
+        <div class= "m-2">
+            <%= link_to "カスタマー一覧", admins_customers_path, class: "btn btn-success" %>
+        </div>
+    </li>
+</ul>
+<%# 管理メニューここまで %>
+<div class="title">
+    <h2>問い合わせ一覧</h2>
+</div>
+<%# 共通ボディー閉じタグ %>
+</div>

@@ -1,0 +1,114 @@
+<div class="container">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="title">
+            <h2>式場新規登録</h2>
+        </div>
+    </div>
+</div>
+<%= render '/layouts/errors', obj: @client %>
+ <%# 共通ボディー開始タグここまで%>
+<%# 登録フォーム %>
+
+<%= form_with model: @client, url:admins_clients_path,local: :true, class:"form-horizontal" do |f| %>
+        <div class="form-group">
+            <%= f.label :式場名 ,class:"mb-1" %>
+            <%= f.text_field :name, class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :式場紹介キャッチ文※50文字以内,class:"mb-1" %>
+            <%= f.text_area :catch, class:"form-control" %>
+        </div>
+
+    <div class="form-group">
+        <%= f.label :式場紹介文※200文字以内 ,class:"mb-1" %>
+        <%= f.text_area :introduction, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :式場電話番号,class:"mb-1" %>
+        <%= f.text_field :phone_number, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :式場メールアドレス,class:"mb-1" %>
+        <%= f.text_field :email, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :ホームページURL,class:"mb-1" %>
+        <%= f.text_field :homepage_url, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :交通情報,class:"mb-1" %>
+        <%= f.text_field :acces, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :座席数、会場キャパシティ情報,class:"mb-1" %>
+        <%= f.text_field :capacity, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :定休日,class:"mb-1" %>
+        <%= f.text_field :regular_holiday, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :営業時間,class:"mb-1" %>
+        <%= f.text_field :business_hours, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :挙式対応時間帯,class:"mb-1" %>
+        <%= f.text_field :wedding_time_zone, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :その他備考欄,class:"mb-1" %>
+        <%= f.text_field :other, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :式場運営会社名,class:"mb-1" %>
+        <%= f.text_field :office_name, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :担当者氏名,class:"mb-1" %>
+        <%= f.text_field :staff_name, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :担当者氏名ふりがな,class:"mb-1" %>
+        <%= f.text_field :staff_name_kana, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :担当者連絡先メールアドレス,class:"mb-1" %>
+        <%= f.text_field :staff_email, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :担当者連絡先電話番号,class:"mb-1" %>
+        <%= f.text_field :staff_phone_number, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+    <%= f.label :有効無効ステータス,class:"mb-1" %>
+    <%= f.select :is_active, [["有効","true"],["無効","false"]], {class:"form-control"} %>
+
+  </div>
+
+
+
+    <div class="pull-right">
+        <%= f.submit "新規登録",class: "btn btn-primary" %>
+    </div>
+
+<% end %>
+
+<%# 登録フォーム %>
+<%# 共通ボディー閉じタグ %>
+</div>

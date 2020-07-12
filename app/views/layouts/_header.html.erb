@@ -1,0 +1,61 @@
+<header>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <% if customer_signed_in? %>
+        <%= link_to image_tag("toplogo.png"), root_path, class:"navbar-brand" %>
+        <% elsif admin_signed_in? %>
+        <%= link_to image_tag("toplogo.png"), admins_root_path, class:"navbar-brand"%>
+        <% else %>
+        <%= link_to image_tag("toplogo.png"), root_path, class:"navbar-brand"%>
+        <% end %>
+    <%# トグル %>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <%# トグル %>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <% if customer_signed_in? %>
+                 <li  class="nav-item">
+                <div class="mr-2"><%= link_to " マイページ","#", class: "glyphicon glyphicon-cutlery text-warning" %>
+                </div></li>
+                 <li  class="nav-item">
+                <div class="mr-2"><%= link_to " About", about_path, class: "glyphicon glyphicon-cutlery text-warning" %>
+                </div></li>
+                 <li  class="nav-item">
+                <div class="mr-2"><%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class: "glyphicon glyphicon-log-out text-warning" %>
+                </div></li>
+                <% elsif admin_signed_in? %>
+                <li  class="nav-item">
+                 <div class="mr-2"><%= link_to "管理トップ", admins_root_path, class: "glyphicon glyphicon-cutlery text-warning"  %>
+                </div></li>
+                <li  class="nav-item"">
+                 <div class="mr-2"><%= link_to "カスタマー一覧", admins_customers_path, class: "text-warning glyphicon glyphicon-user" %>
+                </div></li>
+                <li class="nav-item">
+                 <div class="mr-2"><%= link_to "式場一覧",  admins_clients_path, class: "text-warning glyphicon glyphicon-flag" %>
+                </div></li>
+                <li  class="nav-item">
+                 <div class="mr-2"><%= link_to "予約プラン一覧", customers_order_plans_path, class: "text-warning glyphicon glyphicon-list-alt" %>
+                </div></li>
+                <li  class="nav-item">
+                 <div class="mr-2"><%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out text-warning" %>
+                </div></li>
+                
+                <% else %>
+                <li  class="nav-item">
+                <div class="mr-2"><%= link_to "About", about_path, class: "glyphicon glyphicon-cutlery text-warning" %>
+                </div></li>
+                
+                <li class="nav-item">
+                <div class="mr-2"><%= link_to " sign up", new_customer_registration_path, class: "glyphicon glyphicon-edit text-warning" %>
+                </div></li>
+                <li class="nav-item">
+                 <div class="mr-2"><%= link_to " login", new_admin_session_path, class: "glyphicon glyphicon-log-in text-warning" %>
+                </div></li>
+                <% end %>
+            </ul>
+        </div>
+    </nav>
+  </div>
+</header>

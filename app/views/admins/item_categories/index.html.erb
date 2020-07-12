@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+
+			<div class="title"><h2>プランアイテム一覧・追加</h2></div>
+				<%= render '/layouts/errors', obj: @item_category %>
+			<!-- ジャンル登録フォーム -->
+			<%= form_with(model: @item_category, url: admins_item_categories_path, local: true) do |f| %>
+                <%= f.label :プランアイテム名 %>
+                <%= f.text_field :name %>
+                <%= f.submit "追加",class: "btn btn-primary" %>
+			<% end %>
+
+<!-- ジャンル一覧 -->
+            <table class="table table-borderless　table-responsive">
+                <thead>
+                    <tr>
+                        <th class="table-success ">プランアイテム名</th>
+                        <th class="table-success "></th>
+                        <th class="table-success "></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @item_categories.each do |item_category| %>
+                    <tr class="active">
+                        <td><%= item_category.name %></td>
+                        <td>
+                        <%= link_to "削除する", admins_item_category_path(item_category), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+                        </td>
+                        <td><%= link_to "編集する", edit_admins_item_category_path(item_category),class: "btn-sm btn-primary" %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+
+<!-- ジャンル一覧 -->
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+</div>

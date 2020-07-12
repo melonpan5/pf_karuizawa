@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+
+			<div class="title"><h2>式場プラン一覧</h2></div>
+<%# クライアントプラン一覧ここから %>
+<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="table-success">式場名</th>
+						<th class="table-success">プラン名</th>
+						<th class="table-success"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @client_plans.each do |client_plan| %>
+					<tr class="active">
+						<td><%= client_plan.client.name %></td>
+						<td><%= client_plan.plan_name %></td>
+						<td><%= link_to 'プラン詳細', admins_client_plan_path(client_plan) %></td>
+					</tr>
+					<% end %>
+					<%= paginate @client_plans %>
+				</tbody>
+			</table>
+
+<%# クライアントプラン一覧ここまで %>
+
+<%# 共通ボディー閉じタグ %>
+</div>

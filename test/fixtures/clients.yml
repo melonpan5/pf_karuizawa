@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tag_id: 1
+  plan_id: 1
+  catch: MyString
+  name: MyString
+  introduction: MyText
+  client1_image_id: MyString
+  client2_image_id: MyString
+  client3_image_id: MyString
+  phone_number: MyString
+  email: MyString
+  homepage_url: MyText
+  acces: MyString
+  capacity: MyString
+  regular_holiday: MyString
+  business_hours: MyString
+  wedding_time_zone: MyString
+  other: MyText
+  office_name: MyString
+  staff_name: MyString
+  staff_name_kana: MyString
+  staff_email: MyString
+  staff_phone_number: MyString
+  is_active: false
+
+two:
+  tag_id: 1
+  plan_id: 1
+  catch: MyString
+  name: MyString
+  introduction: MyText
+  client1_image_id: MyString
+  client2_image_id: MyString
+  client3_image_id: MyString
+  phone_number: MyString
+  email: MyString
+  homepage_url: MyText
+  acces: MyString
+  capacity: MyString
+  regular_holiday: MyString
+  business_hours: MyString
+  wedding_time_zone: MyString
+  other: MyText
+  office_name: MyString
+  staff_name: MyString
+  staff_name_kana: MyString
+  staff_email: MyString
+  staff_phone_number: MyString
+  is_active: false

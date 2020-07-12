@@ -1,0 +1,51 @@
+<div class="container">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="title">
+            <h2>式場アイテム新規登録</h2>
+        </div>
+    </div>
+</div>
+<%= render '/layouts/errors', obj: @item %>
+ <%# 共通ボディー開始タグここまで%>
+<%# 登録フォーム %>
+
+<%= form_with model: @item, url:admins_items_path,local: :true, class:"form-horizontal" do |f| %>
+       <div class="form-group">
+            <%= f.label :登録する式場 ,class:"mb-1" %>
+            <%= f.collection_select :client_id, Client.all, :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+        </div>
+        <div class="form-group">
+            <%= f.label :商品カテゴリー ,class:"mb-1" %>
+            <%= f.collection_select :item_category_id, ItemCategory.all, :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+        </div>
+        <div class="form-group">
+            <%= f.label :商品名,class:"mb-1" %>
+            <%= f.text_field :name, class:"form-control" %>
+        </div>
+
+    <div class="form-group">
+        <%= f.label :商品紹介文 ,class:"mb-1" %>
+        <%= f.text_area :description, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :単価,class:"mb-1" %>
+        <%= f.text_field :unit_price, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :商品画像,class:"mb-1" %>
+        <%= f.attachment_field :item_image, class:"form-control" %>
+    </div>
+
+  
+    <div class="pull-right">
+        <%= f.submit "新規登録",class: "btn btn-primary" %>
+    </div>
+
+<% end %>
+
+<%# 登録フォーム %>
+<%# 共通ボディー閉じタグ %>
+</div>

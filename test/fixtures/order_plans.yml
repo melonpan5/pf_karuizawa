@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  count: 1
+  meal_item_id: 1
+  cake_item_id: 1
+  flower_item_id: 1
+  dress_item_id: 1
+  memory_item_id: 1
+  base_pack_item_id: 1
+  total_price: 1
+  client_plan_id: 1
+  client_plan_name: MyString
+  budget: 1
+  desired_year: 1
+  desired_timing: 1
+  desired_day: 1
+
+two:
+  customer_id: 1
+  count: 1
+  meal_item_id: 1
+  cake_item_id: 1
+  flower_item_id: 1
+  dress_item_id: 1
+  memory_item_id: 1
+  base_pack_item_id: 1
+  total_price: 1
+  client_plan_id: 1
+  client_plan_name: MyString
+  budget: 1
+  desired_year: 1
+  desired_timing: 1
+  desired_day: 1

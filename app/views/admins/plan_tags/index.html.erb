@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+
+			<div class="title"><h2>プランタグ一覧・追加</h2></div>
+                <% if flash[:notice] %>
+                <p><%= flash[:notice] %></p>
+                <% end %>
+				<%= render '/layouts/errors', obj: @plan_tag %>
+			<!-- ジャンル登録フォーム -->
+			<%= form_with(model: @plan_tag, url: admins_plan_tags_path, local: true) do |f| %>
+                <%= f.label :プランタグ名 %>
+                <%= f.text_field :name %>
+                <%= f.submit "追加",class: "btn btn-primary" %>
+			<% end %>
+        <!-- ジャンル一覧 -->
+            <table class="table table-borderless　table-responsive">
+                <thead>
+                    <tr>
+                        <th class="table-success ">プランタグ名</th>
+                        <th class="table-success "></th>
+                        <th class="table-success "></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @plan_tags.each do |plan_tag| %>
+                    <tr class="active">
+                        <td><%= plan_tag.name %></td>
+                        <td>
+                        <%= link_to "削除する", admins_plan_tag_path(plan_tag), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+                        </td>
+                        <td><%= link_to "編集する", edit_admins_plan_tag_path(plan_tag),class: "btn-sm btn-primary" %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+
+<!-- ジャンル一覧 -->
+
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+</div>

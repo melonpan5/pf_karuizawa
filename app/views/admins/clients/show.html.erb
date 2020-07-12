@@ -1,0 +1,95 @@
+<div class="container">
+<div class="row">
+    <div class="col-12">
+        <div class="title">
+            <h2>式場詳細</h2>
+        </div>
+    </div>
+</div>
+ <%# 共通ボディー開始タグここまで%>
+<%# クライアント詳細 %>
+<table class="table table-sm table-responsive table-bordered">
+    <tr>
+        <th class="table-success" style="width:25%">式場ID</th>
+        <td style="width:75%"><%= @client.id %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">式場名</th>
+        <td style="width:75%"><%= @client.name %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">式場キャッチ文</th>
+        <td style="width:75%"><%= @client.catch %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">式場紹介</th>
+        <td style="width:75%"><%= @client.introduction %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">電話番号</th>
+        <td style="width:75%"><%= @client.phone_number %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">ホームページURL</th>
+        <td style="width:75%"><%= @client.homepage_url %></td>
+    </tr>
+    <tr>
+    <th class="table-success" style="width:25%">アクセス</th>
+        <td style="width:75%"><%= @client.acces %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">座席数</th>
+        <td style="width:75%"><%= @client.capacity %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">定休日</th>
+        <td style="width:75%"><%= @client.regular_holiday %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">営業時間</th>
+        <td style="width:75%"><%= @client.business_hours %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">挙式時間帯</th>
+        <td style="width:75%"><%= @client.wedding_time_zone %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">その他</th>
+        <td style="width:75%"><%= @client.other %></td>
+    </tr>
+</table>
+
+<div class="title">
+            <h2>式場連絡先</h2>
+</div>
+<table class="table table-sm table-responsive table-bordered">
+    <tr>
+        <th class="table-info" style="width:25%">会社名</th>
+        <td style="width:75%"><%= @client.office_name %></td>
+    </tr>
+    <tr>
+        <th class="table-info" style="width:25%">担当者名</th>
+        <td style="width:75%"><%= @client.staff_name %></td>
+    </tr>
+    <tr>
+        <th class="table-info" style="width:25%">担当者氏名（ふりがな）</th>
+        <td style="width:75%"><%= @client.staff_name_kana %></td>
+    </tr>
+     <tr>
+        <th class="table-info" style="width:25%">担当者連絡先</th>
+        <td style="width:75%"><%= @client.staff_email %></td>
+    </tr>
+     <tr>
+        <th class="table-info" style="width:25%">担当者連絡先電話番号</th>
+        <td style="width:75%"><%= @client.staff_phone_number %></td>
+    </tr>
+     <tr>
+        <th class="table-info" style="width:25%">有効ステータス</th>
+        <td style="width:75%"><%= @client.staff_name_kana %></td>
+    </tr>
+</table>
+<%# クライアント詳細ここまで %>
+
+<%# 登録フォーム %>
+<%# 共通ボディー閉じタグ %>
+</div>

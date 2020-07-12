@@ -1,0 +1,79 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+
+			<div class="title"><h2>式場プラン編集</h2></div>
+				<%= render '/layouts/errors', obj: @client_plan %>
+<!-- 変更フォーム -->
+<%= form_with model: @client_plan, url:admins_client_plan_path,local: :true, class:"form-horizontal" do |f| %>
+        <div class="form-group">
+            <%= f.label :式場プラン名※50文字以内,class:"mb-1" %>
+            <%= f.text_field :plan_name, class:"form-control" %>
+        </div>
+
+    <div class="form-group">
+        <%= f.label :プランキャッチ文※60文字以内 ,class:"mb-1" %>
+        <%= f.text_field :plan_catch, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :プラン紹介文※200文字以内 ,class:"mb-1" %>
+        <%= f.text_area :plan_text, class:"form-control" %>
+    </div>
+	<div class="form-group">
+            <%= f.label :該当タグの選択 ,class:"mb-1" %>
+            <%= f.collection_check_boxes(:plan_tag_ids, PlanTag.all, :id, :name) do |tag| %>
+            <div class='form-check'>
+                <%= tag.label class: 'form-check-label' do %>
+                    <%= tag.check_box class: 'form-check-input' %>
+                    <%= tag.text %>
+                <% end %>
+                </div>
+                <% end %>
+        </div>
+    <div class="form-group">
+        <%= f.label :人数※標準50名,class:"mb-1" %>
+        <%= f.number_field :count, :value => 50, class:"form-control" %>
+    </div>
+
+     <div class="form-group">
+            <%= f.label :飲食の商品 ,class:"mb-1" %>
+            <%= f.collection_select :meal_item_id, Item.where(client_id: @client), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+            <%= f.label :ケーキの商品 ,class:"mb-1" %>
+            <%= f.collection_select :cake_item_id, Item.where(client_id: @client), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+            <%= f.label :装花の商品 ,class:"mb-1" %>
+            <%= f.collection_select :flower_item_id, Item.where(client_id:@client), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+            <%= f.label :ドレスの商品 ,class:"mb-1" %>
+            <%= f.collection_select :dress_item_id, Item.where(client_id: @client), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+            <%= f.label :写真・動画撮影の商品 ,class:"mb-1" %>
+            <%= f.collection_select :memory_item_id, Item.where(client_id: @client), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+    </div>
+
+     <div class="form-group">
+            <%= f.label :基本パッケージをセット ,class:"mb-1" %>
+            <%= f.collection_select :base_pack_item_id, Item.where(client_id: @client), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+    </div>
+
+    <div class="pull-right">
+        <%= f.submit "変更を保存する",class: "btn btn-primary" %>
+    </div>
+
+<% end %>
+
+<%# 編集フォーム %>
+
+<%# 共通ボディー閉じタグ %>
+</div>

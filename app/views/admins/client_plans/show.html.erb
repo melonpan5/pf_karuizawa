@@ -1,0 +1,118 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+<%# ここからメイン %>
+<div class="title"><h2><%= @client_plan.client.name %>様の式場プラン詳細</h2></div>
+
+
+<div class="sub-title"><h4>プラン概要</h4></div>
+<% @client_plan.plan_tags.each do |tag| %>
+    <span class= 'badge badge-primary'><%= tag.name %></span>
+<% end %>
+<table class="table table-sm table-bordered">
+    <tr>
+        <th class="table-success" style="width:25%">プラン名</th>
+        <td style="width:75%"><%= @client_plan.plan_name %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">プランキャッチ文</th>
+        <td style="width:75%"><%= @client_plan.plan_catch %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">プラン紹介文</th>
+        <td style="width:75%"><%= @client_plan.plan_text %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">パーティ人数</th>
+        <td style="width:75%"><%= @client_plan.count %>名</td>
+    </tr>
+</table>
+
+
+<div class="sub-title"><h4>プラン内容</h4></div>
+<table class="table table-sm table-bordered">
+    <tr>
+        <th class="table-success" style="width:10%">項目</th>
+		<th class="table-success" style="width:10%">コース名</th>
+		<th class="table-success" style="width:40%">コース内容詳細</th>
+        <th class="table-success" style="width:10%">数量</th>
+		<th class="table-success" style="width:10%">単価</th>
+		<th class="table-success" style="width:10%">小計</th>
+    </tr>
+	<tr>
+		<td>飲食プラン</td>
+        <td><%= @food_plan.name %></td>
+		<td><%= @food_plan.description %></td>
+		<td><%= @client_plan.count %></td>
+		<td><%= @food_plan.unit_price.to_s(:delimited) %></td>
+		<td><% @foodsum = @client_plan.count.to_i * @food_plan.unit_price.to_i %>
+			<%= @foodsum.to_s(:delimited) %>
+		</td>
+	</tr>
+	<tr>
+		<td>ケーキプラン</td>
+        <td><%= @cake_plan.name %></td>
+		<td><%= @cake_plan.description %></td>
+		<td>1</td>
+		<td><%= @cake_plan.unit_price.to_s(:delimited) %></td>
+		<td><%= @cake_plan.unit_price.to_s(:delimited)  %></td>
+    </tr>
+	<tr>
+		<td>ドレスプラン</td>
+        <td><%= @dress_plan.name %></td>
+		<td><%= @dress_plan.description %></td>
+		<td>1</td>
+		<td><%= @dress_plan.unit_price.to_s(:delimited) %></td>
+		<td><%= @dress_plan.unit_price.to_s(:delimited)  %></td>
+    </tr>
+	<tr>
+		<td>装花プラン</td>
+        <td><%= @flower_plan.name %></td>
+		<td><%= @flower_plan.description %></td>
+		<td>1</td>
+		<td><%= @flower_plan.unit_price.to_s(:delimited) %></td>
+		<td><%= @flower_plan.unit_price.to_s(:delimited)  %></td>
+    </tr>
+	<tr>
+		<td>メモリープラン</td>
+        <td><%= @memory_plan.name %></td>
+		<td><%= @memory_plan.description %></td>
+		<td>1</td>
+		<td><%= @memory_plan.unit_price.to_s(:delimited) %></td>
+		<td><%= @memory_plan.unit_price.to_s(:delimited)  %></td>
+    </tr>
+	<tr>
+		<td>基本パッケージ</td>
+        <td><%= @besic_plan.name %></td>
+		<td><%= @besic_plan.description %></td>
+		<td>1</td>
+		<td><%= @besic_plan.unit_price.to_s(:delimited) %></td>
+		<td><%= @besic_plan.unit_price.to_s(:delimited)  %></td>
+    </tr>
+</table>
+
+<table class="table table-sm table-bordered">
+	<tr>
+        <th class="table-info" style="width:25%">合計金額</th>
+        <td style="width:75%">
+<%# 料理以外の合計金額計算 %>
+			<%	item_sum = @cake_plan.unit_price + @dress_plan.unit_price + @flower_plan.unit_price + @memory_plan.unit_price + @besic_plan.unit_price
+			%>
+			<% @total_price = @foodsum.to_i + item_sum.to_i %>
+			<%= @total_price.to_s(:delimited) %>
+		</td>
+    </tr>  
+</table>
+
+<%# クライアントプラン詳細ここまで %>
+<div class="row">
+    <div class="col-xs-12">
+        <%= link_to "編集する",edit_admins_client_plan_path(@client_plan),class: "btn btn-primary pull-right" %>
+    </div>
+     <div class="col-xs-12">
+       <%= link_to "削除する", admins_client_plan_path(@client_plan), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+    </div>
+</div>
+<%# 共通ボディー閉じタグ %>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<div class="title"><h2>プランタグ名編集</h2></div>
+			<br>
+			<%= render '/layouts/errors', obj: @plan_tag %>
+
+			<%= form_with(model: @plan_tag, url: admins_plan_tag_path, local: true) do |f| %>
+			<%= f.label :プランタグ名 %>
+			<%= f.text_field :name %>
+			<%= f.submit "変更を保存する",class: "btn btn-primary" %>
+			<% end %>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="title">
+            <h2>式場一覧</h2>
+        </div>
+    </div>
+</div>
+
+ <%# 共通ボディー開始タグここまで%>
+<%# クライアント一覧 %>
+<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="warning">式場ID</th>
+						<th class="warning">式場名</th>
+						<th class="warning">有効ステータス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @clients.each do |client| %>
+					<tr class="active">
+						<td><%= client.id %></td>
+						<td><%= link_to client.name, admins_client_path(client) %></td>
+						<td><% if client.is_active == true %>有効<% else %>無効<% end %></td>
+					</tr>
+					<% end %>
+					<%= paginate @clients %>
+				</tbody>
+			</table>
+
+<%# クライアント一覧ここまで %>
+
+<%# 登録フォーム %>
+<%# 共通ボディー閉じタグ %>
+</div>
