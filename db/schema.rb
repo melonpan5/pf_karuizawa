@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_175539) do
   end
 
   create_table "client_plans", force: :cascade do |t|
+    t.integer "item_id"
     t.integer "client_id"
     t.string "plan_name"
     t.text "plan_catch"
