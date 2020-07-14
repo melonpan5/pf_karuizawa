@@ -1,0 +1,67 @@
+<div class="container">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="title">
+            <h2>Step:3 プランメニューを選択してね</h2>
+        </div>
+    </div>
+</div>
+
+ <%# 共通ボディー開始タグここまで%>
+<!-- 変更フォーム -->
+<%= form_with model: @pre_plan, url:customers_pre_plans_path,local: :true, class:"form-horizontal" do |f| %>
+
+    <div class="form-group">
+        <%= f.label :人数※標準50名,class:"mb-1" %>
+        <%= f.number_field :count, :value => 50, class:"form-control" %>
+    </div>
+
+       <div class="form-group">
+     
+     <%= f.label :飲食の商品 ,class:"mb-1" %>
+    <% @food_items.each do |food| %>
+      <%= f.radio_button :meal_item_id, food.id, class:"form-control"%>
+      <%= food.name %>
+       <%= attachment_image_tag food, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "100x100" %>
+      <%= food.description %>
+      <%= food.unit_price %>
+    <% end %>
+    </div>
+
+    <div class="form-group">
+            <%= f.label :ケーキの商品 ,class:"mb-1" %>
+            <%= f.collection_select :cake_item_id, Item.where(client_id: params[:pre_plan][:key_pre_plan_id].to_i).where(item_category_id: 2), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+            <%= f.label :装花の商品 ,class:"mb-1" %>
+            <%= f.collection_select :flower_item_id, Item.where(client_id: params[:pre_plan][:key_pre_plan_id].to_i).where(item_category_id: 3), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+            <%= f.label :ドレスの商品 ,class:"mb-1" %>
+            <%= f.collection_select :dress_item_id, Item.where(client_id: params[:pre_plan][:key_pre_plan_id].to_i).where(item_category_id: 4), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+            <%= f.label :写真・動画撮影の商品 ,class:"mb-1" %>
+            <%= f.collection_select :memory_item_id, Item.where(client_id: params[:pre_plan][:key_pre_plan_id].to_i).where(item_category_id: 5), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+    </div>
+
+     <div class="form-group">
+            <%= f.label :基本パッケージをセット ,class:"mb-1" %>
+            <%= f.collection_select :base_pack_item_id, Item.where(client_id: params[:pre_plan][:key_pre_plan_id].to_i).where(item_category_id: 6), :id,:name, {class: "form-control"} %>
+    </div>
+    <%= f.hidden_field :client_plan_id, :value => @client_plan_id %>
+
+    <div class="pull-right">
+        <%= f.submit "変更を保存する",class: "btn btn-primary" %>
+    </div>
+
+<% end %>
+
+<%# クライアント一覧ここまで %>
+
+<%# 登録フォーム %>
+<%# 共通ボディー閉じタグ %>
+</div>

@@ -7,6 +7,20 @@
     </div>
 </div>
  <%# 共通ボディー開始タグここまで%>
+
+ <%# イメージ画像 %>
+    <div class="slider-for">
+        <div class="sp-slide">
+            <%= attachment_image_tag @client, :client1_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-img" %>    
+        </div>
+        <div class="sp-slide">
+             <%= attachment_image_tag @client, :client2_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-img" %>
+             </div>
+        <div class="sp-slide">
+             <%= attachment_image_tag @client, :client3_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-img" %>
+        </div>
+    </div> 
+
 <%# クライアント詳細 %>
 <table class="table table-sm table-responsive table-bordered">
     <tr>

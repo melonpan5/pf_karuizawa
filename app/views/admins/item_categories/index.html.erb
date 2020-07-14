@@ -16,6 +16,7 @@
             <table class="table table-borderless　table-responsive">
                 <thead>
                     <tr>
+                        <th class="table-success ">プランアイテムID</th>
                         <th class="table-success ">プランアイテム名</th>
                         <th class="table-success "></th>
                         <th class="table-success "></th>
@@ -24,6 +25,7 @@
                 <tbody>
                     <% @item_categories.each do |item_category| %>
                     <tr class="active">
+                        <td><%= item_category.id %></td>
                         <td><%= item_category.name %></td>
                         <td>
                         <%= link_to "削除する", admins_item_category_path(item_category), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>

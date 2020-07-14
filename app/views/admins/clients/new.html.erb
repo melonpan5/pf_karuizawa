@@ -26,6 +26,22 @@
     </div>
 
     <div class="form-group">
+        <%= f.label :式場イメージ画像その１,class:"mb-1" %>
+        <%= f.attachment_field :client1_image, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :式場イメージ画像その2,class:"mb-1" %>
+        <%= f.attachment_field :client2_image, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :式場イメージ画像その3,class:"mb-1" %>
+        <%= f.attachment_field :client3_image, class:"form-control" %>
+    </div>
+
+
+    <div class="form-group">
         <%= f.label :式場電話番号,class:"mb-1" %>
         <%= f.text_field :phone_number, class:"form-control" %>
     </div>

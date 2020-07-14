@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   namespace :customers do
     resources :clients, only: [:index, :show]
     resources :client_plans, only: [:index, :show]
+    resources :pre_plans, only: [:create, :update, :destroy]
     resources :order_plans, only: [:index, :show, :new, :create, :update, :destroy]
     resources :customers, only: [:show, :edit, :create, :update, :destroy]
+    post 'pre_plans/new' => 'pre_plans#new'
+    post 'order_plans/new' => 'order_plans#new'
+    post 'order_plans/confimation' => 'order_plans#confimation'
     get 'order_plans/thanks' => 'order_plans#thanks'
   end
 

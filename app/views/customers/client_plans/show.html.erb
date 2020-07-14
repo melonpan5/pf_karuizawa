@@ -1,2 +1,153 @@
-<h1>Customers::ClientPlans#show</h1>
-<p>Find me in app/views/customers/client_plans/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+		<%# ここからメイン %>
+			<div class="title"><h2>Step3　式場のプラン内容を確認し、アイテム選択に進もう</h2></div>
+
+
+			<div class="sub-title"><h4><%= @client_plan.plan_name %></h4></div>
+			<div class="text"><%= @client_plan.plan_catch %></div>
+			<% @client_plan.plan_tags.each do |tag| %>
+				<span class= 'badge badge-success'><%= tag.name %></span>
+			<% end %>
+
+			<%# イメージ画像 %>
+				<div class="slider-for">
+					<div class="sp-slide">
+						<%= attachment_image_tag @client_plan.client, :client1_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-img" %>    
+					</div>
+					<div class="sp-slide">
+						<%= attachment_image_tag @client_plan.client, :client2_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-img" %>
+						</div>
+					<div class="sp-slide">
+						<%= attachment_image_tag @client_plan.client, :client3_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-img" %>
+					</div>
+				</div> 
+
+			<%# クライアント詳細 %>
+  			<div class="text-box"><p><%= @client_plan.plan_text %></p></div>
+	
+			<%= form_with model: @order_plan, url: new_customers_order_plan_path,local: :true, class:"form-horizontal" do |f| %>
+				<div class="next-btn text-center m-5">
+					<%= f.submit "アイテム選択へ進む", class:"next btn btn-outline-info btn-lg" %>
+				</div>
+			<div class="plan-box">
+				<div class="item-box">
+					<span class="item-box-title"><i class="fas fa-utensils"></i> 料理・飲み物</span>
+					<p> 
+							<div><span class="item-name"><%= @food_plan.name %></span></div>
+							<div><%= @food_plan.description %></div>
+							<div>お1人あたりの飲食コース料金：<%= @food_plan.unit_price.to_s(:delimited) %></div>
+							<div>飲食合計金額：<% @foodsum = @client_plan.count.to_i * @food_plan.unit_price.to_i %>
+								<%= @foodsum.to_s(:delimited) %>円
+								(人数：<%= @client_plan.count %>人の場合）</div>
+					</p>
+				</div>
+
+				<div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+				</div>
+				<div class="item-box2">
+					<span class="item-box2-title"><i class="fas fa-utensils"></i>ケーキ</span>
+					<p> 
+							<div><span class="item2-name"><%= @cake_plan.name %></span></div>
+							<div><%= @cake_plan.description %></div>
+							<div>ご料金(税抜)：<%= @cake_plan.unit_price.to_s(:delimited) %>円</div>
+					</p>
+				</div>
+				<div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+				</div>
+
+				<div class="item-box">
+					<span class="item-box-title"><i class="fas fa-utensils"></i>装花</span>
+					<p> 
+							<div><span class="item-name"><%= @flower_plan.name %></span></div>
+							<div><%= @flower_plan.description %></div>
+							<div>ご料金(税抜)：<%= @flower_plan.unit_price.to_s(:delimited) %>円</div>
+					</p>
+				</div>
+				<div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+				</div>
+				<div class="item-box2">
+					<span class="item-box2-title"><i class="fas fa-utensils"></i>ドレス</span>
+					<p> 
+							<div><span class="item2-name"><%= @dress_plan.name %></span></div>
+							<div><%= @dress_plan.description %></div>
+							<div>ご料金(税抜)：<%= @dress_plan.unit_price.to_s(:delimited) %>円</div>
+					</p>
+				</div>
+				<div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+				</div>
+				<div class="item-box">
+					<span class="item-box-title"><i class="fas fa-utensils"></i>写真・動画</span>
+					<p> 
+							<div><span class="item-name"><%= @memory_plan.name %></span></div>
+							<div><%= @memory_plan.description %></div>
+							<div>ご料金(税抜)：<%= @memory_plan.unit_price.to_s(:delimited) %>円</div>
+					</p>
+				</div>
+				<div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+				</div>
+				<div class="item-box2">
+					<span class="item-box2-title"><i class="fas fa-utensils"></i>その他基本パッケージ</span>
+					<p> 
+							<div><span class="item2-name"><%= @besic_plan.name %></span></div>
+							<div><%= @besic_plan.description %></div>
+							<div>ご料金(税抜)：<%= @besic_plan.unit_price.to_s(:delimited) %>円</div>
+					</p>
+				</div>
+
+
+				<div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-pause-fill" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+					</svg>
+				</div>
+					<%# 料理以外の合計金額計算 %>
+						<%	item_sum = @cake_plan.unit_price + @dress_plan.unit_price + @flower_plan.unit_price + @memory_plan.unit_price + @besic_plan.unit_price
+						%>
+						<%	in_price = 30000 * @client_plan.count.to_i  %>
+						<% @total_price = @foodsum.to_i + item_sum.to_i %>
+						<%	self_price = @total_price.to_i - in_price.to_i  %>
+						<div class="total-price"><span class="item2-name"><p>合計金額　：<%= @total_price.to_s(:delimited) %>　円</p>
+						<div class="total-price"><span class="item2-name"><p>お2人の自己負担金額：<%= self_price.to_s(:delimited) %>円　※50人ご招待，お1人あたりご祝儀3万円の場合）</p>
+						</span></div>
+			</div>
+
+			<%# クライアントプラン詳細ここまで %>
+
+<%# <%= form_with(model: @order_plan, local: true, url: new_customers_order_plan_path) do |f| %> 
+                <%= f.hidden_field :order_client_id, :value => @client_id %>
+                <%# <%= f.hidden_field :key_order_plan_meal_item_id, :value =>  @client_plan.meal_item_id %> 
+                <%# <%= f.hidden_field :key_order_plan_cake_item_id, :value =>  @client_plan.cake_item_id %>
+                <%# <%= f.hidden_field :key_order_plan_dress_item_id, :value =>  @client_plan.dress_item_id %>
+                <%# <%= f.hidden_field :key_order_plan_flower_item_id, :value =>  @client_plan.flower_item_id %>
+                <%# <%= f.hidden_field :key_order_plan_memory_item_id, :value =>  @client_plan.memory_item_id %>
+                <%# <%= f.hidden_field :key_order_plan_besic_item_id, :value =>  @client_plan.base_pack_item_id %> 
+            <div class="next-btn text-center m-5">
+            <%= f.submit "マイプランの作成（アイテム選択）に進もう", class:"next btn btn-outline-info btn-lg" %>
+                <%# <% end %> 
+                <% end %>
+			</div>
+<%# 共通ボディー閉じタグ %>
+
+</div>
