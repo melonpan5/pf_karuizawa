@@ -4,7 +4,8 @@
 		<div class="col-12">
 		<%# ここからメイン %>
 			<div class="title"><h2>Step4　プラン内容を確認し、問い合わせを完了しよう</h2></div>
-
+    </div>
+</div>
             <div class="stripe-pattern">選んだプラン：<%= @client_plan.plan_name %></div>
             <div class="sub-title"><h4>（式場：<%= @client_plan.client.name %>）</h4></div>
 			<div class="text"><%= @client_plan.plan_catch %></div>
@@ -12,12 +13,9 @@
 				<span class= 'badge badge-success'><%= tag.name %></span>
 			<% end %>
 			<%# クライアント詳細 %>
-  			<div class="text-box"><p><%= @client_plan.plan_text %></p>
-            </div>
-			<%# <div class="order-plan-box">
-             %>
-				<div class="item-box">
-					<span class="item-box-title"><i class="fas fa-utensils"></i> 料理・飲み物</span>
+  			<div class="text-box"><p><%= @client_plan.plan_text %></p></div>
+			<div class="order-plan-box">
+					<h3>料理・飲み物</h3>
 					<p> 
 							<div><span class="item-name"><%= @food_plan.name %></span></div>
                             <div>
@@ -27,9 +25,9 @@
 							<div>お1人あたりの飲食コース料金：<%= @food_plan.unit_price.to_s(:delimited) %></div>
 							<div>飲食合計金額：<% @foodsum = @count.to_i * @food_plan.unit_price.to_i %>
 								<%= @foodsum.to_s(:delimited) %>円
-								(人数：<%= @count.to_i %>人の場合）</div>
+								(人数：<%= @count.to_i %>人の場合）
+							</div>
 					</p>
-				</div>
 
 				<div class="icon">
 					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -38,8 +36,8 @@
 					</svg>
 				</div>
 
-				<div class="item-box2">
-					<span class="item-box2-title"><i class="fas fa-utensils"></i>ケーキ</span>
+
+					<h3>ケーキ</h3>
 					<p> 
 							<div><span class="item2-name"><%= @cake_plan.name %></span></div>
                             <div>
@@ -48,7 +46,7 @@
 							<div><%= @cake_plan.description %></div>
 							<div>ご料金(税抜)：<%= @cake_plan.unit_price.to_s(:delimited) %>円</div>
 					</p>
-				</div>
+
 				
                 <div class="icon">
 					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -57,8 +55,7 @@
 					</svg>
 				</div>
 
-				<div class="item-box">
-					<span class="item-box-title"><i class="fas fa-utensils"></i>装花</span>
+				<h3>装花</h3>
 					<p> 
 							<div><span class="item-name"><%= @flower_plan.name %></span></div>
                             <div>
@@ -67,8 +64,7 @@
 							<div><%= @flower_plan.description %></div>
 							<div>ご料金(税抜)：<%= @flower_plan.unit_price.to_s(:delimited) %>円</div>
 					</p>
-				</div>
-				
+
                 <div class="icon">
 					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
@@ -76,8 +72,7 @@
 					</svg>
 				</div>
 				
-                <div class="item-box2">
-					<span class="item-box2-title"><i class="fas fa-utensils"></i>ドレス</span>
+				<h3>ドレス</h3>
 					<p> 
 							<div><span class="item2-name"><%= @dress_plan.name %></span></div>
                             <div>
@@ -86,7 +81,7 @@
 							<div><%= @dress_plan.description %></div>
 							<div>ご料金(税抜)：<%= @dress_plan.unit_price.to_s(:delimited) %>円</div>
 					</p>
-				</div>
+
 				
                 <div class="icon">
 					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -94,9 +89,8 @@
 					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
 					</svg>
 				</div>
-				
-                <div class="item-box">
-					<span class="item-box-title"><i class="fas fa-utensils"></i>写真・動画</span>
+
+					<h3>写真・動画</h3>
 					<p> 
 							<div><span class="item-name"><%= @memory_plan.name %></span></div>
                             <div>
@@ -105,7 +99,7 @@
 							<div><%= @memory_plan.description %></div>
 							<div>ご料金(税抜)：<%= @memory_plan.unit_price.to_s(:delimited) %>円</div>
 					</p>
-				</div>
+
 				
                 <div class="icon">
 					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -114,24 +108,21 @@
 					</svg>
 				</div>
 				
-                <div class="item-box2">
-					<span class="item-box2-title"><i class="fas fa-utensils"></i>その他基本パッケージ</span>
+				<h3>その他基本パッケージ</h3>
+
 					<p> 
 							<div><span class="item2-name"><%= @besic_plan.name %></span></div>
 							<div><%= @besic_plan.description %></div>
 							<div>ご料金(税抜)：<%= @besic_plan.unit_price.to_s(:delimited) %>円</div>
 					</p>
-				</div>
-
 
 				<div class="icon">
 					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-pause-fill" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
 					</svg>
 				</div>
-
-                
-                  <table class="table table-sm table-bordered">
+				<h3>アイテム料金まとめ</h3>
+                <table class="table table-sm table-bordered">
                     <tr>
                     <th class="table-info" style="width:25%">飲食代</th>
                     <td style="width:75%"><%= @foodsum.to_s(:delimited) %>円
@@ -172,19 +163,19 @@
 
             <%# 概要 %>
 
-                <span class="item-box2-title"><i class="fas fa-utensils"></i>その他ご希望</span>
+                <h3>その他ご希望</h3>
                   <table class="table table-sm table-bordered">
                     <tr>
                     <th class="table-info" style="width:25%">開催人数</th>
                     <td style="width:75%"><%= @count.to_i %>人</td>
                     </tr>
                     <tr>
-                    <th class="table-info" style="width:25%">実施希望年</th>
-                    <td style="width:75%"><%= @desired_year %>円</td>
+					<th class="table-info" style="width:25%">実施希望年</th>
+                    <td style="width:75%"><%= @desired_year %></td>
                     </tr>
-                    <tr>
-                    <th class="table-info" style="width:25%">実施希望時期</th>
-                    <td style="width:75%"><%= @desired_timing %>円</td>
+					<tr>
+					<th class="table-info" style="width:25%">実施希望時期</th>
+                    <td style="width:75%"><%= @desired_timing %></td>
                     </tr>
                     <tr>
                     <th class="table-info" style="width:25%">実施希望日取り</th>
@@ -192,11 +183,11 @@
                     </tr>
                     <tr>
                     <th class="table-info" style="width:25%">自己負担予算</th>
-                    <td style="width:75%"><%= @budget %></td>
+                    <td style="width:75%"><%= @budget.to_s(:delimited) %>円</td>
                     </tr>
                     </table>
 
-        <%# </div>       %>
+        </div>      
 
 			<%# orderプラン詳細ここまで %>
 
@@ -219,6 +210,5 @@
             <%= f.submit "このプラン内容で式場に仮予約する", class:"next btn btn-info btn-lg" %>
                 <% end %>
 <%# 共通ボディー閉じタグ %>
-</div>
 </div>
 </div>

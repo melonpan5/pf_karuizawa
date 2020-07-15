@@ -1,5 +1,5 @@
 class Admins::ClientPlansController < ApplicationController
-  
+  before_action :authenticate_admin!
   def index
     @client_plans = ClientPlan.all.order(created_at: :desc)
     @client_plans = ClientPlan.page(params[:page]).per(10)

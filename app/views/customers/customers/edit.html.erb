@@ -1,2 +1,72 @@
-<h1>Customers::Customers#edit</h1>
-<p>Find me in app/views/customers/customers/edit.html.erb</p>
+<div class="container">
+<div class="row">
+    <div class="col-12">
+        <div class="title">
+            <h2>会員登録の編集／退会</h2>
+        </div>
+    </div>
+</div>
+ <%# 共通ボディー開始タグここまで%>
+ <div class="row">
+    <div class="col-12">
+        <div class="col mx-auto">
+            <%= form_with(model: @customer, url: customers_customer_path(@customer), local: :true, html: {method: :patch}) do |f| %>
+                   <table class= "table table-borderless table-sm">
+                        <tr>
+                            <td>
+                                <%= f.label :'(姓)' %>
+                            </td>
+                            <td>
+                                <%= f.text_field :family_name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%= f.label :'(名)' %>
+                            </td>
+                            <td>
+                                <%= f.text_field :first_name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%= f.label :'(カナ姓)' %>
+                            </td>
+                            <td>
+                                <%= f.text_field :kana_family_name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%= f.label :'(カナ名)' %>
+                            </td>
+                            <td>
+                                <%= f.text_field :kana_first_name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%= f.label :email %>
+                            </td>
+                            <td>
+                                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%= f.label :'電話番号' %>
+                            </td>
+                            <td>
+                                <%= f.text_field :phone_number %>
+                            </td>
+                        </tr>
+                    </table>
+                <div class="text-center">
+                    <%= f.submit "変更を保存する", class: "btn btn-info" %> 
+            <% end %>
+                    <%= link_to  "退会する", customers_customer_path, html: {method: :delete}, class: "btn btn-danger" %>
+                </div>
+        </div>
+    </div>
+</div>
+</div>

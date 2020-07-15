@@ -79,7 +79,7 @@
             <div class="btn-flat-border menue radio">
                <%= f.label :dress_item_id,for:"radio_bottom#{item.id}" do %>
                 <ul>
-                    <%= f.radio_button :dress_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
+                    <%= f.radio_button :dress_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom", checked: (1 == item.id) %> 
                     <li><div class="menue">プラン名：<%= item.name %></div></li>
                     <div class="menue">
                         <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>

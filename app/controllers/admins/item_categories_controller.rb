@@ -1,5 +1,5 @@
 class Admins::ItemCategoriesController < ApplicationController
-#   before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
 	def index
 		@item_category = ItemCategory.new

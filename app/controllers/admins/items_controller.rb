@@ -1,4 +1,5 @@
 class Admins::ItemsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @items = Item.all.order(created_at: :desc)
     @items = Item.page(params[:page]).per(10)

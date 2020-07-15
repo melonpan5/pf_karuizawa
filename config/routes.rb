@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :customers
   root 'customers/homes#top'
-  get '/about' => 'customer/homes#about', as: 'about'
-
+  get '/about' => 'customers/homes#about', as: 'about'
+  get '/mypage' => 'customers/customers#show', as: 'mypage'
   
   namespace :customers do
     resources :clients, only: [:index, :show]
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     post 'order_plans/new' => 'order_plans#new'
     post 'order_plans/confimation' => 'order_plans#confimation'
     get 'order_plans/thanks' => 'order_plans#thanks'
+
   end
 
 
