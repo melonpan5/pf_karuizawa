@@ -1,5 +1,5 @@
 class Customers::PrePlansController < ApplicationController
-
+  before_action :authenticate_customer!
     def new
       
       @pre_plan = PrePlan.new
@@ -23,7 +23,7 @@ class Customers::PrePlansController < ApplicationController
         @pre_plan.customer_id = current_customer.id
         @pre_plan.client_plan_id =  params[:pre_plan][:client_plan_id]
         if @pre_plan.save
-          byebug
+
         redirect_to new_customers_order_plan_path
         else
           redirect_to customers_client_plans_path

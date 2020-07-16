@@ -29,7 +29,7 @@
 	
 			<%#= form_with model: @pre_plan, url: customers_pre_plans_new_path(order_client_id:@client_id),method:get, local: :true, class:"form-horizontal" do |f| %>
 				<div class="next-btn text-center m-5">
-				<%= link_to "アイテム選択へ進む" ,customers_pre_plans_new_path(order_client_id:@client_id),class:"next btn btn-outline-info btn-lg"%>
+				<%= link_to "アイテム選択へ進む", new_customers_pre_plan_path(order_client_id:@client_id),class:"next btn btn-outline-info btn-lg"%>
 					<%#= f.submit "アイテム選択へ進む", class:"next btn btn-outline-info btn-lg" %>
 				</div>
 			<div class="plan-box">

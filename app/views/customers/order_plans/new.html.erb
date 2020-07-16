@@ -11,7 +11,7 @@
 
 <%= form_with(model: @order_plan, local: true, url: customers_order_plans_path, method: :post) do |f| %>
   <%# その他%> 
-   <div class="stripe-pattern">最後の質問：人数と開催時期について現時点での希望を教えてください</div>
+   <div class="stripe-pattern">最後の質問：開催時期とご予算について教えてください</div>
 
      <div class="form-group">
         <%= f.label :実施希望年 ,class:"mb-1" %>
@@ -33,10 +33,6 @@
           
     </div>
     
-    <%= f.hidden_field :client_plan_id, :value => params[:order_client_id] %>
-
-   <%= f.submit "式場に仮予約する", class:"next btn btn-info" %>
-
 
 <%# クライアント一覧ここまで %>
 
@@ -187,61 +183,22 @@
                     </tr>
                     </table>
 
-
 			<%# 料理以外の合計金額計算 %>
 						<%	item_sum = @cake_plan.unit_price + @dress_plan.unit_price + @flower_plan.unit_price + @memory_plan.unit_price + @besic_plan.unit_price
 						%>
-						<%	in_price = 30000 * @order_plan.count.to_i  %>
+						<%	in_price = 30000 * @pre_plan.count.to_i  %>
 						<% @total_price = @foodsum.to_i + item_sum.to_i %>
 						<%	self_price = @total_price.to_i - in_price.to_i  %>
 						<div class="total-price"><span class="item2-name"><p>合計金額　：<%= @total_price.to_s(:delimited) %>　円</p>
-						<div class="total-price"><span class="item2-name"><p>お2人の自己負担金額：<%= self_price.to_s(:delimited) %>円　</p>
-						※50人ご招待，お1人あたりご祝儀3万円の場合</span></div>
+						<div class="total-price"><span class="item2-name"><p>お2人の自己負担金額：<%= self_price.to_s(:delimited) %>円　</p></span></div>
+						※50人ご招待，お1人あたりご祝儀3万円の場合
 
             <%# 概要 %>
 
-                <h3>その他ご希望</h3>
-                  <table class="table table-sm table-bordered">
-                    <tr>
-                    <th class="table-info" style="width:25%">開催人数</th>
-                    <td style="width:75%"><%= @count.to_i %>人</td>
-                    </tr>
-                    <tr>
-					<th class="table-info" style="width:25%">実施希望年</th>
-                    <td style="width:75%"><%= @desired_year %></td>
-                    </tr>
-					<tr>
-					<th class="table-info" style="width:25%">実施希望時期</th>
-                    <td style="width:75%"><%= @desired_timing %></td>
-                    </tr>
-                    <tr>
-                    <th class="table-info" style="width:25%">実施希望日取り</th>
-                    <td style="width:75%"><%= @desired_day %>円</td>
-                    </tr>
-                    <tr>
-                    <th class="table-info" style="width:25%">自己負担予算</th>
-                    <td style="width:75%"><%= @budget%>円</td>
-                    </tr>
-                    </table>
-
         </div>      
 
-			<%# orderプラン詳細ここまで %>
-
-                <%= f.hidden_field :order_client_id, :value => @client_plan.client.id %>
-                <%= f.hidden_field :order_client_plan_id, :value => @client_plan.id %>
-                <%= f.hidden_field :order_plan_food_item_id, :value =>  @food_plan.id %> 
-                <%= f.hidden_field :order_plan_cake_item_id, :value =>  @cake_plan.id %> 
-                <%= f.hidden_field :order_plan_flower_item_id, :value =>  @flower_plan.id %>
-                <%= f.hidden_field :order_plan_dress_item_id, :value =>  @dress_plan.id %>
-                <%= f.hidden_field :order_plan_memory_item_id, :value =>  @memory_plan.id %>
-                <%= f.hidden_field :order_plan_besic_item_id, :value =>  @besic_plan.id %>
-                <%= f.hidden_field :order_desired_year, :value =>  @desired_year %>
-                <%= f.hidden_field :order_desired_timing, :value =>  @desired_timing %>
-                <%= f.hidden_field :order_desired_day, :value =>  @desired_day %>
-                <%= f.hidden_field :order_budget, :value =>  @budget %>
-                <%= f.hidden_field :order_count, :value =>  @count.to_i %>
-                <%= f.hidden_field :order_total_price, :value =>  @total_price.to_i  %>
+         <%= f.hidden_field :client_plan_id, :value => params[:order_client_id] %>
+        <%= f.hidden_field :order_total_price, :value =>  @total_price.to_i  %>
             <div class="next-btn text-center m-5">
             <%= f.submit "このプラン内容で式場に仮予約する", class:"next btn btn-info btn-lg" %>
                 <% end %>

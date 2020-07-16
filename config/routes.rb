@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   root 'customers/homes#top'
   get '/about' => 'customers/homes#about', as: 'about'
   get '/mypage' => 'customers/customers#show', as: 'mypage'
-  
+  get 'order_plans/thanks' => 'customers/order_plans#thanks', as: 'thanks'
+
   namespace :customers do
     resources :clients, only: [:index, :show] 
     resources :client_plans, only: [:index, :show]
@@ -14,7 +15,6 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :create, :update, :destroy]
     post 'order_plans/new' => 'order_plans#new'
     post 'order_plans/confimation' => 'order_plans#confimation'
-    get 'order_plans/thanks' => 'order_plans#thanks'
     get 'search/client_plans' => 'client_plans#search_client_plans'
 
   end

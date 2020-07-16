@@ -332,7 +332,7 @@ Item.create!(
 			},
 			{item_category_id: 1,
 				client_id: 2,
-				client_plan_id: 1,
+				client_plan_id: 2,
 				name: '【プランM】定番お料理コース', 
 				description: "一番人気の各商品をセットにしたパッケージとなっています",
 				unit_price: 20000,

@@ -44,5 +44,21 @@ enum budget: {
         "土日祝日ならどこでも": 3, 
         "未定": 4 
 }
+# バリデーション
+
+validates :count, presence: true
+validates :meal_item_id, presence: true
+validates :cake_item_id, presence: true
+validates :flower_item_id, presence: true
+validates :dress_item_id, presence: true
+validates :memory_item_id, presence: true
+validates :base_pack_item_id, presence: true
+validates :customer_id, presence: true
+validates :total_price, presence: true
+validates :client_plan_id, presence: true
+validates :budget, presence: true
+validates :desired_year, presence: true
+validates :desired_timing, presence: true
+validates :desired_day, presence: true
 
 end

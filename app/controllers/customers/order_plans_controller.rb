@@ -14,10 +14,6 @@ class Customers::OrderPlansController < ApplicationController
     @dress_plan = Item.find_by(id: @pre_plan.dress_item_id.to_i)
     @besic_plan = Item.find_by(id: @pre_plan.base_pack_item_id.to_i)
     @count = @pre_plan.count
-    # @desired_year = params[:order_plan][:desired_year]
-    # @desired_timing = params[:order_plan][:desired_timing]
-    # @desired_day = params[:order_plan][:desired_day]
-    # @budget = params[:order_plan][:budget]
 
 
   end
@@ -34,30 +30,6 @@ class Customers::OrderPlansController < ApplicationController
     @dress_plan = Item.find_by(id: @pre_plan.dress_item_id.to_i)
     @besic_plan = Item.find_by(id: @pre_plan.base_pack_item_id.to_i)
     @count = @pre_plan.count
-    @desired_year = params[:order_plan][:desired_year]
-    @desired_timing = params[:order_plan][:desired_timing]
-    @desired_day = params[:order_plan][:desired_day]
-    @budget = params[:order_plan][:budget]
-
-
-    # @food_plan = Item.find_by(id: params[:order_plan][:meal_item_id].to_i)
-    # @cake_plan =Item.find_by(id: params[:order_plan][:cake_item_id].to_i)
-    # @flower_plan = Item.find_by(id: params[:order_plan][:flower_item_id].to_i)
-    # @memory_plan = Item.find_by(id: params[:order_plan][:memory_item_id].to_i)
-    # @dress_plan = Item.find_by(id: params[:order_plan][:dress_item_id].to_i)
-    # @besic_plan = Item.find_by(id: params[:order_plan][:base_pack_item_id].to_i)
-    # @count = params[:order_plan][:count].to_i
-    # @desired_year = params[:order_plan][:desired_year]
-    # @desired_timing = params[:order_plan][:desired_timing]
-    # @desired_day = params[:order_plan][:desired_day]
-    # @budget = params[:order_plan][:budget]
-
-    # unless params[:order][:payment] 
-    #   redirect_back(fallback_location: root_path)
-    #   flash[:notice] = '※支払い方法が選択されていません' and return
-    # else
-    #   @order.payment = params[:order][:payment]
-    # end
 
 
   end
@@ -66,33 +38,44 @@ class Customers::OrderPlansController < ApplicationController
     @order_plan = OrderPlan.new
     # オーダープラン情報の格納
     @order_plan.customer_id = current_customer.id
-    @order_plan.count = params[:order_plan][:order_count].to_i
-    @order_plan.meal_item_id = params[:order_plan][:order_plan_food_item_id].to_i
-    @order_plan.cake_item_id = params[:order_plan][:order_plan_cake_item_id].to_i
-    @order_plan.flower_item_id = params[:order_plan][:order_plan_flower_item_id].to_i
-    @order_plan.dress_item_id = params[:order_plan][:order_plan_dress_item_id].to_i
-    @order_plan.memory_item_id = params[:order_plan][:order_plan_memory_item_id].to_i
-    @order_plan.base_pack_item_id = params[:order_plan][:order_plan_besic_item_id].to_i
-    @order_plan.total_price = params[:order_plan][:order_total_price].to_i
-    @order_plan.client_plan_id = params[:order_plan][:order_client_plan_id].to_i
-    order_plan_client_plan = ClientPlan.find_by(id: params[:order_plan][:order_client_plan_id].to_i)
+    pre_plan = PrePlan.find_by(customer_id: current_customer.id)
+    @order_plan.count = pre_plan.count
+    @order_plan.meal_item_id = pre_plan.meal_item_id
+    @order_plan.cake_item_id = pre_plan.cake_item_id
+    @order_plan.flower_item_id = pre_plan.flower_item_id
+    @order_plan.dress_item_id = pre_plan.dress_item_id
+    @order_plan.memory_item_id = pre_plan.memory_item_id
+    @order_plan.base_pack_item_id = pre_plan.base_pack_item_id
+    @order_plan.client_plan_id = pre_plan.client_plan_id
+    order_plan_client_plan = ClientPlan.find_by(id: pre_plan.client_plan_id)
     @order_plan.client_plan_name = order_plan_client_plan.plan_name
-    @order_plan.budget = params[:order_plan][:order_budget].to_i
-    @order_plan.desired_year = params[:order_plan][:order_desired_year]
-    @order_plan.desired_timing = params[:order_plan][:order_desired_timing]
-    @order_plan.desired_day = params[:order_plan][:order_desired_day]
-    @order_plan.save
-    redirect_to customers_order_plans_thanks_path, notice: "送信完了"
-    # else
-    #   redirect_back(fallback_location: root_path) and return
-    # end
+    @order_plan.budget = params[:order_plan][:budget].to_i
+    @order_plan.desired_year = params[:order_plan][:desired_year]
+    @order_plan.desired_timing = params[:order_plan][:desired_timing]
+    @order_plan.desired_day = params[:order_plan][:desired_day]
+    @order_plan.total_price = params[:order_plan][:total_price].to_i
+    if @order_plan.save
+    current_customer.pre_plans.destroy
+    redirect_to thanks_path
+    else
+      redirect_back(fallback_location: root_path)
+        flash[:notice] = '仮予約プラン送信に失敗しました' and return
+    end
+
+
   end
+
 
 
 def index
   @customer = current_customer
   @order_plans = OrderPlan.where(customer_id: @customer.id)
 end
+
+
+def thanks
+end
+
 
 def show
   @order_plan = OrderPlan.find(params[:id])
@@ -109,11 +92,6 @@ def show
   @desired_day = @order_plan.desired_day
   @budget = @order_plan.budget
 end
-
-
-def thanks
-end
-
 
 
 

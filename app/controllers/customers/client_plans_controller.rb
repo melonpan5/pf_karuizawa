@@ -21,7 +21,7 @@ class Customers::ClientPlansController < ApplicationController
    
   end
   def search_client_plans
-
+    @client_plans = ClientPlan.all.order(created_at: :desc)
   end
 
   private
