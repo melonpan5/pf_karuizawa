@@ -2,32 +2,64 @@ class Customers::OrderPlansController < ApplicationController
   before_action :authenticate_customer!
 
   def new
+    @pre_plan = PrePlan.find_by(customer_id: current_customer.id)
+    @client_plan = ClientPlan.find(@pre_plan.client_plan_id)
     @order_plan = OrderPlan.new
-    @client_id = params[:order_client_id]
-    @food_items = Item.where(client_id: params[:order_client_id].to_i).where(item_category_id: 1)
-    @cake_items = Item.where(client_id: params[:order_client_id].to_i).where(item_category_id: 2)
-    @flower_items = Item.where(client_id: params[:order_client_id].to_i).where(item_category_id: 3)
-    @dress_items = Item.where(client_id: params[:order_client_id].to_i).where(item_category_id: 4)
-    @memory_items = Item.where(client_id: params[:order_client_id].to_i).where(item_category_id: 5)
-    @besic_items = Item.where(client_id: params[:order_client_id].to_i).where(item_category_id: 6)
-    
+    @order_plan.client_plan_id = @client_plan.id
+
+    @food_plan = Item.find_by(id: @pre_plan.meal_item_id.to_i)
+    @cake_plan =Item.find_by(id: @pre_plan.cake_item_id.to_i)
+    @flower_plan = Item.find_by(id: @pre_plan.flower_item_id.to_i)
+    @memory_plan = Item.find_by(id: @pre_plan.memory_item_id.to_i)
+    @dress_plan = Item.find_by(id: @pre_plan.dress_item_id.to_i)
+    @besic_plan = Item.find_by(id: @pre_plan.base_pack_item_id.to_i)
+    @count = @pre_plan.count
+    # @desired_year = params[:order_plan][:desired_year]
+    # @desired_timing = params[:order_plan][:desired_timing]
+    # @desired_day = params[:order_plan][:desired_day]
+    # @budget = params[:order_plan][:budget]
+
+
   end
 
   def confimation 
+    @pre_plan = PrePlan.find(customer_id: current_customer.id)
     @order_plan = OrderPlan.new
-    @client_id = params[:order_client_id]
-    @client_plan = ClientPlan.find_by(id: params[:order_plan][:client_plan_id])
-    @food_plan = Item.find_by(id: params[:order_plan][:meal_item_id].to_i)
-    @cake_plan =Item.find_by(id: params[:order_plan][:cake_item_id].to_i)
-    @flower_plan = Item.find_by(id: params[:order_plan][:flower_item_id].to_i)
-    @memory_plan = Item.find_by(id: params[:order_plan][:memory_item_id].to_i)
-    @dress_plan = Item.find_by(id: params[:order_plan][:dress_item_id].to_i)
-    @besic_plan = Item.find_by(id: params[:order_plan][:base_pack_item_id].to_i)
-    @count = params[:order_plan][:count].to_i
+    @client_plan = ClientPlan.find_by(client_plan_id: @pre_plan.client_plan_id)
+
+    @food_plan = Item.find_by(id: @pre_plan.meal_item_id.to_i)
+    @cake_plan =Item.find_by(id: @pre_plan.cake_item_id.to_i)
+    @flower_plan = Item.find_by(id: @pre_plan.flower_item_id.to_i)
+    @memory_plan = Item.find_by(id: @pre_plan.memory_item_id.to_i)
+    @dress_plan = Item.find_by(id: @pre_plan.dress_item_id.to_i)
+    @besic_plan = Item.find_by(id: @pre_plan.base_pack_item_id.to_i)
+    @count = @pre_plan.count
     @desired_year = params[:order_plan][:desired_year]
     @desired_timing = params[:order_plan][:desired_timing]
     @desired_day = params[:order_plan][:desired_day]
     @budget = params[:order_plan][:budget]
+
+
+    # @food_plan = Item.find_by(id: params[:order_plan][:meal_item_id].to_i)
+    # @cake_plan =Item.find_by(id: params[:order_plan][:cake_item_id].to_i)
+    # @flower_plan = Item.find_by(id: params[:order_plan][:flower_item_id].to_i)
+    # @memory_plan = Item.find_by(id: params[:order_plan][:memory_item_id].to_i)
+    # @dress_plan = Item.find_by(id: params[:order_plan][:dress_item_id].to_i)
+    # @besic_plan = Item.find_by(id: params[:order_plan][:base_pack_item_id].to_i)
+    # @count = params[:order_plan][:count].to_i
+    # @desired_year = params[:order_plan][:desired_year]
+    # @desired_timing = params[:order_plan][:desired_timing]
+    # @desired_day = params[:order_plan][:desired_day]
+    # @budget = params[:order_plan][:budget]
+
+    # unless params[:order][:payment] 
+    #   redirect_back(fallback_location: root_path)
+    #   flash[:notice] = '※支払い方法が選択されていません' and return
+    # else
+    #   @order.payment = params[:order][:payment]
+    # end
+
+
   end
 
   def create

@@ -36,6 +36,34 @@
 //     stroke-width='3' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 //   }
 
+// top
+
+.slider{
+    margin: 100px auto;
+    width: 80%;
+    opacity: 0;
+    transition: 3s;
+}
+.slick-initialized{
+    opacity: 0.7;
+
+}
+
+.sp-slide{position: relative;}
+.slick-content{
+  position: absolute;
+  top: 20%;left: 30%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  z-index: 150;
+  color: #614d3f;
+  img{width: 100%;}
+  margin: 0　10px;padding: 0;
+  p{margin: 0;padding: 0; font-size: 1rem;}
+  h2{margin: 0;padding: 0; font-size: 2rem;color: #614d3f;}
+}
+
 // 共通リスト
 li{
     list-style-type: none;

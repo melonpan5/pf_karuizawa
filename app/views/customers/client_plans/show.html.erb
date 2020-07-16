@@ -27,9 +27,10 @@
 			<%# クライアント詳細 %>
   			<div class="text-box"><p><%= @client_plan.plan_text %></p></div>
 	
-			<%= form_with model: @order_plan, url: new_customers_order_plan_path,local: :true, class:"form-horizontal" do |f| %>
+			<%#= form_with model: @pre_plan, url: customers_pre_plans_new_path(order_client_id:@client_id),method:get, local: :true, class:"form-horizontal" do |f| %>
 				<div class="next-btn text-center m-5">
-					<%= f.submit "アイテム選択へ進む", class:"next btn btn-outline-info btn-lg" %>
+				<%= link_to "アイテム選択へ進む" ,customers_pre_plans_new_path(order_client_id:@client_id),class:"next btn btn-outline-info btn-lg"%>
+					<%#= f.submit "アイテム選択へ進む", class:"next btn btn-outline-info btn-lg" %>
 				</div>
 			<div class="plan-box">
 				<div class="item-box">
@@ -133,20 +134,10 @@
 						</span></div>
 			</div>
 
-			<%# クライアントプラン詳細ここまで %>
-
-<%# <%= form_with(model: @order_plan, local: true, url: new_customers_order_plan_path) do |f| %> 
-                <%= f.hidden_field :order_client_id, :value => @client_id %>
-                <%# <%= f.hidden_field :key_order_plan_meal_item_id, :value =>  @client_plan.meal_item_id %> 
-                <%# <%= f.hidden_field :key_order_plan_cake_item_id, :value =>  @client_plan.cake_item_id %>
-                <%# <%= f.hidden_field :key_order_plan_dress_item_id, :value =>  @client_plan.dress_item_id %>
-                <%# <%= f.hidden_field :key_order_plan_flower_item_id, :value =>  @client_plan.flower_item_id %>
-                <%# <%= f.hidden_field :key_order_plan_memory_item_id, :value =>  @client_plan.memory_item_id %>
-                <%# <%= f.hidden_field :key_order_plan_besic_item_id, :value =>  @client_plan.base_pack_item_id %> 
             <div class="next-btn text-center m-5">
-            <%= f.submit "マイプランの作成（アイテム選択）に進もう", class:"next btn btn-outline-info btn-lg" %>
+            <%#= f.submit "マイプランの作成（アイテム選択）に進もう", class:"next btn btn-outline-info btn-lg" %>
                 <%# <% end %> 
-                <% end %>
+                <%# end %>
 			</div>
 <%# 共通ボディー閉じタグ %>
 

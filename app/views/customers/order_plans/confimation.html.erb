@@ -3,8 +3,46 @@
 	<div class="row">
 		<div class="col-12">
 		<%# ここからメイン %>
-			<div class="title"><h2>Step4　プラン内容を確認し、問い合わせを完了しよう</h2></div>
+			<div class="title"><h2>Step4　時期と予算を選択し、問い合わせを完了しよう</h2></div>
     </div>
+</div>
+
+<!-- フォーム -->
+
+<%= form_with(model: @order_plan, local: true, url: customers_order_plans_path, method: :post) do |f| %>
+  <%# その他%> 
+   <div class="stripe-pattern">最後の質問：人数と開催時期について現時点での希望を教えてください</div>
+
+     <div class="form-group">
+            <%= f.label :実施希望年 ,class:"mb-1" %>
+            <%= f.select :desired_year, OrderPlan.desired_years.keys.to_a, {}, class:"form-control"%>
+   </div>
+     <div class="form-group">
+            <%= f.label :実施希望時期 ,class:"mb-1" %>
+            <%= f.select :desired_timing, OrderPlan.desired_timings.keys.to_a, {}, class:"form-control" %>
+          
+    </div>
+     <div class="form-group">
+            <%= f.label :実施希望日取り ,class:"mb-1" %>
+            <%= f.select :desired_day, OrderPlan.desired_days.keys.to_a, {}, class:"form-control" %>
+          
+    </div>
+    <div class="form-group">
+            <%= f.label :予算※自己負担金額 ,class:"mb-1" %>
+            <%= f.select :budget, OrderPlan.budgets.keys.to_a, {}, class:"form-control" %>
+          
+    </div>
+    
+    <%= f.hidden_field :client_plan_id, :value => params[:order_client_id] %>
+
+   <%= f.submit "式場に仮予約する", class:"next btn btn-info" %>
+
+<% end %>
+
+<%# クライアント一覧ここまで %>
+
+<%# 登録フォーム %>
+<%# 共通ボディー閉じタグ %>
 </div>
             <div class="stripe-pattern">選んだプラン：<%= @client_plan.plan_name %></div>
             <div class="sub-title"><h4>（式場：<%= @client_plan.client.name %>）</h4></div>
@@ -191,7 +229,6 @@
 
 			<%# orderプラン詳細ここまで %>
 
-<%= form_with(model: @order_plan, local: true, url: customers_order_plans_path, method: :post) do |f| %>
                 <%= f.hidden_field :order_client_id, :value => @client_plan.client.id %>
                 <%= f.hidden_field :order_client_plan_id, :value => @client_plan.id %>
                 <%= f.hidden_field :order_plan_food_item_id, :value =>  @food_plan.id %> 

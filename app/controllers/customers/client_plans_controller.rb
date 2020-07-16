@@ -7,7 +7,7 @@ class Customers::ClientPlansController < ApplicationController
   def show
     @client_plan = ClientPlan.find(params[:id])
     @client_id = @client_plan.client_id
-    @pre_plan = PrePlan.new
+    # @pre_plan = PrePlan.new
     @menue = Item.where(client_id: @client_plan.client_id)
 
 
@@ -20,4 +20,15 @@ class Customers::ClientPlansController < ApplicationController
 
    
   end
+  def search_client_plans
+
+  end
+
+  private
+
+  def client_plan_params
+    params.require(:client_plan).permit(plan_tag_ids: [])
+  end
+
+
 end

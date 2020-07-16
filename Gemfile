@@ -72,6 +72,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'dotenv-rails'
+gem 'ransack'
 group :production do
   gem 'mysql2'
 end

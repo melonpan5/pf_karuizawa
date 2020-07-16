@@ -51,12 +51,12 @@
 
     <div class="form-group">
             <%= f.label :ケーキの商品 ,class:"mb-1" %>
-            <%= f.collection_select :cake_item_id, Item.where(client_id: params[:client_plan][:client_id]).where(item_category_id: 2), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+            <%= f.collection_select :cake_item_id, Item.where(client_id: params[:client_plan][:client_id]).where(item_category_id: 3), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
     </div>
 
     <div class="form-group">
             <%= f.label :装花の商品 ,class:"mb-1" %>
-            <%= f.collection_select :flower_item_id, Item.where(client_id: params[:client_plan][:client_id]).where(item_category_id: 3), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+            <%= f.collection_select :flower_item_id, Item.where(client_id: params[:client_plan][:client_id]).where(item_category_id: 2), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
     </div>
 
     <div class="form-group">

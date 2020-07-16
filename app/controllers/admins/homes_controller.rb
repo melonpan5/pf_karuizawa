@@ -3,7 +3,7 @@ class Admins::HomesController < ApplicationController
   
   def top
     @order_plans = OrderPlan.page(params[:page])
-
+    
   end
 
   def order_plan_show
@@ -21,6 +21,6 @@ class Admins::HomesController < ApplicationController
   @desired_day = @order_plan.desired_day
   @budget = @order_plan.budget
   end
-  
+
 
 end

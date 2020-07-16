@@ -11,51 +11,134 @@
 <!-- 変更フォーム -->
 <%= form_with model: @pre_plan, url:customers_pre_plans_path,local: :true, class:"form-horizontal" do |f| %>
 
-    <div class="form-group">
+    <%# 飲食プラン%> 
+    <div class="stripe-pattern">その１：料理・飲み物を選択してね</div>
+    <div class="form-group  wrap">    
+      
+        <% @food_items.each do |food| %>
+            <div class="btn-flat-border menue radio">
+               <%= f.label :meal_item_id,for:"radio_bottom#{food.id}" do %>
+                <ul>
+                    <%= f.radio_button :meal_item_id, food.id ,id:"radio_bottom#{food.id}", value:"radio_bottom" %> 
+                    <li><div class="menue">プラン名：<%= food.name %></div></li>
+                    <div class="menue">
+                        <%= attachment_image_tag food, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                    </div>
+                    <li><div class="menue">内容：<%= food.description %></div></li>
+                    <li><div class="menue">ご料金(税抜)：<%= food.unit_price.to_s(:delimited) %>円／人</div></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+    </div>
+    <%# ケーキプラン%> 
+    <div class="stripe-pattern">その２：ケーキを選択してね</div>
+    <div class="form-group  wrap">    
+      
+        <% @cake_items.each do |item| %>
+            <div class="btn-flat-border menue radio">
+               <%= f.label :cake_item_id,for:"radio_bottom#{item.id}" do %>
+                <ul>
+                    <%= f.radio_button :cake_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
+                    <li><div class="menue">プラン名：<%= item.name %></div></li>
+                    <div class="menue">
+                        <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                    </div>
+                    <li><div class="menue">内容：<%= item.description %></div></li>
+                    <li><div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+    </div>
+       <%# 装花プラン%> 
+    <div class="stripe-pattern">その３：装飾のお花を選択してね</div>
+    <div class="form-group  wrap">    
+      
+        <% @flower_items.each do |item| %>
+            <div class="btn-flat-border menue radio">
+               <%= f.label :flower_item_id,for:"radio_bottom#{item.id}" do %>
+                <ul>
+                    <%= f.radio_button :flower_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
+                    <li><div class="menue">プラン名：<%= item.name %></div></li>
+                    <div class="menue">
+                        <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                    </div>
+                    <li><div class="menue">内容：<%= item.description %></div></li>
+                    <li><div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+    </div>
+       <%# 装花プラン%> 
+    <div class="stripe-pattern">その4：ドレスのプランを選択してね</div>
+    <div class="form-group  wrap">    
+      
+        <% @dress_items.each do |item| %>
+            <div class="btn-flat-border menue radio">
+               <%= f.label :dress_item_id,for:"radio_bottom#{item.id}" do %>
+                <ul>
+                    <%= f.radio_button :dress_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom", checked: (1 == item.id) %> 
+                    <li><div class="menue">プラン名：<%= item.name %></div></li>
+                    <div class="menue">
+                        <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                    </div>
+                    <li><div class="menue">内容：<%= item.description %></div></li>
+                    <li><div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+    </div>
+       <%# メモリープラン%> 
+    <div class="stripe-pattern">その5：写真・動画撮影のプランを選択してね</div>
+    <div class="form-group  wrap">    
+      
+        <% @memory_items.each do |item| %>
+            <div class="btn-flat-border menue radio">
+               <%= f.label :memory_item_id,for:"radio_bottom#{item.id}" do %>
+                <ul>
+                    <%= f.radio_button :memory_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
+                    <li><div class="menue">プラン名：<%= item.name %></div></li>
+                    <div class="menue">
+                        <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                    </div>
+                    <li><div class="menue">内容：<%= item.description %></div></li>
+                    <li><div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+    </div>
+       <%# 基本ープラン%> 
+    <div class="stripe-pattern">その6：基本パッケージの内容を確認してね</div>
+    <div class="form-group  wrap">    
+      
+        <% @besic_items.each do |item| %>
+            <div class="btn-flat-border menue radio">
+               <%= f.label :base_pack_item_id,for:"radio_bottom#{item.id}" do %>
+                <ul>
+                    <%= f.radio_button :base_pack_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
+                    <li><div class="menue">プラン名：<%= item.name %></div></li>
+                    <li><div class="menue">内容：<%= item.description %></div></li>
+                    <li><div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+    </div>
+  <%# その他%> 
+   <div class="stripe-pattern">その7：人数と開催時期について現時点での希望を教えてください</div>
+   <div class="form-group">
         <%= f.label :人数※標準50名,class:"mb-1" %>
         <%= f.number_field :count, :value => 50, class:"form-control" %>
     </div>
-
-       <div class="form-group">
-     
-     <%= f.label :飲食の商品 ,class:"mb-1" %>
-    <% @food_items.each do |food| %>
-      <%= f.radio_button :meal_item_id, food.id, class:"form-control"%>
-      <%= food.name %>
-       <%= attachment_image_tag food, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "100x100" %>
-      <%= food.description %>
-      <%= food.unit_price %>
-    <% end %>
-    </div>
-
-    <div class="form-group">
-            <%= f.label :ケーキの商品 ,class:"mb-1" %>
-            <%= f.collection_select :cake_item_id, Item.where(client_id: params[:pre_plan][:key_pre_plan_id].to_i).where(item_category_id: 2), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
-    </div>
-
-    <div class="form-group">
-            <%= f.label :装花の商品 ,class:"mb-1" %>
-            <%= f.collection_select :flower_item_id, Item.where(client_id: params[:pre_plan][:key_pre_plan_id].to_i).where(item_category_id: 3), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
-    </div>
-
-    <div class="form-group">
-            <%= f.label :ドレスの商品 ,class:"mb-1" %>
-            <%= f.collection_select :dress_item_id, Item.where(client_id: params[:pre_plan][:key_pre_plan_id].to_i).where(item_category_id: 4), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
-    </div>
-
-    <div class="form-group">
-            <%= f.label :写真・動画撮影の商品 ,class:"mb-1" %>
-            <%= f.collection_select :memory_item_id, Item.where(client_id: params[:pre_plan][:key_pre_plan_id].to_i).where(item_category_id: 5), :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
-    </div>
-
-     <div class="form-group">
-            <%= f.label :基本パッケージをセット ,class:"mb-1" %>
-            <%= f.collection_select :base_pack_item_id, Item.where(client_id: params[:pre_plan][:key_pre_plan_id].to_i).where(item_category_id: 6), :id,:name, {class: "form-control"} %>
-    </div>
-    <%= f.hidden_field :client_plan_id, :value => @client_plan_id %>
+    
+    <%= f.hidden_field :client_plan_id, :value => @client_plan.id %>
 
     <div class="pull-right">
-        <%= f.submit "変更を保存する",class: "btn btn-primary" %>
+        <%= f.submit "プランを作成する",class: "btn btn-info btn-lg" %>
     </div>
 
 <% end %>

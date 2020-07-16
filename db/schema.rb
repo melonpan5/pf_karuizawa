@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_15_045957) do
+ActiveRecord::Schema.define(version: 2020_07_16_113050) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2020_07_15_045957) do
     t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "plan_tag_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -162,6 +161,9 @@ ActiveRecord::Schema.define(version: 2020_07_15_045957) do
     t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "client_id"
+    t.integer "client_plan_id"
+    t.index ["client_plan_id"], name: "index_pre_plans_on_client_plan_id"
   end
 
 end

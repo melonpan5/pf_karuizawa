@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
-
+    before_action :set_search
+    
     def after_sign_out_path_for(a) #ログアウトした時の遷移先
       if a == :admin
         new_admin_session_path
@@ -16,6 +17,13 @@ class ApplicationController < ActionController::Base
       when Customer
         root_path
        end
+    end
+
+    def set_search
+      @search = ClientPlan.ransack(params[:q])
+      @plan_tags = PlanTag.all
+      @search_plans = @search.result.includes(:plan_tags).distinct
+    
     end
   
     protected
