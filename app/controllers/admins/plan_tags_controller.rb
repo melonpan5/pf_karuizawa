@@ -8,6 +8,11 @@ class Admins::PlanTagsController < ApplicationController
 
 	def create
 		@plan_tag = PlanTag.new(plan_tag_params)
+		if params[:tag_img] != nil
+			img = MiniMagick::Image.read(params[:tag_img])
+			img.resize "300x300"
+			img.write "public/images/hoge.jpg"
+		end
 		if @plan_tag.save
 			redirect_back(fallback_location: root_path)
 		else
@@ -39,6 +44,6 @@ class Admins::PlanTagsController < ApplicationController
 
 	private
 	def plan_tag_params
-		params.require(:plan_tag).permit(:name)
+		params.require(:plan_tag).permit(:name,:tag_image)
 	end
 end

@@ -7,9 +7,13 @@
 			<%= render '/layouts/errors', obj: @plan_tag %>
 
 			<%= form_with(model: @plan_tag, url: admins_plan_tag_path, local: true) do |f| %>
-			<%= f.label :プランタグ名 %>
-			<%= f.text_field :name %>
-			<%= f.submit "変更を保存する",class: "btn btn-primary" %>
+			 <ul>
+                    <li><%= f.label :プランアイテム名 %>
+                        <%= f.text_field :name %></li>
+                    <li><%= f.label :商品画像,class:"mb-1" %></li>
+                    <%= f.attachment_field :tag_image, class:"form-control" %>
+                    <li><%= f.submit "追加",class: "btn btn-primary" %></li>
+            </ul>
 			<% end %>
 		</div>
 		<div class="col-lg-1"></div>

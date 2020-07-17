@@ -24,17 +24,66 @@
 @import "slick-theme"; 
 @import "slick";
 
-// ナビバー
+@font-face {
+  font-family: 'GenJyuuGothicX';
+  src: asset_url('/assets/GenJyuuGothicX-P-Bold.ttf');
 
-.navbar-light .navbar-toggler {
-    border-color: rgba(0,0,0,0);
 }
 
-// .navbar-light .navbar-toggler-icon {
-//     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30'
-//     xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(51, 51, 51, 1)'
-//     stroke-width='3' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+@font-face {
+  font-family: 'GenJyuuGothicN';
+  src: asset_url('/assets/GenJyuuGothicX-Normal.ttf');
+
+}
+
+//   エラー文赤文字
+
+#error_explanation {
+  color: red;
+  font-family: 'GenJyuuGothicX';
+  }
+
+
+// ナビバー
+a:hover {
+  color: #614d3f;
+  text-decoration: none;
+}
+
+
+.navbar-brand {
+color: #44b5a6;
+font-family: 'GenJyuuGothicN';
+font-size: 15px;
+}
+.navbar-brand a :hover {
+  color: #44b5a6;
+  font-size: 15px;
+  }
+.navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30'
+    xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(167, 154, 122, 1)'
+    stroke-width='3' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+
+//   .navbar li {
+//      color: #a79a7a;
+//      font-size: 14px;
 //   }
+
+  .link-text :hover {
+    color:#614d3f;
+    }
+  .link-text {
+    color: #a79a7a ;
+    font-size:14px;
+  }
+
+ 
+//   .nav-item a {
+//     color: #614d3f;
+//     font-size: 14px;
+//  }
 
 // top
 
@@ -72,10 +121,13 @@ li{
 .title h2{
     color:#614d3f;
     font-size:25px;
+    font-family: 'GenJyuuGothicX';
+    
 }
 .sub-title h4{
     color:#614d3f;
     font-size:20px;
+    font-family: 'GenJyuuGothicN';
 
 }
 
@@ -137,11 +189,86 @@ label img {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
+
+// トップページ
+
+.title-text p {
+    font-size: 22px;
+    color: #614d3f;
+    text-align: center;
+    font-family: 'GenJyuuGothicX';
+
+}
+.sub-text p {
+    font-size: 16px;;
+    color: #614d3f;
+    text-align: center;
+    font-family: 'GenJyuuGothicN';
+}
+
+.about-title{ 
+    position: relative;
+    padding: 0.3em;
+    font-family: 'GenJyuuGothicX';
+  }
+  .about-title:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 7px;
+    background: repeating-linear-gradient(-45deg, #8ccec5, #8ccec5 2px, white 2px, white 4px);
+  }
   
-//   .btn-flat-border:hover {
-//     background: #67c5ff;
-//     color: white;
-//   }
+  .plan_make {
+    font-family: 'GenJyuuGothicX';
+    display: inline-block;
+    text-decoration: none;
+    background: #52c1b4;
+    color: #FFF;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border-radius: 50%;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 0px 5px #52c1b4;
+    border: dashed 1px #FFF;
+    transition: .4s;
+  }
+  
+  .plan_make:hover {
+    background: #0baa95;
+    box-shadow: 0px 0px 0px 5px #0baa95;
+  }
+
+//   タグ選択
+
+  .tag-wrap  {
+    display: flex;
+    // justify-content: space-between;
+    // width: 100%;
+  }
+  .tag_select_box{
+    padding: 0;
+  }
+  .tag_select_box .tag_wrap {
+    width: 30%;
+  }
+
+.tag-image-box.is-active
+.tag-image-box :hover{
+    background-color: #52c1b4; /* カラーフィルタ効果の色を指定 */
+    display: inline-block;  /* (任意：インラインブロック化したい場合) */
+    &.tag-image.is-active ,.tag-image :hover
+    {
+        background-color: rgba(0,0,0,0.6);
+        display: block;
+    }
+    
+}
+
 
 //   テキストボックス
 
@@ -349,10 +476,17 @@ label img {
 
 
 @media screen and (max-width: 767px) {
-    .wrap {
+    .wrap,.tag-wrap {
       flex-direction: column;
     }
-    .btn-flat-border {
+    .btn-flat-border,.tag_select_box {
       width: 100%;
+    }
+    .title-text p {
+        font-size: 20px;
+    
+    }
+    .sub-text p {
+        font-size: 15px;;
     }
   }

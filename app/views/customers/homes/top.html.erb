@@ -1,39 +1,55 @@
 
 <div class="container">
-   
-			<%# イメージ画像 %>
-				<div class="slider-for">
-					<div class="sp-slide">
-					<%= image_tag 'topimage2.jpg' %>
-          <div class="slick-content">
-          <p>結婚式のプランを簡単に作れるサービス</p>
-            <h2>軽井沢deウェディング.com</h2>
-            
-          </div>
-					</div>
-					<%# <div class="sp-slide">
-							<%= image_tag 'topimage1.jpg' %>
-						<%# </div>
-					<div class="sp-slide">
-							<%= image_tag 'topimage3.jpg' %>
-					<%# </div>  %>
-				</div> 
+	<div class="row">
+		<div class="col-12 mx-auto">
+				<%# イメージ画像 %>
+			<div class="slider-for">
+				<div class="sp-slide">
+				<%= image_tag 'topimage2.jpg' %>
+				<div class="slick-content">
+				<p>軽井沢で結婚式を</p>
+				<p>おうちで簡単ウェディングプラン作成</p>
 
-<div class="container">
- ようこそ
+				</div>
+				</div>
+				<%# <div class="sp-slide">
+					<%= image_tag 'topimage1.jpg' %>
+				<%# </div>
+				<div class="sp-slide">
+					<%= image_tag 'topimage3.jpg' %>
+				<%# </div>  %>
+			</div> 
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 mx-auto">
+			<div class="client_plan">
+				<div class="sub-text">
+					<p>	軽井沢の式場プラン</p>
+				</div>
 
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 mx-auto">
+			<div class="about">
+				<div class="title-text text-center my-5">
+						<p><span class="about-title">「軽井沢deウェディング.com」とは？</span></p>
+				</div>
+				<div class="sub-text text-center my-3">
+						<p>軽井沢にある結婚式場のプランをスマホで簡単に作成、</p>
+						<p>式場に仮予約ができるサービスです</p>
+						<p>軽井沢のウェディングに関する情報も発信しています</p>
+				</div>
+				<div class="mx-auto text-center my-3">
+					<%= image_tag 'icon.jpg', :size =>'300x300' %>
+				</div>
+				 <div class="text-center my-3">
+           		 	<%= link_to "プランを作る", plan_make_path, class: "plan_make" %>
+           		 </div>
+			</div>
+		</div>
+	</div>
 
- <%= search_form_for(@search, url: customers_search_client_plans_path, method: :get) do |f| %>
-
- <% @plan_tags.each do |tag|%>
-   <%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]"},tag.id %>
-   <%=tag.name%>
- <%end%>
- 
-  <%= f.submit "検索" %>
-<% end %>
-
-
-
-      </div>
 </div><!-- /.container -->

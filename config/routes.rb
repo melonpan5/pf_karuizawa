@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/about' => 'customers/homes#about', as: 'about'
   get '/mypage' => 'customers/customers#show', as: 'mypage'
   get 'order_plans/thanks' => 'customers/order_plans#thanks', as: 'thanks'
+  get '/plan_make' => 'customers/homes#plan_make', as: 'plan_make'
 
   namespace :customers do
     resources :clients, only: [:index, :show] 

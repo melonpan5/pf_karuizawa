@@ -10,14 +10,19 @@
 				<%= render '/layouts/errors', obj: @plan_tag %>
 			<!-- ジャンル登録フォーム -->
 			<%= form_with(model: @plan_tag, url: admins_plan_tags_path, local: true) do |f| %>
-                <%= f.label :プランタグ名 %>
-                <%= f.text_field :name %>
-                <%= f.submit "追加",class: "btn btn-primary" %>
+                <ul>
+                    <li><%= f.label :プランアイテム名 %>
+                        <%= f.text_field :name %></li>
+                    <li><%= f.label :商品画像,class:"mb-1" %></li>
+                    <%= f.attachment_field :tag_image, class:"form-control" %>
+                    <li><%= f.submit "追加",class: "btn btn-primary" %></li>
+                </ul>
 			<% end %>
         <!-- ジャンル一覧 -->
             <table class="table table-borderless　table-responsive">
                 <thead>
                     <tr>
+                        <th class="table-success ">タグ画像</th>
                         <th class="table-success ">プランタグ名</th>
                         <th class="table-success "></th>
                         <th class="table-success "></th>
@@ -26,6 +31,9 @@
                 <tbody>
                     <% @plan_tags.each do |plan_tag| %>
                     <tr class="active">
+                        <td>
+                             <%= attachment_image_tag plan_tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img" , size:'100x100'%>
+                        </td>
                         <td><%= plan_tag.name %></td>
                         <td>
                         <%= link_to "削除する", admins_plan_tag_path(plan_tag), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>

@@ -1,0 +1,29 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col-12 mx-auto">
+            <div class="title-text text-center my-5">
+						<p><span class="about-title">好きなイメージを選択して</span></p>
+                        <p><span class="about-title">ウェディングプランを作ろう</span></p>
+			</div>
+			<div class="make-plan-box">
+				<div class="tag-wrap">    
+					<%= search_form_for(@search, url: customers_search_client_plans_path, method: :get) do |f| %>
+						<% @plan_tags.each do |tag|%>
+							<div class="tag_select_box">
+										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
+										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}"},tag.id %>
+
+											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box" , size:'200x200'%>
+										<%end%>
+							</div>
+						<% end %>
+                    <div class="text-center my-3">
+					<%= f.submit "→ NEXT", class: "plan_make" %>
+                    </div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!-- /.container -->
