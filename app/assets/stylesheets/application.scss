@@ -246,28 +246,28 @@ label img {
 
   .tag-wrap  {
     display: flex;
-    // justify-content: space-between;
-    // width: 100%;
+    justify-content: space-between;
+    width: 100%;
   }
   .tag_select_box{
     padding: 0;
     overflow: hidden;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     background-color: white;
     display: inline-block;  /* (任意：インラインブロック化したい場合) */
   }
 
   .tag_select_box.is-active .tag_bg{
-    background-color: black;
-    height: 300px;
-    width: 300px;
+    background-color: #44b5a6;
+    height: 200px;
+    width: 200px;
   }
 
 
   .tag_select_box .tag_bg{
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
   }
   
   .tag_select_box img{
@@ -281,12 +281,12 @@ label img {
   }
 
 .tag_select_box :hover{
-  background-color: black;
+  background-color: white;
   
 }
 
 .tag_select_box.is-active .tag-image-box{
-    background-color: rgba(0,0,0,1);
+    background-color: #44b5a6;
     opacity:0.5;
     
 }
@@ -498,10 +498,10 @@ label img {
 
 
 @media screen and (max-width: 767px) {
-    .wrap,.tag-wrap {
+    .wrap {
       flex-direction: column;
     }
-    .btn-flat-border,.tag_select_box {
+    .btn-flat-border {
       width: 100%;
     }
     .title-text p {
@@ -511,4 +511,15 @@ label img {
     .sub-text p {
         font-size: 15px;;
     }
+
+    // .tag-wrap {
+    //   display: flex;
+    //   flex-wrap: wrap;
+    //   justify-content: space-between;
+    //   widows: 100%;
+    //   }
+    // .tag_select_box{
+    //     width: 50%;
+    //   }
+
   }
