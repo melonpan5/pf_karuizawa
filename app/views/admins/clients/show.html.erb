@@ -103,7 +103,14 @@
     </tr>
 </table>
 <%# クライアント詳細ここまで %>
-
+<div class="row">
+    <div class="col-xs-12">
+        <%= link_to "編集する",edit_admins_client_path(@client),class: "btn btn-primary pull-right" %>
+    </div>
+     <div class="col-xs-12">
+       <%= link_to "削除する", admins_client_path(@client), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+    </div>
+</div>
 <%# 登録フォーム %>
 <%# 共通ボディー閉じタグ %>
 </div>

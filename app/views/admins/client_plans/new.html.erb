@@ -6,6 +6,7 @@
 			<div class="title"><h2>式場プラン新規登録</h2></div>
 				<%# <%= render '/layouts/errors', obj: @client_plan %>
 			<!-- プラン登録フォーム -->
+<%= render '/layouts/errors', obj: @client_plan %>
 
 <%= form_with model: @client_plan, url:admins_client_plans_path,local: :true, class:"form-horizontal" do |f| %>
         <div class="form-group">
