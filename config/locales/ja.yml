@@ -1,0 +1,49 @@
+ja:
+  activerecord:
+    models:
+        client: 式場
+        client_plan: 式場プラン
+        item: 式場アイテム
+        item_category: アイテムカテゴリー
+        plan_tag: プランタグ
+        customer: 会員
+    attributes:
+      client:
+        catch: キャッチ文
+        name: プラン名
+        client1_image_id: 式場イメージ画像
+        phone_number: 式場電話番号
+        acces: 式場アクセス
+        capacity: 収容可能人数
+        regular_holiday: 定休日
+        business_hours: 営業時間
+        wedding_time_zone: 式実施可能時間
+        office_name: 運営会社名
+        staff_name: 担当者氏名
+        staff_name_kana: 担当者氏名よみがな
+        staff_email: 担当者連絡先メールアドレス
+        staff_phone_number: 担当者連絡先電話番号
+      client_plan:
+         plan_name: プラン名
+         plan_catch: プランキャッチ文
+         count: 人数
+         meal_item_id: 食事アイテム
+         cake_item_id: ケーキアイテム
+         flower_item_id: 装花アイテム
+         dress_item_id: 衣装アイテム
+         memory_item_id: フォト・動画アイテム
+         base_pack_item_id: 基本パッケージアイテム
+      item:
+         name: アイテム名
+         unit_price: 税別単価
+      item_category:
+         name: アイテム種別名
+      plan_tag:
+         name: プランタグ名
+         tag_image: プランタグイメージ画像
+      customer:
+         family_name: 姓
+         first_name: 名
+         kana_family_name: カナ姓
+         kana_first_name: カナ名
+         phone_number: 電話番号

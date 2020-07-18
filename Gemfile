@@ -74,6 +74,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'dotenv-rails'
 gem 'ransack'
+gem 'rails-i18n'
 group :production do
   gem 'mysql2'
 end
