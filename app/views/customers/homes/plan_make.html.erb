@@ -13,7 +13,7 @@
 							<div class="tag_select_box">
 								<div class="tag_bg">
 										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
-										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}"},tag.id %>
+										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
 
 											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
 										<%end%>
@@ -21,7 +21,7 @@
 							</div>
 						<% end %>
                     <div class="text-center my-3">
-					<%= f.submit "→ NEXT", class: "plan_make" %>
+					<%= f.submit "→ NEXT", class: "plan_make", onClick:"return isCheck()" %>
                     </div>
 					<% end %>
 				</div>
@@ -29,3 +29,21 @@
 		</div>
 	</div>
 </div><!-- /.container -->
+
+<script>
+	function isCheck() {
+		var arr_checkBoxes = document.getElementsByClassName("checkBoxes");
+		var count = 0;
+		for (var i = 0; i < arr_checkBoxes.length; i++) {
+			if (arr_checkBoxes[i].checked) {
+				count++;
+			}
+		}
+		if (count > 0) {
+			return true;
+		} else {
+			window.alert("項目を1つ以上選択してください。");
+			return false;
+		}
+	}
+</script>

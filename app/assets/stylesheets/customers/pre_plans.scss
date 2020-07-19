@@ -1,3 +1,90 @@
 // Place all the styles related to the customers/PrePlans controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+  /* 画像部分に余白を持たせる */
+  label img {
+    margin: 3px;
+    padding: 8px;
+  }
+  
+  /* 選択されたラジオボタンの画像の背景色を変える */
+
+//   .menue_box input[type="radio"] {
+//     display:none;
+//   }
+
+  .menue_box{
+    display:flex;
+    justify-content: space-between;
+   }
+
+  .menue_select {
+    // display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #614d3f;
+    border: solid 2px #52c1b4;
+    border-radius: 3px;
+    transition: .4s;
+    width: 30%;
+    margin-left: 15px;
+    &.index-img{
+      background-color: white;
+
+      }
+  }
+
+  .menue_select.is-active,
+  .menue_select:hover {
+    background: #52c1b4;
+    color: white;
+    &.index-img{
+      background-color: #52c1b4;
+
+      }
+}
+
+  .menue_select ul li {
+    position: relative;
+  }
+  .menue_select ul li::after {
+    display: block;
+    margin: 0 10px;
+    content: '';
+    position: absolute;
+    top: .5em;
+    left: -1em;
+    width: 6px;
+    height: 6px;
+    background-color: #614d3f;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+.menue{
+ margin: 10px;
+
+}
+.client-image-box{
+background-color: white;
+width: 200px; height: 200px;
+object-fit: contain;
+text-align: center;
+}
+
+
+
+@media screen and (max-width: 767px) {
+ .menue_box {
+    flex-direction: column;
+    text-align: center;
+  }
+  .menue_box .menue_select {
+    width: 100%;
+    text-align: left;
+  }
+}

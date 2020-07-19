@@ -10,30 +10,7 @@
  <%# 共通ボディー開始タグここまで%>
 <%# クライアント一覧 %>
 
- <div id="flexbox">
-    <% @client_plans.each do |client_plan| %>
-        <div class="tape-box">
-        <div class="tape"></div>
-        <ul>
-            <li>
-            <%= client_plan.plan_name %>
-            </li>
-             <li>
-            <%= client_plan.client.name %>
-            </li>
-            <li>
-            <div class="img">
-            <%= link_to customers_client_plan_path(client_plan) do %>
-                <%= attachment_image_tag client_plan.client, :client1_image, format: 'jpeg', fallback: "no_image.jpg",class:"index-img", size: "200x200" %>
-            <% end %></div>
-            </li>
-        </ul>
-        </div>
-    <% end %>
-</div>
-
-<%# クライアント一覧ここまで %>
-
-<%# 登録フォーム %>
+<%= render 'client_plan_index', client_plans: @client_plans %>
+ 
 <%# 共通ボディー閉じタグ %>
 </div>

@@ -2,7 +2,7 @@ class Admins::ClientPlansController < ApplicationController
   before_action :authenticate_admin!
   def index
     @client_plans = ClientPlan.all.order(created_at: :desc)
-    # @client_plans = ClientPlan.page(params[:page]).per(10)
+    @client_plans = ClientPlan.page(params[:page]).per(10)
   end
 
 
@@ -19,13 +19,20 @@ class Admins::ClientPlansController < ApplicationController
 
   def create
     @client_plan = ClientPlan.new(client_plan_params)
+    food_plan = Item.find_by(id: params[:client_plan][:meal_item_id])
+    cake_plan = Item.find_by(id: params[:client_plan][:cake_item_id])
+    dress_plan = Item.find_by(id: params[:client_plan][:dress_item_id])
+    flower_plan = Item.find_by(id: params[:client_plan][:flower_item_id])
+    memory_plan = Item.find_by(id: params[:client_plan][:memory_item_id])
+    besic_plan = Item.find_by(id: params[:client_plan][:base_pack_item_id])
     @client_plan.client_id = params[:client_plan][:client_id].to_i
+    item_sum = cake_plan.unit_price + dress_plan.unit_price + flower_plan.unit_price + memory_plan.unit_price + besic_plan.unit_price
+    food_sum = food_plan.unit_price * params[:client_plan][:count].to_i
+    in_price = 30000 * params[:client_plan][:count].to_i  #ご祝儀金額の計算
+    this_plan_total_price = food_sum.to_i + item_sum.to_i #総額計算
+    @client_plan.total_price = this_plan_total_price.to_i
     if @client_plan.save
-    @foodplan = Item.find_by(id: :meal_item_id)
-    @cakeplan = Item.find_by(id: :cake_item_id)
-    @flowerplan = Item.find_by(id: :flower_item_id)
-    @memoryplan = Item.find_by(id: :memory_item_id)
-    redirect_to admins_client_plan_path(@client_plan), notice: "プランを新規追加しました"
+      redirect_to admins_client_plan_path(@client_plan), notice: "プランを新規追加しました"
     else
       render "new"
     end

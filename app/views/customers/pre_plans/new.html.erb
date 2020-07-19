@@ -14,18 +14,18 @@
 
     <%# 飲食プラン%> 
     <div class="stripe-pattern">その１：料理・飲み物を選択してね</div>
-    <div class="form-group  wrap">    
+    <div class="form-group menue_box">    
       
         <% @food_items.each do |food| %>
-            <div class="btn-flat-border menue radio">
+            <div class="menue_select">
                <%= f.label :meal_item_id,for:"radio_bottom#{food.id}" do %>
                 <ul>
                     <%= f.radio_button :meal_item_id, food.id ,id:"radio_bottom#{food.id}", value:"radio_bottom" %> 
                     <li><div class="menue">プラン名：<%= food.name %></div></li>
                     <div class="menue">
                         <%= attachment_image_tag food, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-                    </div>
-                    <li><div class="menue">内容：<%= food.description %></div></li>
+                    <li></div>
+                    <div class="menue">内容：<%= food.description %></div></li>
                     <li><div class="menue">ご料金(税抜)：<%= food.unit_price.to_s(:delimited) %>円／人</div></li>
                     <% end %>
                 </ul>
@@ -34,10 +34,10 @@
     </div>
     <%# ケーキプラン%> 
     <div class="stripe-pattern">その２：ケーキを選択してね</div>
-    <div class="form-group  wrap">    
+    <div class="form-group menue_box">    
       
         <% @cake_items.each do |item| %>
-            <div class="btn-flat-border menue radio">
+            <div class="menue_select">
                <%= f.label :cake_item_id,for:"radio_bottom#{item.id}" do %>
                 <ul>
                     <%= f.radio_button :cake_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
@@ -54,10 +54,10 @@
     </div>
        <%# 装花プラン%> 
     <div class="stripe-pattern">その３：装飾のお花を選択してね</div>
-    <div class="form-group  wrap">    
+    <div class="form-group  menue_box">    
       
         <% @flower_items.each do |item| %>
-            <div class="btn-flat-border menue radio">
+            <div class="menue_select">
                <%= f.label :flower_item_id,for:"radio_bottom#{item.id}" do %>
                 <ul>
                     <%= f.radio_button :flower_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
@@ -74,10 +74,10 @@
     </div>
        <%# 装花プラン%> 
     <div class="stripe-pattern">その4：ドレスのプランを選択してね</div>
-    <div class="form-group  wrap">    
+    <div class="form-group menue_box">    
       
         <% @dress_items.each do |item| %>
-            <div class="btn-flat-border menue radio">
+            <div class="menue_select">
                <%= f.label :dress_item_id,for:"radio_bottom#{item.id}" do %>
                 <ul>
                     <%= f.radio_button :dress_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom", checked: (1 == item.id) %> 
@@ -94,10 +94,10 @@
     </div>
        <%# メモリープラン%> 
     <div class="stripe-pattern">その5：写真・動画撮影のプランを選択してね</div>
-    <div class="form-group  wrap">    
+    <div class="form-group menue_box">    
       
         <% @memory_items.each do |item| %>
-            <div class="btn-flat-border menue radio">
+            <div class="menue_select">
                <%= f.label :memory_item_id,for:"radio_bottom#{item.id}" do %>
                 <ul>
                     <%= f.radio_button :memory_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
@@ -114,10 +114,10 @@
     </div>
        <%# 基本ープラン%> 
     <div class="stripe-pattern">その6：基本パッケージの内容を確認してね</div>
-    <div class="form-group  wrap">    
+    <div class="form-group menue_box">    
       
         <% @besic_items.each do |item| %>
-            <div class="btn-flat-border menue radio">
+            <div class="menue_select">
                <%= f.label :base_pack_item_id,for:"radio_bottom#{item.id}" do %>
                 <ul>
                     <%= f.radio_button :base_pack_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 

@@ -1,0 +1,24 @@
+
+<div id="flexbox">
+    <% client_plans.each do |client_plan| %>
+        <div class="client-plan-box">
+            <p><%= client_plan.client.name %> </ps>
+            <ul>
+                <li> <% client_plan.plan_tags.each do |tag| %>
+                    <span class= 'badge badge-info'><%= tag.name %></span>
+                    <% end %>
+                </li>
+                <li>
+                <p>¥<%= client_plan.total_price.to_s(:delimited) %>/50人 </p>
+                </li>
+                <li>
+                <div class="img">
+                <%= link_to customers_client_plan_path(client_plan) do %>
+                    <%= attachment_image_tag client_plan.client, :client1_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-image-box"%>
+                
+                <% end %></div>
+                </li>
+            </ul>
+        </div>
+    <% end %>
+</div>

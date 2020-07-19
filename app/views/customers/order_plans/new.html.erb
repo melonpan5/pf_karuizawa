@@ -40,7 +40,7 @@
 
 <%# 登録フォーム %>
 <%# 共通ボディー閉じタグ %>
-</div>
+
             <div class="stripe-pattern">選んだプラン：<%= @client_plan.plan_name %></div>
             <div class="sub-title"><h4>（式場：<%= @client_plan.client.name %>）</h4></div>
 			<div class="text"><%= @client_plan.plan_catch %></div>
@@ -50,9 +50,9 @@
 			<%# クライアント詳細 %>
   			<div class="text-box"><p><%= @client_plan.plan_text %></p></div>
 			<div class="order-plan-box">
-					<h3>料理・飲み物</h3>
+				<div class="mb-4 mt-4"> <h3>料理・飲み物</h3></div>
 					<p> 
-							<div><span class="item-name"><%= @food_plan.name %></span></div>
+							<div class="item-title"><span class="item-name"><%= @food_plan.name %></span></div>
                             <div>
                                 <%= attachment_image_tag @food_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
                             <div>
@@ -72,9 +72,9 @@
 				</div>
 
 
-					<h3>ケーキ</h3>
+				<div class="mb-4 mt-4"> <h3>ケーキ</h3></div>
 					<p> 
-							<div><span class="item2-name"><%= @cake_plan.name %></span></div>
+							<div class="item-title"><span class="item2-name"><%= @cake_plan.name %></span></div>
                             <div>
                                 <%= attachment_image_tag @cake_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
                             <div>
@@ -90,9 +90,9 @@
 					</svg>
 				</div>
 
-				<h3>装花</h3>
+				<div class="mb-4 mt-4"> <h3>装花</h3></div>
 					<p> 
-							<div><span class="item-name"><%= @flower_plan.name %></span></div>
+							<div class="item-title"><span class="item-name"><%= @flower_plan.name %></span></div>
                             <div>
                                 <%= attachment_image_tag @flower_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
                             <div>
@@ -107,9 +107,9 @@
 					</svg>
 				</div>
 				
-				<h3>ドレス</h3>
+				<div class="mb-4 mt-4"> <h3>ドレス</h3></div>
 					<p> 
-							<div><span class="item2-name"><%= @dress_plan.name %></span></div>
+							<div class="item-title"><span class="item2-name"><%= @dress_plan.name %></span></div>
                             <div>
                                 <%= attachment_image_tag @dress_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
                             <div>
@@ -125,9 +125,9 @@
 					</svg>
 				</div>
 
-					<h3>写真・動画</h3>
+					<div class="mb-4 mt-4"> <h3>写真・動画</h3></div>
 					<p> 
-							<div><span class="item-name"><%= @memory_plan.name %></span></div>
+							<div class="item-title"><span class="item-name"><%= @memory_plan.name %></span></div>
                             <div>
                                 <%= attachment_image_tag @memory_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
                             <div>
@@ -143,10 +143,10 @@
 					</svg>
 				</div>
 				
-				<h3>その他基本パッケージ</h3>
+				<div class="mb-4 mt-4"> <h3>その他基本パッケージ</h3></div>
 
 					<p> 
-							<div><span class="item2-name"><%= @besic_plan.name %></span></div>
+							<div class="item-title"><span class="item2-name"><%= @besic_plan.name %></span></div>
 							<div><%= @besic_plan.description %></div>
 							<div>ご料金(税抜)：<%= @besic_plan.unit_price.to_s(:delimited) %>円</div>
 					</p>
@@ -156,7 +156,8 @@
 					<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
 					</svg>
 				</div>
-				<h3>アイテム料金まとめ</h3>
+
+				<div class="mb-4 mt-4"> <h3>アイテム料金まとめ</h3></div>
                 <table class="table table-sm table-bordered">
                     <tr>
                     <th class="table-info" style="width:25%">飲食代</th>

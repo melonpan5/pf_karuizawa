@@ -1,5 +1,5 @@
 class Customers::OrderPlansController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: [:show]
 
   def new
     @pre_plan = PrePlan.find_by(customer_id: current_customer.id)
@@ -78,8 +78,12 @@ end
 
 
 def show
+  unless current_customer || current_admin 
+    redirect_to root_path 
+  end 
+   
   @order_plan = OrderPlan.find(params[:id])
-  @order_client_plan = ClientPlan.find_by(id: @order_plan.client_plan_id)
+  @order_client_plan = ClientPlan.find(@order_plan.client_plan_id)
   @food_plan = Item.find_by(id: @order_plan.meal_item_id)
   @cake_plan = Item.find_by(id: @order_plan.cake_item_id)
   @flower_plan = Item.find_by(id: @order_plan.flower_item_id)

@@ -12,7 +12,7 @@
 			<%# クライアント詳細 %>
   			<div class="text-box"><p><%= @order_client_plan.plan_text %></p></div>
 			<div class="order-plan-box">
-					<h3>料理・飲み物</h3>
+					<div class="mb-4 mt-4"> <h3>料理・飲み物</h3></div>
 					<p> 
 							<div><span class="item-name"><%= @food_plan.name %></span></div>
                             <div>
@@ -27,7 +27,7 @@
 					</p>
 
 
-					<h3>ケーキ</h3>
+					<div class="mb-4 mt-4"> <h3>ケーキ</h3></div>
 					<p> 
 							<div><span class="item2-name"><%= @cake_plan.name %></span></div>
                             <div>
@@ -38,7 +38,7 @@
 					</p>
 
 
-				<h3>装花</h3>
+				<div class="mb-4 mt-4"> <h3>装花</h3></div>
 					<p> 
 							<div><span class="item-name"><%= @flower_plan.name %></span></div>
                             <div>
@@ -49,7 +49,7 @@
 					</p>
 
 
-				<h3>ドレス</h3>
+				<div class="mb-4 mt-4"> <h3>ドレス</h3></div>
 					<p> 
 							<div><span class="item2-name"><%= @dress_plan.name %></span></div>
                             <div>
@@ -59,7 +59,7 @@
 							<div>ご料金(税抜)：<%= @dress_plan.unit_price.to_s(:delimited) %>円</div>
 					</p>
 
-					<h3>写真・動画</h3>
+				<div class="mb-4 mt-4"> <h3>写真・動画</h3></div>
 					<p> 
 							<div><span class="item-name"><%= @memory_plan.name %></span></div>
                             <div>
@@ -70,7 +70,7 @@
 					</p>
 
 				
-				<h3>その他基本パッケージ</h3>
+				<div class="mb-4 mt-4"> <h3>その他基本パッケージ</h3></div>
 
 					<p> 
 							<div><span class="item2-name"><%= @besic_plan.name %></span></div>
@@ -78,7 +78,7 @@
 							<div>ご料金(税抜)：<%= @besic_plan.unit_price.to_s(:delimited) %>円</div>
 					</p>
 
-				<h3>アイテム料金まとめ</h3>
+				<div class="mb-4 mt-4"> <h3>アイテム料金まとめ</h3></div>
                 <table class="table table-sm table-bordered">
                     <tr>
                     <th class="table-info" style="width:25%">飲食代</th>
@@ -120,7 +120,7 @@
 
             <%# 概要 %>
 
-                <h3>その他ご希望</h3>
+                <div class="mb-4 mt-4"> <h3>その他ご要望</h3></div>
                   <table class="table table-sm table-bordered">
                     <tr>
                     <th class="table-info" style="width:25%">開催人数</th>

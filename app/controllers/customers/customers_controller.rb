@@ -1,8 +1,12 @@
 class Customers::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
+
   def show
     @customer = current_customer
+    if @customer != current_customer
+      redirect_to root_path
+    end
     # @order_plans = OrderPlan.where(customer_id: @customer.id)
     @order_plans = @customer.order_plans
   end
@@ -28,6 +32,9 @@ class Customers::CustomersController < ApplicationController
 
   def destroy
        @customer = Customer.find(params[:id])
+       if @customer != current_customer
+        redirect_to root_path
+      end
      if @customer.destroy
       redirect_to customers_customer_path(current_customer)
       flash[:notice] = '退会しました'

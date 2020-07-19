@@ -7,20 +7,21 @@
 
  <%# 共通ボディー開始タグここまで%>
   <div class="title">
-            <h4><%= @customer.family_name %>様の問い合わせ中プラン一覧</h4>
+            <div class="sub-text text-center my-3">
+						<p><%= @customer.family_name %>様の問い合わせ中プラン一覧</p>
     </div>
-			<table class="table table-bordered">
+			<table class="table table-sm table-bordered">
 				<thead>
 					<tr>
-						<th class="table-success">問い合わせプラン</th>
+						<th class="table-success">プラン名</th>
 						<th class="table-success">登録日時</th>
 					</tr>
 				</thead>
 				<tbody>
 					<% @order_plans.each do |order_plan| %>
-					<tr class="active">
-                        <td><%= order_plan.id %></td>
-						<td><%= link_to order_plan.created_at.strftime('%Y/%m/%d %H:%M:%S') ,  customers_order_plan_path(order_plan), data: {"turbolinks" => false} %></td>
+					<tr>
+                        <td><%= link_to order_plan.client_plan_name, customers_order_plan_path(order_plan), data: {"turbolinks" => false} %></td>
+						<td><%= order_plan.created_at.strftime('%Y/%m/%d %H:%M:%S')%></td>
 						
 					</tr>
 					<% end %>

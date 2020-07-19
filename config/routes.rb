@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/mypage' => 'customers/customers#show', as: 'mypage'
   get 'order_plans/thanks' => 'customers/order_plans#thanks', as: 'thanks'
   get '/plan_make' => 'customers/homes#plan_make', as: 'plan_make'
+  
 
   namespace :customers do
     resources :clients, only: [:index, :show] 
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
     post 'client_plans/new' => 'client_plans#new'
     get 'client_plans/client_select' => 'client_plans#client_select'
     get 'client_plans/:id' => 'client_plans#show'
+    
     resources :clients, only: [:new, :create, :show, :index, :edit, :update, :destroy]
     resources :customers, only: [:index, :show, :destroy]
   end

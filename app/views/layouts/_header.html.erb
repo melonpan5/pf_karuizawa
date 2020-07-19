@@ -36,17 +36,17 @@
             <%= link_to "式場一覧",  admins_clients_path, class: "link-text" %>
             </li>
             <li  class="nav-item mr-4">
-            ><%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "link-text" %>
+            ><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "link-text" %>
             </li>
           <% else %>
             <li  class="nav-item mr-4">
-            <%= link_to "このサイトについて", about_path, class: "link-text" %>
+            <%= link_to "About", about_path, class: "link-text" %>
             </li>
             <li  class="nav-item mr-4">
-            <%= link_to "会員登録してマイプランを作る", new_customer_registration_path, class: "link-text" %>
+            <%= link_to "Sign up", new_customer_registration_path, class: "link-text" %>
             </li>
             <li  class="nav-item mr-4">
-            <%= link_to "式場プラン一覧", customers_client_plans_path, class: "link-text" %>
+            <%= link_to "wedding_plans", customers_client_plans_path, class: "link-text" %>
             </li>
           <% end %>
         </ul>
