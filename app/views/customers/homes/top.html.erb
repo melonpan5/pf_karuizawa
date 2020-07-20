@@ -1,38 +1,15 @@
 
-<div class="container">
-	<div class="row">
-		<div class="col-12 mx-auto">
+
 				<%# イメージ画像 %>
-			<div class="slider-for">
-				<div class="sp-slide">
-				<%= image_tag 'topimage2.jpg' %>
-				<div class="slick-content">
-				<p>軽井沢で結婚式を</p>
-				<p>おうちで簡単ウェディングプラン作成</p>
-
-				</div>
-				</div>
-				<%# <div class="sp-slide">
-					<%= image_tag 'topimage1.jpg' %>
-				<%# </div>
-				<div class="sp-slide">
-					<%= image_tag 'topimage3.jpg' %>
-				<%# </div>  %>
-			</div> 
+		<div class="topimage">
+			 <%= image_tag 'topimage2.jpg' %>
+			<div class="top-title"><p>どこで、どんな時間を過ごそう？</p></div>
+            <div class="top-comment"><p>軽井沢で結婚式を</p></div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-12 mx-auto">
-			<div class="client_plan">
-				<div class="sub-text">
-					<p>	軽井沢の式場プラン</p>
-				</div>
+<div class="container">
 
-			</div>
-		</div>
-	</div>
 	<div class="row">
-		<div class="col-12 mx-auto">
+		<div class="col-12 mt-5 mx-auto">
 			<div class="about">
 				<div class="title-text text-center my-5">
 						<p><span class="about-title">「軽井沢deウェディング.com」とは？</span></p>
@@ -52,4 +29,23 @@
 		</div>
 	</div>
 
+	<div class="row">
+		<div class="col-12 my-5 mx-auto">
+			<div class="title-text text-left my-5">
+				<p><span class="about-title">新着式場プラン</span></p>
+			</div>
+			<div class="top_client_plans_box">
+				<% @client_plans.each do |client_plan| %>
+					<div  class="top_client_plan">
+						<%= link_to(admins_client_plan_path(client_plan), class: 'list-content') do %>
+						<%= attachment_image_tag client_plan.client, :client1_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-image-box"%>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+			<div class="morelink text-right mb-5">
+				<%= link_to "> More plans", customers_client_plans_path%>
+			</div>
+		</div>
+	</div>
 </div><!-- /.container -->

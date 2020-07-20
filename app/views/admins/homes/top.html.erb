@@ -1,11 +1,11 @@
 <div class="container">
  <%# 共通ボディー開始タグ%>
  <%# 管理メニューここから %>
- <div class="title">
+ <div class="title mt-5">
     <h2>管理メニュー</h2>
 </div>
 <%# 問い合わせ一覧 %>
-        <div class="title">
+        <div class="title mt-5">
             <h4>問い合わせプラン一覧</h4>
         </div>
 
@@ -34,7 +34,7 @@
 			</table>
 <%# 問い合わせ一覧ここまで　%>
 
-<div class="menue-title">
+<div class="menue-title mt-5">
 					<h3>カスタマ管理</h3>
 </div>
 <ul>
@@ -46,25 +46,24 @@
 </ul>
 
 
-
-<div class="menue-title">
+<div class="menue-title mt-5">
 					<h3>クライアント（式場）管理</h3>
 </div>
 <ul>
     <li>
         <div class= "m-2">
-            <%= link_to "新規登録", new_admins_client_path, class: "btn btn-success" %>
+            <%= link_to "新規登録", new_admins_client_path, class: "btn btn-info" %>
         </div>
     </li>
     <li>
         <div class= "m-2">
-            <%= link_to "式場一覧", admins_clients_path, class: "btn btn-success" %>
+            <%= link_to "式場一覧", admins_clients_path, class: "btn btn-info" %>
         </div>
     </li>
 </ul>
 
 
-<div class="menue-title">
+<div class="menue-title mt-5">
 					<h3>式場プラン管理</h3>
 </div>
 <ul>
@@ -81,18 +80,18 @@
     <li>
     <li>
         <div class= "m-2">
-            <%= link_to "各式場ごとのプラン商品新規登録", new_admins_item_path, class: "btn btn-success" %>
+            <%= link_to "各式場ごとのプラン商品新規登録", new_admins_item_path, class: "btn btn-info" %>
         </div>
     </li>
     <li>
         <div class= "m-2">
-            <%= link_to "各式場ごとのプラン商品一覧", admins_items_path, class: "btn btn-success" %>
+            <%= link_to "各式場ごとのプラン商品一覧", admins_items_path, class: "btn btn-info" %>
         </div>
     </li>
 </ul>
 
 
-<div class="menue-title">
+<div class="menue-title mt-5">
 					<h3>プランフォーマット管理</h3>
 </div>
         <div class= "m-2">
@@ -101,7 +100,7 @@
     </li>
     <li>
         <div class= "m-2">
-            <%= link_to "プランアイテム　登録＆一覧", admins_item_categories_path, class: "btn btn-success" %>
+            <%= link_to "プランアイテム　登録＆一覧", admins_item_categories_path, class: "btn btn-info" %>
         </div>
        
     </li>

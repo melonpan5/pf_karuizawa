@@ -1,10 +1,14 @@
 <div class="container">
 <div class="row">
     <div class="col-xs-12">
-        <div class="title">
+        <div class="title mt-5">
             <h2>Step:3 プランメニューを選択してね</h2>
-            	<%= render '/layouts/errors', obj: @pre_plan %>
         </div>
+            	<%= render '/layouts/errors', obj: @pre_plan %>
+                <% if flash[:notice] %>
+                 <div class="error-comment"><h2><%= flash[:notice] %></h2></div>
+                <% end %>
+
     </div>
 </div>
 
@@ -14,13 +18,13 @@
 
     <%# 飲食プラン%> 
     <div class="stripe-pattern">その１：料理・飲み物を選択してね</div>
-    <div class="form-group menue_box">    
+    <div class="form-group menue_box" id="food_menue_box">    
       
         <% @food_items.each do |food| %>
             <div class="menue_select">
                <%= f.label :meal_item_id,for:"radio_bottom#{food.id}" do %>
                 <ul>
-                    <%= f.radio_button :meal_item_id, food.id ,id:"radio_bottom#{food.id}", value:"radio_bottom" %> 
+                    <%= f.radio_button :meal_item_id, food.id ,id:"radio_bottom#{food.id}", value:"radio_bottom", class:"radio_btn"%> 
                     <li><div class="menue">プラン名：<%= food.name %></div></li>
                     <div class="menue">
                         <%= attachment_image_tag food, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
@@ -34,7 +38,7 @@
     </div>
     <%# ケーキプラン%> 
     <div class="stripe-pattern">その２：ケーキを選択してね</div>
-    <div class="form-group menue_box">    
+    <div class="form-group menue_box"  id="cake_menue_box">    
       
         <% @cake_items.each do |item| %>
             <div class="menue_select">
@@ -54,7 +58,7 @@
     </div>
        <%# 装花プラン%> 
     <div class="stripe-pattern">その３：装飾のお花を選択してね</div>
-    <div class="form-group  menue_box">    
+    <div class="form-group  menue_box" id="flower_menue_box">    
       
         <% @flower_items.each do |item| %>
             <div class="menue_select">
@@ -74,7 +78,7 @@
     </div>
        <%# 装花プラン%> 
     <div class="stripe-pattern">その4：ドレスのプランを選択してね</div>
-    <div class="form-group menue_box">    
+    <div class="form-group menue_box" id="dress_menue_box">    
       
         <% @dress_items.each do |item| %>
             <div class="menue_select">
@@ -94,7 +98,7 @@
     </div>
        <%# メモリープラン%> 
     <div class="stripe-pattern">その5：写真・動画撮影のプランを選択してね</div>
-    <div class="form-group menue_box">    
+    <div class="form-group menue_box" id="memory_menue_box">    
       
         <% @memory_items.each do |item| %>
             <div class="menue_select">
@@ -114,7 +118,7 @@
     </div>
        <%# 基本ープラン%> 
     <div class="stripe-pattern">その6：基本パッケージの内容を確認してね</div>
-    <div class="form-group menue_box">    
+    <div class="form-group menue_box" id="base_menue_box">    
       
         <% @besic_items.each do |item| %>
             <div class="menue_select">

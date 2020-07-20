@@ -13,7 +13,7 @@
 #flexbox{
    display:flex;
    justify-content: space-between;
-   width:100%;
+
  }
  
 #flexbox.client-plan-box {
@@ -22,6 +22,7 @@
   padding: 0.5em 1em;
 }
  
+
 
    
 .client-plan-box {
@@ -41,3 +42,20 @@
 
 
 
+// レスポンシブ対応
+
+
+@media screen and (max-width: 767px) {
+ 
+ 
+#flexbox{
+  flex-wrap: wrap;
+}
+
+#flexbox.client-plan-box {
+  width: 50%;
+}
+  
+  
+  }
+  

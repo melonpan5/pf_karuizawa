@@ -17,9 +17,9 @@
  @import "bootstrap";
 
 
- header {
-    height: 100px;
-}
+//  header {
+//     height: 100px;
+// }
 
 @import "slick-theme"; 
 @import "slick";
@@ -43,13 +43,28 @@
   font-family: 'GenJyuuGothicX';
   }
 
-
+body{
+  margin-top: 48px;
+}
 // ナビバー
 a:hover {
   color: #614d3f;
   text-decoration: none;
 }
 
+.error-comment h2{
+  color:red;
+  font-size:15px;
+}
+
+
+// html, body,
+// ul, ol, li,
+// h1, h2, h3, h4, h5, h6, p, div {
+//   margin: 0;
+//   padding: 0;
+  
+// }
 
 .navbar-brand {
 color: #44b5a6;
@@ -450,6 +465,9 @@ li{
 
 
 @media screen and (max-width: 767px) {
+  body{
+    margin-top: 55px;
+  }
     .wrap {
       flex-direction: column;
     }
@@ -463,6 +481,7 @@ li{
     .sub-text p {
         font-size: 15px;;
     }
+
 
   }
 

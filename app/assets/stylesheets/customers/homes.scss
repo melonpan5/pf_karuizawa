@@ -3,10 +3,162 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-html, body,
-ul, ol, li,
-h1, h2, h3, h4, h5, h6, p, div {
-  margin: 0;
-  padding: 0;
+
+.topimage{
+  width:100%;
+	height:350px;
+	position: relative;
+	overflow:hidden;
+}
+.topimage img {
+  opacity: 0.8;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: inherit;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   
+}
+
+
+.top-title p {
+  position: absolute;/*絶対配置*/
+  font-weight: bold; /*太字に*/
+  font-family: 'GenJyuuGothicN';
+  font-size: 1.8em;/*サイズ2倍*/
+  color: #7c7154;
+  top: 30%;
+  left: 25%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  }
+
+
+  .top-comment p {
+    position: absolute;/*絶対配置*/
+    font-size:15px;
+    color: #7c7154;
+    font-family: 'GenJyuuGothicN';
+    top: 50%;
+    left: 25%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+
+    }
+
+    .top-comment2 p {
+      position: absolute;/*絶対配置*/
+      color: #7c7154;
+      font-family: 'GenJyuuGothicN';
+      top: 80%;
+      left: 50%;
+      -ms-transform: translate(-50%,-50%);
+      -webkit-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
+      margin:0;
+      padding:0;
+      }
+
+// Aboutページ
+.about-image{
+  width:100%;
+	height:300px;
+	position: relative;
+	overflow:hidden;
+
+}
+.about-image img{
+  opacity: 0.8;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: inherit;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  
+
+}
+
+.about-comment p {
+    font-size: 15px;
+    color: #614d3f;
+    font-family: 'GenJyuuGothicN';
+}
+
+
+
+// 新着式場プラン
+
+.top_client_plans_box{
+  display: flex;
+  justify-content: space-between;
+}
+.top_client_plan{
+  width: 25%;
+}
+
+.morelink{
+  font-size:14px;
+
+}
+.morelink a{
+  color:#a89b7a;
+  
+}
+.morelink :hover{
+  color:#614d3f;
+  
+}
+
+// レスポンシブ対応
+
+
+@media screen and (max-width: 767px) {
+ 
+.top-title p {
+  font-size: 24px;
+  top: 30%;
+  left: 35%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  }
+
+
+  .top-comment p {
+    font-size:15px;
+    top: 50%;
+    left: 40%;
+
+    }
+
+  .top_client_plans_box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+  .top_client_plan{
+  width: 50%;
+}
+
+
 }

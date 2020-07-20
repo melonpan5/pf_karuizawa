@@ -1,2 +1,48 @@
-<h1>Customers::Homes#about</h1>
-<p>Find me in app/views/customers/homes/about.html.erb</p>
+
+<div class="container">
+	<div class="row">
+		<div class="col-6 mt-5 about-image mx-auto">
+        <%# イメージ画像 %>
+            <%= image_tag 'topimage1' %>
+		</div>
+       <div class="col-6">
+			<div class="about">
+				<div class="title-text text-left my-5">
+						<p><span class="about-title">「軽井沢deウェディング.com」とは？</span></p>
+				</div>
+				<div class="about-comment my-3">
+						<div class="text-left ml-2 my-2"><p>どんな場所で、どんな時間を過ごそう？</p></div>
+						<div class="text-left ml-2 my-2"><p>このサイトでは、簡単にウェディングプランが作成でき、</p></div>
+                        <div class="text-left ml-2 my-2"><p>式場に仮予約ができます</p></div>
+                        <div class="text-left ml-2 my-2"><p>軽井沢のウェディングに関する魅力の発信もしていきます</p></div>
+				</div>
+				 <div class="text-left ml-5 my-3">
+           		 	<%= link_to "会員登録してプランを作る", plan_make_path, class: "mt-3 btn btn-info" %>
+           		 </div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 mx-auto">
+            <div class="title-text text-center my-5">
+                <p><span class="about-title">簡単ウェディングプラン作成とは？</span></p>
+            </div>
+            <div class="sub-text text-center my-3">
+                <p>結婚式って決めることが多くて大変そう・・・</p>
+                <p>そんなあなたへ、</p>
+                <p>スマホで簡単にプラン作成＆見積もりが確認できるサービスです</p>
+            </div>
+            <div class="point-box my-3">
+                 <div class="point-text my-2"><p>Point１　好きなイメージから自分の好みに合う式場を探せる</p></div>
+                 <div class="point-text my-2"><p>Point2　５つの項目（飲食・ケーキ・ドレス・装花・写真動画撮影）を選ぶだけ！わかりやすい料金設定</p></div>
+                 <div class="point-text my-2"><p>Point3　式場に仮予約後は、オンライン打ち合わせでOK</p></div>
+            </div> 
+            <div class="sub-text text-center my-3">
+                <p>おうちで結婚式準備を始めよう</p>
+            </div>
+            <div class="text-center my-5">
+           		 	<%= link_to "会員登録してプランを作る", plan_make_path, class: "mt-3 btn btn-info" %>
+           	</div>
+        </div>
+    </div>
+</div><!-- /.container -->

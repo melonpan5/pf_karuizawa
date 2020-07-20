@@ -5,8 +5,8 @@ class Customers::PrePlansController < ApplicationController
       @pre_plan = PrePlan.new
       @pre_plan.customer_id = current_customer.id
       unless params[:order_client_id]
-        redirect_to customers_client_plans_path
-        flash[:notice] = 'プランを作成する式場を選択してください' and return
+        redirect_back(fallback_location: customers_client_plans_path)
+        flash[:notice] = '※式場を選択してください' and return
       end
       @client_plan = ClientPlan.find_by(client_id: params[:order_client_id])
       @food_items = Item.where(client_plan_id: @client_plan.id).where(item_category_id: 1)
@@ -26,8 +26,8 @@ class Customers::PrePlansController < ApplicationController
 
         redirect_to new_customers_order_plan_path
         else
-          redirect_to customers_client_plans_path
-        flash[:notice] = 'プランを作成する式場を選択してください' and return
+        redirect_back(fallback_location: customers_client_plans_path)
+        flash[:notice] = '※プランのアイテムが選ばれていません。再選択してください。' and return
         end
         
       end

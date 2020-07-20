@@ -3,7 +3,7 @@
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10">
 
-			<div class="title"><h2>式場プラン編集</h2></div>
+			<div class="title mt-5"><h2>式場プラン編集</h2></div>
 				<%= render '/layouts/errors', obj: @client_plan %>
 <!-- 変更フォーム -->
 <%= form_with model: @client_plan, url:admins_client_plan_path,local: :true, class:"form-horizontal" do |f| %>
