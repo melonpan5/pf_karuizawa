@@ -14,7 +14,7 @@ class Client < ApplicationRecord
 
     validates :catch, presence: true
     validates :name, presence: true
-    validates :client1_image_id, presence: true 
+    validates :client1_image, presence: true 
     validates :phone_number, presence: true
     validates :acces, presence: true
     validates :capacity, presence: true
