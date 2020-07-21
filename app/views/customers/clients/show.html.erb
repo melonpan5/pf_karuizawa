@@ -1,2 +1,77 @@
-<h1>Customers::Clients#show</h1>
-<p>Find me in app/views/customers/clients/show.html.erb</p>
+<div class="container">
+<div class="row my-5">
+    <div class="col-12">
+        <div class="title mt-5">
+            <h2>会場　<%= @client.name %>｜ 詳細情報</h2>
+        </div>
+    </div>
+</div>
+ <%# 共通ボディー開始タグここまで%>
+
+ <%# イメージ画像 %>
+    <div class="slider-for">
+        <div class="sp-slide">
+            <%= attachment_image_tag @client, :client1_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-img" %>    
+        </div>
+        <div class="sp-slide">
+             <%= attachment_image_tag @client, :client2_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-img" %>
+             </div>
+        <div class="sp-slide">
+             <%= attachment_image_tag @client, :client3_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-img" %>
+        </div>
+    </div> 
+
+<%# クライアント詳細 %>
+<table class="table table-sm table-responsive table-bordered">
+    <tr>
+        <th class="table-success" style="width:25%">式場名</th>
+        <td style="width:75%"><%= @client.name %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">式場キャッチ文</th>
+        <td style="width:75%"><%= @client.catch %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">式場紹介</th>
+        <td style="width:75%"><%= @client.introduction %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">電話番号</th>
+        <td style="width:75%"><%= @client.phone_number %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">ホームページURL</th>
+        <td style="width:75%"><%= link_to @client.homepage_url, @client.homepage_url %></td>
+    </tr>
+    <tr>
+    <th class="table-success" style="width:25%">アクセス</th>
+        <td style="width:75%"><%= @client.acces %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">座席数</th>
+        <td style="width:75%"><%= @client.capacity %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">定休日</th>
+        <td style="width:75%"><%= @client.regular_holiday %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">営業時間</th>
+        <td style="width:75%"><%= @client.business_hours %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">挙式時間帯</th>
+        <td style="width:75%"><%= @client.wedding_time_zone %></td>
+    </tr>
+    <tr>
+        <th class="table-success" style="width:25%">その他</th>
+        <td style="width:75%"><%= @client.other %></td>
+    </tr>
+</table>
+
+<div class="next-btn text-center m-5">
+				<%= link_to "式場プラン詳細に戻る", customers_client_plan_path(client_id:@client.id),class:"btn btn-outline-info btn-lg"%>
+</div>
+<%# 登録フォーム %>
+<%# 共通ボディー閉じタグ %>
+</div>

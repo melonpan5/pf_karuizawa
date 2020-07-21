@@ -15,6 +15,7 @@ class ClientPlan < ApplicationRecord
     validates :memory_item_id, presence: true
     validates :base_pack_item_id, presence: true
     validates :total_price, presence: true
+    validates :client_id, presence: true
     
 
 

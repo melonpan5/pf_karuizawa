@@ -74,6 +74,7 @@
             <%= f.label :基本パッケージをセット ,class:"mb-1" %>
             <%= f.collection_select :base_pack_item_id, Item.where(client_id: params[:client_plan][:client_id]).where(item_category_id: 6), :id,:name, {class: "form-control"} %>
     </div>
+     <%= f.hidden_field :client_id, :value => params[:client_plan][:client_id] %>
 
     <div class="pull-right">
         <%= f.submit "新規登録",class: "btn btn-primary" %>

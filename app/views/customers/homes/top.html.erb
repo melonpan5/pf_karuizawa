@@ -37,7 +37,7 @@
 			<div class="top_client_plans_box">
 				<% @client_plans.each do |client_plan| %>
 					<div  class="top_client_plan">
-						<%= link_to(admins_client_plan_path(client_plan), class: 'list-content') do %>
+						<%= link_to(customers_client_plan_path(client_plan), class: 'list-content') do %>
 						<%= attachment_image_tag client_plan.client, :client1_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-image-box"%>
 						<% end %>
 					</div>
