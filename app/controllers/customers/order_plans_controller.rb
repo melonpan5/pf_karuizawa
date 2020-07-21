@@ -56,6 +56,8 @@ class Customers::OrderPlansController < ApplicationController
     @order_plan.total_price = params[:order_plan][:total_price].to_i
     if @order_plan.save
     current_customer.pre_plans.destroy
+    @customer = current_customer
+    ThanksMailer.send_thanks(@customer).deliver
     redirect_to thanks_path
     else
       redirect_back(fallback_location: root_path)
