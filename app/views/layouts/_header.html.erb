@@ -4,7 +4,7 @@
       <% if customer_signed_in? %>
         <%= link_to "軽井沢 de ウェディング.com",root_path, class:"navbar-brand" %>
       <% elsif admin_signed_in? %>
-        <%= link_to "軽井沢 de ウェディング.com", admins_root_path, class:"navbar-brand"%>
+        <%= link_to "軽井沢 de ウェディング.com(管理者用)", admins_root_path, class:"navbar-brand"%>
       <% else %>
         <%= link_to "軽井沢 de ウェディング.com", root_path, class:"navbar-brand"%>
       <% end %>
@@ -36,7 +36,7 @@
             <%= link_to "式場一覧",  admins_clients_path, class: "link-text" %>
             </li>
             <li  class="nav-item mr-4">
-            ><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "link-text" %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "link-text" %>
             </li>
           <% else %>
             <li  class="nav-item mr-4">

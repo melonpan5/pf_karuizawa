@@ -25,17 +25,29 @@ class Admins::ClientsController < ApplicationController
   def edit
     @client = Client.find(params[:id])
   end
-end
 
-def update
-  @client = Client.find(params[:id])
-  if @client.update(client_params)
-    redirect_to admins_client_path(@client)
-  else
-    render "edit"
+
+  def update
+    @client = Client.find(params[:id])
+    if @client.update(client_params)
+      redirect_to admins_client_path(@client)
+    else
+      render "edit"
+    end
   end
-end
 
+
+  def destroy
+    @client = Client.find(params[:id])
+    if @client.destroy
+      redirect_to admins_clients_path
+      flash[:notice] = 'successfully　式場情報を削除しました'
+    else
+      render "show"
+    end
+  end
+
+end
 
 private
   def client_params

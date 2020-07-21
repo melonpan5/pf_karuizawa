@@ -10,7 +10,7 @@
  <%# 共通ボディー開始タグここまで%>
 <%# 登録フォーム %>
 
-<%= form_with model: @client, url:admins_clients_path,local: :true, class:"form-horizontal" do |f| %>
+<%= form_with model: @client, url:admins_client_path(@client),local: :true, class:"form-horizontal" do |f| %>
         <div class="form-group">
             <%= f.label :式場名 ,class:"mb-1" %>
             <%= f.text_field :name, class:"form-control" %>
