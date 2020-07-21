@@ -19,6 +19,13 @@ class ApplicationController < ActionController::Base
        end
     end
 
+    def after_sign_up_path_for(resource) #新規登録した時の遷移先
+      case resource
+      when Customer
+        root_path
+       end
+    end
+
     def set_search
       @search = ClientPlan.ransack(params[:q])
       @plan_tags = PlanTag.all
