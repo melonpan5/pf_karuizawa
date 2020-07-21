@@ -4,9 +4,9 @@
       <% if customer_signed_in? %>
         <%= link_to "軽井沢 de ウェディング.com",root_path, class:"navbar-brand" %>
       <% elsif admin_signed_in? %>
-        <%= link_to image_tag("toplogo.png"), admins_root_path, class:"navbar-brand"%>
+        <%= link_to "軽井沢 de ウェディング.com", admins_root_path, class:"navbar-brand"%>
       <% else %>
-        <%= link_to image_tag("toplogo.png"), root_path, class:"navbar-brand"%>
+        <%= link_to "軽井沢 de ウェディング.com", root_path, class:"navbar-brand"%>
       <% end %>
         <%# トグル %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +48,7 @@
             <li  class="nav-item mr-4">
             <%= link_to "wedding_plans", customers_client_plans_path, class: "link-text" %>
             </li>
+
           <% end %>
         </ul>
       </div>

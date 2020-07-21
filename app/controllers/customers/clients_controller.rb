@@ -1,7 +1,7 @@
 class Customers::ClientsController < ApplicationController
   def index
-    @client_plans = ClientPlan.all.order(created_at: :desc)
-    @client_plans = ClientPlan.page(params[:page]).per(10)
+    @clients = Client.all.order(created_at: :desc)
+    @clients = Client.page(params[:page]).per(10)
   end
 
 

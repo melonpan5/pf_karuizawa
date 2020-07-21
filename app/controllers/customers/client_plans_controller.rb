@@ -5,7 +5,7 @@ class Customers::ClientPlansController < ApplicationController
   end
 
   def show
-    @client_plan = ClientPlan.find(params[:id])
+    @client_plan = ClientPlan.find_by(params[:id])
     @client_id = @client_plan.client_id
     # @pre_plan = PrePlan.new
     @menue = Item.where(client_id: @client_plan.client_id)

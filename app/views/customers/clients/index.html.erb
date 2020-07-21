@@ -1,2 +1,46 @@
-<h1>Customers::Clients#index</h1>
-<p>Find me in app/views/customers/clients/index.html.erb</p>
+<div class="container mt-5">
+<div class="row">
+    <div class="col-xs-12 mt-5">
+        <div class="title mt-5">
+                    <h2>軽井沢の式場一覧</h2>
+        </div>
+        <% if flash[:notice] %>
+        <div class="error-comment"><h2><%= flash[:notice] %></h2></div>
+        <% end %>
+    </div>
+</div>
+
+ <%# 共通ボディー開始タグここまで%>
+<%# クライアント一覧 %>
+
+
+<div class="plan_index_box">
+
+    <% @clients.each do |client| %>
+
+        <div class="client-plan-box ml-2 my-3">
+            <%= link_to customers_client_path(client) do %>
+                <ul>
+                    <li><%= client.name %>
+                    </li>
+                    <li>
+                        <div class="img">
+                        <%= attachment_image_tag client, :client2_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-image-box"%>
+                        </div>
+                    </li>
+                    <li>
+                    <p><%= client.catch %></p>
+                    </li>
+                    <li>
+                        <p>アクセス：<%= client.acces %></p>
+                    </li>
+                </ul>
+            <% end %>
+        </div>
+
+    <% end %>
+</div>
+    <%= paginate @clients %>
+
+<%# 共通ボディー閉じタグ %>
+</div>
