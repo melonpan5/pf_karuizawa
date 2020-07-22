@@ -15,18 +15,18 @@
 
 PlanTag.create!(
 		[
-			{id: 1, name: 'フェミニン', tag_image:open("./app/assets/images/tag1.jpg")},
-			{id: 2, name: 'クラシック', tag_image:open("./app/assets/images/tag2.jpg")},
-			{id: 3, name: '和装', tag_image:open("./app/assets/images/tag3.jpg")},
-			{id: 4, name: '木の雰囲気のある', tag_image:open("./app/assets/images/tag4.jpg")},
-			{id: 5, name: 'ナイトウェディング', tag_image:open("./app/assets/images/tag5.jpg")},
-			{id: 6, name: 'ナチュラル', tag_image:open("./app/assets/images/tag6.jpg")},
-			{id: 7, name: 'フラワーシャワー', tag_image:open("./app/assets/images/tag7.jpg")},
-			{id: 8, name: 'チャペルがある', tag_image:open("./app/assets/images/tag8.jpg")},
-			{id: 9, name: 'オリジナルケーキ', tag_image:open("./app/assets/images/tag9.jpg")},
-			{id: 10, name: 'ガーデンウェディング・お庭がある', tag_image:open("./app/assets/images/tag10.jpg")},
-			{id: 11, name: '家族や親しい友人と', tag_image:open("./app/assets/images/tag11.jpg")},
-			{id: 12, name: '大人っぽい雰囲気', tag_image:open("./app/assets/images/tag12.jpg")}
+			{name: 'フェミニン', tag_image:open("./app/assets/images/tag1.jpg")},
+			{name: 'クラシック', tag_image:open("./app/assets/images/tag2.jpg")},
+			{name: '和装', tag_image:open("./app/assets/images/tag3.jpg")},
+			{name: '木の雰囲気のある', tag_image:open("./app/assets/images/tag4.jpg")},
+			{name: 'ナイトウェディング', tag_image:open("./app/assets/images/tag5.jpg")},
+			{name: 'ナチュラル', tag_image:open("./app/assets/images/tag6.jpg")},
+			{name: 'フラワーシャワー', tag_image:open("./app/assets/images/tag7.jpg")},
+			{name: 'チャペルがある', tag_image:open("./app/assets/images/tag8.jpg")},
+			{name: 'オリジナルケーキ', tag_image:open("./app/assets/images/tag9.jpg")},
+			{name: 'ガーデンウェディング・お庭がある', tag_image:open("./app/assets/images/tag10.jpg")},
+			{name: '家族や親しい友人と', tag_image:open("./app/assets/images/tag11.jpg")},
+			{name: '大人っぽい雰囲気', tag_image:open("./app/assets/images/tag12.jpg")}
 		]
 	  )
 
