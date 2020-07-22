@@ -7,6 +7,7 @@ ja:
         item_category: アイテムカテゴリー
         plan_tag: プランタグ
         customer: 会員
+        contact: 問い合わせ
     attributes:
       client:
         catch: キャッチ文
@@ -47,3 +48,8 @@ ja:
          kana_family_name: カナ姓
          kana_first_name: カナ名
          phone_number: 電話番号
+      contact:
+         name: お名前
+         kana_name: お名前のよみがな
+         email: 返信先メールアドレス
+         message: お問い合わせ内容

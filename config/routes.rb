@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :admins
   devise_for :customers
   root 'customers/homes#top'
@@ -7,8 +8,8 @@ Rails.application.routes.draw do
   get '/mypage' => 'customers/customers#show', as: 'mypage'
   get 'order_plans/thanks' => 'customers/order_plans#thanks', as: 'thanks'
   get '/plan_make' => 'customers/homes#plan_make', as: 'plan_make'
-  
 
+  resources :contacts, only: [:create, :new] 
   namespace :customers do
     resources :clients, only: [:index, :show] 
     resources :client_plans, only: [:index, :show]
