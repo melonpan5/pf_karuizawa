@@ -4,7 +4,7 @@
     <title>karuizawa-de-wedding.com</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   
   <%# スライドショーSlick %>
@@ -16,10 +16,20 @@
   </head>
 
   <body>
-  <div class="container mt-5">
-  </div>
+   <div class="container mt-5">
+   </div>
     <%= render 'layouts/header' %>
-    
-    <%= yield %>
-  </body>
+  <div class="body_content">
+  <%= yield %>
+  </div>
+
+    <div class="footer">
+      <div class="footer_container">
+          <footer> 
+            <%= render 'layouts/footer' %>
+          </footer> 
+      </div>
+    </div>
+</body>
+
 </html>
