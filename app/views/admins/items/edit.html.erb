@@ -16,16 +16,20 @@
             <%= f.collection_select :client_id, Client.all, :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
         </div>
         <div class="form-group">
-            <%= f.label :商品カテゴリー ,class:"mb-1" %>
+            <%= f.label :アイテムグループ ,class:"mb-1" %>
             <%= f.collection_select :item_category_id, ItemCategory.all, :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
         </div>
         <div class="form-group">
-            <%= f.label :商品名,class:"mb-1" %>
+			<%= f.label :アイテムカテゴリー※標準アイテムかオプションとなる豪華アイテムか選択してください%>
+			<%= f.select :category, Item.categories.keys.to_a, {}, class:"form-control" %>  
+        </div>
+        <div class="form-group">
+            <%= f.label :アイテム名,class:"mb-1" %>
             <%= f.text_field :name, class:"form-control" %>
         </div>
 
     <div class="form-group">
-        <%= f.label :商品紹介文 ,class:"mb-1" %>
+        <%= f.label :アイテム紹介文 ,class:"mb-1" %>
         <%= f.text_area :description, class:"form-control" %>
     </div>
 

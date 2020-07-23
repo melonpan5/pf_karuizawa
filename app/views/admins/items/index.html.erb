@@ -13,8 +13,9 @@
 <table class="table table-sm table-bordered">
 					<tr>
 						<th class="table-success" style="width:10%"></th>
-						<th class="table-success" style="width:5%">商品ID</th>
-						<th class="table-success" style="width:5%">商品カテゴリー</th>
+						<th class="table-success" style="width:5%">ID</th>
+						<th class="table-success" style="width:5%">グループ</th>
+						<th class="table-success" style="width:5%">詳細カテゴリー</th>
 						<th class="table-success" style="width:25%">式場名</th>
 						<th class="table-success" style="width:30%">商品名</th>
                         <th class="table-success" style="width:10%">単価</th>
@@ -27,6 +28,7 @@
 						<td style="width:10%"><%= attachment_image_tag item, :item_image, format: 'jpeg', size: "100x100"%></td>
 						<td style="width:5%"><%= item.id %></td>
 						<td style="width:5%"><%= item.item_category.name %></td>
+						<td style="width:5%"><%= item.category %></td>
 						<td style="width:25%"><%= item.client.name %></td>
 						<td style="width:30%"><%= item.name %></td>
                         <td style="width:10%"><%= item.unit_price.to_s(:delimited) %></td>

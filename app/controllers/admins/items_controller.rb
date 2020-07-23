@@ -53,5 +53,6 @@ private
       :description,
       :unit_price,
       :item_image,
+      :category
     )
   end
