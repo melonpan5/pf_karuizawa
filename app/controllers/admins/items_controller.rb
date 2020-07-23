@@ -8,7 +8,6 @@ class Admins::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.client_id = params[:item][:client_id].to_i
-    byebug
     if @item.save
       redirect_to admins_item_path(@item), notice: "商品を新規追加しました"
     else

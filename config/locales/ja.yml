@@ -24,6 +24,10 @@ ja:
         staff_name_kana: 担当者氏名よみがな
         staff_email: 担当者連絡先メールアドレス
         staff_phone_number: 担当者連絡先電話番号
+        client1_image: 式場イメージ画像1枚目
+        client2_image: 式場イメージ画像2枚目
+        client3_image: 式場イメージ画像3枚目
+
       client_plan:
          plan_name: プラン名
          plan_catch: プランキャッチ文

@@ -45,6 +45,6 @@ class Admins::PlanTagsController < ApplicationController
 
 	private
 	def plan_tag_params
-		params.require(:plan_tag).permit(:name,:tag_image)
+		params.require(:plan_tag).permit(:name,:tag_image,:category)
 	end
 end

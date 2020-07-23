@@ -10,6 +10,10 @@
 			 <ul>
                     <li><%= f.label :プランアイテム名 %>
                         <%= f.text_field :name %></li>
+					<li>
+					<%= f.label :カテゴリー%>
+					<%= f.select :category, PlanTag.categories.keys.to_a, {}, class:"form-control" %>  
+                    </li>
                     <li><%= f.label :商品画像,class:"mb-1" %></li>
                     <%= f.attachment_field :tag_image, class:"form-control" %>
                     <li><%= f.submit "追加",class: "btn btn-primary" %></li>

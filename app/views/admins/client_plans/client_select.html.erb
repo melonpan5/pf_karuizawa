@@ -4,7 +4,7 @@
 			<div class="title mt-5">
                 <h2>式場プラン新規登録（式場選択）</h2>
             </div>
-            <%= form_with model: @client_plan, url: admins_client_plans_new_path,local: :true, class:"form-horizontal" do |f| %>
+            <%= form_with model: @client_plan, url: admins_client_plans_new_path, method: "post", local: :true, class:"form-horizontal" do |f| %>
                 <div class="form-group">
                     <%= f.label :登録する式場を選ぶ ,class:"mb-1" %>
                     <%= f.collection_select :client_id, Client.all, :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
