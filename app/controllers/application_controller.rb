@@ -28,7 +28,12 @@ class ApplicationController < ActionController::Base
 
     def set_search
       @search = ClientPlan.ransack(params[:q])
-      @plan_tags = PlanTag.all
+      # plan_tag_categoryごとにplan_tagを抽出
+      @taste_tags = PlanTag.where(category: 0)
+      @outside_image_tags = PlanTag.where(category: 1)
+      @inside_image_tags = PlanTag.where(category: 2)
+      @dress_tags = PlanTag.where(category: 3)
+      @situation_tags = PlanTag.where(category: 4)
       @search_plans = @search.result.includes(:plan_tags).distinct
     
     end

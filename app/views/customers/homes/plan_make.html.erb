@@ -6,8 +6,70 @@
 						<p><span class="about-title">好きなイメージを選択してください</span></p>
 			</div>
 					<%= search_form_for(@search, url: customers_search_client_plans_path, method: :get) do |f| %>
-					<div class="tag-wrap">    
-						<% @plan_tags.each do |tag|%>
+					<div class="tag-wrap">  
+					  <%#  テイスト%>
+					  ★テイスト
+						<% @taste_tags.each do |tag|%>
+							<div class="tag_select_box mb-2">
+								<div class="tag_bg">
+										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
+										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
+
+											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
+										<%end%>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div class="tag-wrap">  
+						<%# 外観イメージ %>
+						★外観
+						<% @outside_image_tags.each do |tag|%>
+							<div class="tag_select_box mb-2">
+								<div class="tag_bg">
+										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
+										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
+
+											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
+										<%end%>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div class="tag-wrap">  
+						<%# 内観イメージ %>
+						★内観
+						<% @inside_image_tags.each do |tag|%>
+							<div class="tag_select_box mb-2">
+								<div class="tag_bg">
+										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
+										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
+
+											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
+										<%end%>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div class="tag-wrap">  
+						<%# 衣装 %>
+						★ドレス
+						<% @dress_tags.each do |tag|%>
+							<div class="tag_select_box mb-2">
+								<div class="tag_bg">
+										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
+										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
+
+											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
+										<%end%>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div class="tag-wrap">  
+						<%# シチュエーション %>
+						その他好きなイメージ
+						<% @situation_tags.each do |tag|%>
 							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
 										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
