@@ -5,10 +5,8 @@
             <div class="title-text text-center my-5">
 						<p><span class="about-title">好きなイメージを選択してください</span></p>
 			</div>
-			
-			<div class="make-plan-box">
-				<div class="tag-wrap">    
 					<%= search_form_for(@search, url: customers_search_client_plans_path, method: :get) do |f| %>
+					<div class="tag-wrap">    
 						<% @plan_tags.each do |tag|%>
 							<div class="tag_select_box">
 								<div class="tag_bg">
@@ -20,12 +18,12 @@
 								</div>
 							</div>
 						<% end %>
+					</div>
                     <div class="text-center my-3">
-					<%= f.submit "→ NEXT", class: "plan_make", onClick:"return isCheck()" %>
+						<%= f.submit "→ NEXT", class: "plan_make", onClick:"return isCheck()" %>
                     </div>
 					<% end %>
-				</div>
-			</div>
+
 		</div>
 	</div>
 </div><!-- /.container -->

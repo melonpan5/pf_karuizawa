@@ -9,12 +9,12 @@ class Customers::PrePlansController < ApplicationController
         flash[:notice] = '※式場を選択してください' and return
       end
       @client_plan = ClientPlan.find_by(client_id: params[:order_client_id])
-      @food_items = Item.where(client_plan_id: @client_plan.id).where(item_category_id: 1)
-      @flower_items = Item.where(client_plan_id: @client_plan.id).where(item_category_id: 2)
-      @cake_items = Item.where(client_plan_id: @client_plan.id).where(item_category_id: 3)
-      @dress_items = Item.where(client_plan_id: @client_plan.id).where(item_category_id: 4)
-      @memory_items = Item.where(client_plan_id: @client_plan.id).where(item_category_id: 5)
-      @besic_items = Item.where(client_plan_id: @client_plan.id).where(item_category_id: 6)
+      @food_items = Item.where(client_id: @client_plan.client_id).where(item_category_id: 1)
+      @flower_items = Item.where(client_id: @client_plan.client_id).where(item_category_id: 2)
+      @cake_items = Item.where(client_id: @client_plan.client_id).where(item_category_id: 3)
+      @dress_items = Item.where(client_id: @client_plan.client_id).where(item_category_id: 4)
+      @memory_items = Item.where(client_id: @client_plan.client_id).where(item_category_id: 5)
+      @besic_items = Item.where(client_id: @client_plan.client_id).where(item_category_id: 6)
       end
     
     

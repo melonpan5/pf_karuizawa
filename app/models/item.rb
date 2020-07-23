@@ -9,6 +9,6 @@ class Item < ApplicationRecord
     validates :unit_price, 
                   presence: true,
                   numericality: true
-      validates :name, presence: true
+    validates :name, presence: true
 
 end
