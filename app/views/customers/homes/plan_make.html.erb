@@ -8,7 +8,7 @@
 					<%= search_form_for(@search, url: customers_search_client_plans_path, method: :get) do |f| %>
 					<div class="tag-wrap">    
 						<% @plan_tags.each do |tag|%>
-							<div class="tag_select_box">
+							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
 										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
 										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
