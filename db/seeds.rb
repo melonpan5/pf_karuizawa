@@ -5,12 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# Admin.create!(
-# 	[	email: ENV['kanrisya@mail.com'],
-# 		password: ENV['ADMIN_PASS'],
-# 		password_confirmation: ENV['ADMIN_PASS_CONFI']
-# 	]
-# )
+Admin.create!(
+	[	email: ENV['ADMIN_MAIL'],
+		password: ENV['ADMIN_PASS'],
+		password_confirmation: ENV['ADMIN_PASS_CONFI']
+	]
+)
 
 PlanTag.create!(
 		[
