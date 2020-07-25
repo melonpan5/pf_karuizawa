@@ -20,18 +20,28 @@
     <div class="stripe-pattern">その１：料理・飲み物を選択してね</div>
     <div class="form-group menue_box" id="food_menue_box">    
       
-        <% @food_items.each do |food| %>
+        <% @food_items.each do |item| %>
             <div class="menue_select">
-               <%= f.label :meal_item_id,for:"radio_bottom#{food.id}" do %>
+               <%= f.label :meal_item_id,for:"radio_bottom#{item.id}" do %>
                 <ul>
-                    <%= f.radio_button :meal_item_id, food.id ,id:"radio_bottom#{food.id}", value:"radio_bottom", class:"radio_btn"%> 
-                    <li><div class="menue">プラン名：<%= food.name %></div></li>
-                    <div class="menue">
-                        <%= attachment_image_tag food, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-                    <li></div>
-                    <div class="menue">内容：<%= food.description %></div></li>
-                    <li><div class="menue">ご料金(税抜)：<%= food.unit_price.to_s(:delimited) %>円／人</div></li>
-                    <% end %>
+                    <%= f.radio_button :meal_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom", class:"radio_btn"%> 
+                    <li><div class="menue">プラン名：<%= item.name %></div></li>
+                    <li>
+                        <div class="menue">
+                            <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menue">
+                            <div class="btn-stitch new-btn"><%= link_to 'アイテム詳細', "", remote: true,id: "newmodal#{item.id}",class: "newmodal" %></div>
+                            <section id="newmodal<%= item.id %>-modalArea" class="modalArea">
+                                <%= render "item_show", item: item %>
+                            </section>
+                        </div>
+                    </li>
+                    <li><div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円／人</div>
+                    </li>
+                <% end %>
                 </ul>
             </div>
         <% end %>
@@ -153,3 +163,15 @@
 <%# 登録フォーム %>
 <%# 共通ボディー閉じタグ %>
 </div>
+
+<%# モーダルJS %>
+<script>
+    $('.newmodal').on('click',function(){
+        id_name = $(this).attr("id")
+        $('#' + id_name + '-modalArea').fadeIn();
+    });
+    $('.closeModal,.modalBg').on('click',function(){
+        $('#' + id_name + '-modalArea').fadeOut();
+    });
+</script>
+<!-- モーダルエリアここまで -->

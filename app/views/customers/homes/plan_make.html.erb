@@ -6,9 +6,10 @@
 						<p><span class="about-title">好きなイメージを選択してください</span></p>
 			</div>
 					<%= search_form_for(@search, url: customers_search_client_plans_path, method: :get) do |f| %>
-					<div class="tag-wrap">  
+					
 					  <%#  テイスト%>
-					  ★テイスト
+					  <div class="select-title"><h2>テイスト</h2></div>
+						<div class="tag-wrap">  
 						<% @taste_tags.each do |tag|%>
 							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
@@ -21,9 +22,10 @@
 							</div>
 						<% end %>
 					</div>
-					<div class="tag-wrap">  
+					
 						<%# 外観イメージ %>
-						★外観
+						<div class="select-title"><h2>外観</h2></div>
+						<div class="tag-wrap">  
 						<% @outside_image_tags.each do |tag|%>
 							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
@@ -32,13 +34,13 @@
 
 											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
 										<%end%>
+
 								</div>
 							</div>
 						<% end %>
 					</div>
+					<div class="select-title"><h2>内観</h2></div>
 					<div class="tag-wrap">  
-						<%# 内観イメージ %>
-						★内観
 						<% @inside_image_tags.each do |tag|%>
 							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
@@ -51,9 +53,8 @@
 							</div>
 						<% end %>
 					</div>
+					<div class="select-title"><h2>ドレス</h2></div>
 					<div class="tag-wrap">  
-						<%# 衣装 %>
-						★ドレス
 						<% @dress_tags.each do |tag|%>
 							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
@@ -66,9 +67,8 @@
 							</div>
 						<% end %>
 					</div>
+					<div class="select-title"><h2>シチュエーション</h2></div>
 					<div class="tag-wrap">  
-						<%# シチュエーション %>
-						その他好きなイメージ
 						<% @situation_tags.each do |tag|%>
 							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
@@ -106,4 +106,16 @@
 			return false;
 		}
 	}
+	// $('.tag_select_box').click(function() {
+    //     var check = $( this ).parents('.tag_select_box');
+    //     console.log(this)
+	// 	// $(this).attrtoggleClass('is-active')
+	// 	console.log(this)
+    //     if ( $(this).prop('checked') ) {
+    //         check.addClass('is-active');
+    //     }
+    //     else{
+    //         check.removeClass('is-active');
+    //     }
+    // } );
 </script>

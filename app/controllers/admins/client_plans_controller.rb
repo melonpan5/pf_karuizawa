@@ -5,14 +5,12 @@ class Admins::ClientPlansController < ApplicationController
     @client_plans = ClientPlan.page(params[:page]).per(10)
   end
 
-
   def client_select
     @client_plan = ClientPlan.new
 
   end
 
   def new
-
     if params[:client_plan][:client_id]
       @client_plan = ClientPlan.new
       @client_plan.client_id = params[:client_plan][:client_id].to_i
@@ -20,7 +18,6 @@ class Admins::ClientPlansController < ApplicationController
       redirect_to admins_client_plans_client_select_path
       flash[:notice] = '※式場を選択してください' and return
     end
-   
   end
 
 
