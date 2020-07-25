@@ -196,19 +196,6 @@
 }
 
 
-.tag_select_box:hover .tag_bg{
-  background-color: #44b5a6;
-  height: 200px;
-  width: 200px;
-}
-
-.tag_select_box:hover .tag-image-box{
-  background-color: #44b5a6;
-  opacity:0.5;
-  
-}
-
-
 
 .tag_select_box.is-active .tag_bg{
   background-color: #44b5a6;
@@ -289,11 +276,6 @@
       width: 150px;
     }
 
-    .tag_select_box:hover .tag_bg{
-      height: 150px;
-      width: 150px;
-    }
-
 
     .tag_select_box.is-active .tag_bg{
       height: 150px;
@@ -302,4 +284,21 @@
 
 
   
+}
+
+// PCブラウザの時だけ、ホバーCSS効かせる
+
+@media screen and (min-width: 1000px) {
+ 
+.tag_select_box:hover .tag_bg{
+  background-color: #44b5a6;
+  height: 200px;
+  width: 200px;
+}
+
+.tag_select_box:hover .tag-image-box{
+  background-color: #44b5a6;
+  opacity:0.5;
+  
+}
 }
