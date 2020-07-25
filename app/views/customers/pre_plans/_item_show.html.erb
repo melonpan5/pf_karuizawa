@@ -4,23 +4,14 @@
 <div class="modalBg" class="modalBg"></div>
 <div class="modalWrapper">
     <div class="modalContents">
-        <ul>
-            <li><div class="menue">プラン名：<%= item.name %></div>
-            </li>
-            <li>
-                <div class="menue">
+        <div class="menue">プラン名：<%= item.name %></div>
+                <div class="menue-show">
                     <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
                 </div>
-            </li>
-            <li>
                 <div class="menue">
                 内容：<%= item.description %>
                 </div>
-            </li>
-            <li>
                 <div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円／人</div>
-            </li>
-        </ul>
         <div class="closeModal" class="closeModal">
         ×
         </div>

@@ -22,6 +22,7 @@
     justify-content: space-between;
    }
 
+
   .menue_select {
     // display: inline-block;
     padding: 0.3em 1em;
@@ -48,25 +49,14 @@
       }
 }
 
-  .menue_select ul li {
-    position: relative;
+  .menue_select a {
+    color: #614d3f;
   }
-  .menue_select ul li::after {
-    display: block;
-    margin: 0 10px;
-    content: '';
-    position: absolute;
-    top: .5em;
-    left: -1em;
-    width: 6px;
-    height: 6px;
-    background-color: #614d3f;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
+
 
 .menue{
  margin: 10px;
+
 
 }
 .client-image-box{
@@ -145,5 +135,25 @@ a{
   .menue_box .menue_select {
     width: 100%;
     text-align: left;
+  }
+  .modalContents{
+    padding-top:0px;
+  }
+
+.modalWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  width: 70%;
+  padding: 10px 10px;
+  font-size:14px;
+}
+
+
+  .menue-show img{
+    width:150px;
+    height: 150px;
+    object-fit: contain;
   }
 }
