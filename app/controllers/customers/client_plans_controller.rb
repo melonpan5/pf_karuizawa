@@ -5,18 +5,17 @@ class Customers::ClientPlansController < ApplicationController
   end
 
   def show
-    @client_plan = ClientPlan.find_by(params[:id])
+    @client_plan = ClientPlan.find(params[:id])
+
     @client_id = @client_plan.client_id
-    # @pre_plan = PrePlan.new
+    @pre_plan = PrePlan.new
     @menue = Item.where(client_id: @client_plan.client_id)
-
-
-    @food_plan = Item.find_by(id: @client_plan.meal_item_id)
-    @cake_plan = Item.find_by(id: @client_plan.cake_item_id)
-    @dress_plan = Item.find_by(id: @client_plan.dress_item_id)
-    @flower_plan = Item.find_by(id: @client_plan.flower_item_id)
-    @memory_plan = Item.find_by(id: @client_plan.memory_item_id)
-    @besic_plan = Item.find_by(id: @client_plan.base_pack_item_id)
+    @food_plan = Item.find(@client_plan.meal_item_id)
+    @cake_plan = Item.find(@client_plan.cake_item_id)
+    @dress_plan = Item.find(@client_plan.dress_item_id)
+    @flower_plan = Item.find(@client_plan.flower_item_id)
+    @memory_plan = Item.find( @client_plan.memory_item_id)
+    @besic_plan = Item.find(@client_plan.base_pack_item_id)
 
    
   end
