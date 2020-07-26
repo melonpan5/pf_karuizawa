@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-12">
 		 <%= render 'customers/homes/step_bar_2'%>
-	<%# ここからメイン　 %>
 		<div class="title mt-5"><h2>お客様情報・予算・開催時期を入力し、問い合わせを完了しよう</h2></div>
         <%= render "customers/shared/error_messages", resource: resource %> 
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -78,7 +77,7 @@
                     </td>
                 </tr>         
             </table>
-<%# 会員登録ここまで %>
+
              <%= f.fields_for :order_plan, resource.order_plans.build do |order_plan| %>
                <div class="select-title"><h2>お開催時期・予算の入力</h2></div>
                 <div class="form-group">
@@ -266,8 +265,8 @@
 			<%= f.hidden_field :order_total_price, :value =>  @total_price.to_i  %>
 			<%= f.hidden_field :pre_plan_id, :value => @pre_plan.id  %>
         	<div class="next-btn text-center m-5">
-            	<%= f.submit "このプラン内容で式場に仮予約する", class:"next btn btn-info btn-lg" %>
-		    </div>
+            	<%= f.submit "式場に仮予約する", class:"next btn btn-info btn-lg" %>
+	</div>
         <% end %>
 <%# 共通ボディー閉じタグ %>
 	</div>
