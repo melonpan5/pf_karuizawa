@@ -1,72 +1,108 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+		 <%= render 'customers/homes/step_bar_2'%>
 	<%# ここからメイン　 %>
-		<div class="title mt-5"><h2>Step4　時期と予算を選択し、問い合わせを完了しよう</h2></div>
-		<%# <%= render '/layouts/errors', obj: @order_plan %>
+		<div class="title mt-5"><h2>Step4　お客様情報・予算・開催時期を入力し、問い合わせを完了しよう</h2></div>
         <%= render "customers/shared/error_messages", resource: resource %> 
-		 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-		<%# <%= form_with(model: @order_plan, local: true, url: customers_order_plans_path, method: :post) do |f| %> 
-			<%# その他要望%> 
-        <%= f.fields_for :order_plan, resource.order_plans.build do |order_plan| %>
-   			<div class="stripe-pattern">最後の質問：開催時期とご予算について教えてください</div>
-			<div class="form-group">
-				<%= order_plan.label :実施希望年 ,class:"mb-1" %>
-				<%= order_plan.select :desired_year, OrderPlan.desired_years.keys.to_a, {}, class:"form-control"%>
-			</div>
-			<div class="form-group">
-					<%= order_plan.label :実施希望時期 ,class:"mb-1" %>
-					<%= order_plan.select :desired_timing, OrderPlan.desired_timings.keys.to_a, {}, class:"form-control" %>
-				
-			</div>
-			<div class="form-group">
-					<%= order_plan.label :実施希望日取り ,class:"mb-1" %>
-					<%= order_plan.select :desired_day, OrderPlan.desired_days.keys.to_a, {}, class:"form-control" %>
-				
-			</div>
-			<div class="form-group">
-					<%= order_plan.label :予算※自己負担金額 ,class:"mb-1" %>
-					<%= order_plan.select :budget, OrderPlan.budgets.keys.to_a, {}, class:"form-control" %>
-				
-			</div>
-        <% end %>
-			<div class="stripe-pattern">問い合わせと同時に会員登録させていただきます。会員情報を入力ください。</div>
-			<div class="form-group">
-					<%= f.label :'(姓)' ,class:"mb-1" %>
-					 <%= f.text_field :family_name %>
-					<%= f.label :'(名)' %> 
-					<%= f.text_field :first_name %>
-			</div>
-			<div class="form-group">
-					<%= f.label :'(姓)' ,class:"mb-1" %>
-					 <%= f.text_field :kana_family_name %>
-					<%= f.label :'(名)' %> 
-					<%= f.text_field :kana_first_name %>
-					  <%= f.label :email %>
-					    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-			
-
-
-<%# 会員登録 %>
-
+		<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="select-title"><h2>お客様情報の入力</h2></div>
+			<div class="stripe-pattern">問い合わせと同時にマイページ作成のため会員登録をさせていただきます。</div>
+             <%= link_to "※会員登録がお済みの方はログイン後にプラン作成にお進みください",new_customer_session_path, class: "link-text" %>
+			<table class= "col-lg-8 col-sm-12 table table-borderless table-sm">
+                <tr>
+                    <td>
+                        <%= f.label :email %>
+                    </td>
+                    <td>
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <%= f.label :'電話番号' %>
- 
+                    </td>
+                    <td>
                         <%= f.text_field :phone_number %>
-
-                        <%= f.label :password %>
-
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <%= f.label :'(姓)' %>
+                    </td>
+                    <td>
+                        <%= f.text_field :family_name %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= f.label :'(名)' %>
+                    </td>
+                    <td>
+                        <%= f.text_field :first_name %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= f.label :'(カナ姓)' %>
+                    </td>
+                    <td>
+                        <%= f.text_field :kana_family_name %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= f.label :'(カナ名)' %>
+                    </td>
+                    <td>
+                        <%= f.text_field :kana_first_name %>
+                    </td>
+                </tr>
+                <tr class="password-top">
+                    <td>
+                        <%= f.label :'パスワード' %>
+                    </td>
+                    <td>
                         <% if @minimum_password_length %>
                         <%= @minimum_password_length %> 文字以上</em>
                         <% end %><br />
                         <%= f.password_field :password, autocomplete: "new-password" %>
-
-                        <%= f.label :password_confirmation %>
-
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= f.label :'パスワード確認用再入力' %>
+                    </td>
+                    <td>
                         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-				</div>
-
+                    </td>
+                </tr>         
+            </table>
 <%# 会員登録ここまで %>
+             <%= f.fields_for :order_plan, resource.order_plans.build do |order_plan| %>
+               <div class="select-title"><h2>お開催時期・予算の入力</h2></div>
+                <div class="form-group">
+                    <%= order_plan.label :実施希望年 ,class:"mb-1" %>
+                    <%= order_plan.select :desired_year, OrderPlan.desired_years.keys.to_a, {}, class:"form-control"%>
+                </div>
+                <div class="form-group">
+                        <%= order_plan.label :実施希望時期 ,class:"mb-1" %>
+                        <%= order_plan.select :desired_timing, OrderPlan.desired_timings.keys.to_a, {}, class:"form-control" %>
+                    
+                </div>
+                <div class="form-group">
+                        <%= order_plan.label :実施希望日取り ,class:"mb-1" %>
+                        <%= order_plan.select :desired_day, OrderPlan.desired_days.keys.to_a, {}, class:"form-control" %>
+                    
+                </div>
+                <div class="form-group">
+                        <%= order_plan.label :予算※自己負担金額 ,class:"mb-1" %>
+                        <%= order_plan.select :budget, OrderPlan.budgets.keys.to_a, {}, class:"form-control" %>
+                    
+                </div>
+            <% end %>
 			<%# その他要望ここまで%> 
+            <div class="select-title"><h2>プラン内容の確認</h2></div>
             <div class="stripe-pattern">選んだプラン：<%= @client_plan.plan_name %></div>
             <div class="sub-title"><h4>（式場：<%= @client_plan.client.name %>）</h4></div>
 			<div class="text"><%= @client_plan.plan_catch %></div>
@@ -188,7 +224,7 @@
 						<tr>
 						<th class="table-info" style="width:25%">飲食代</th>
 						<td style="width:75%"><%= @foodsum.to_s(:delimited) %>円
-									(人数：<%= @client_plan.count %>人　×　単価：<%= @food_plan.unit_price.to_s(:delimited) %>）</td>
+									(人数：<%= @pre_plan.count %>人　×　単価：<%= @food_plan.unit_price.to_s(:delimited) %>）</td>
 						</tr>
 						<tr>
 						<th class="table-info" style="width:25%">ケーキ代</th>

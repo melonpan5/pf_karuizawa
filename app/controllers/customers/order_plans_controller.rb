@@ -1,5 +1,5 @@
 class Customers::OrderPlansController < ApplicationController
-  # before_action :authenticate_customer!, except: [:show]
+  before_action :authenticate_customer!, except: [:show]
 
   def new
     @order_customer = Customer.new

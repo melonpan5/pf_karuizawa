@@ -1,9 +1,9 @@
 class Customers::PrePlansController < ApplicationController
-  # before_action :authenticate_customer!
+
     def new
 
       @pre_plan = PrePlan.new
-      # @pre_plan.customer_id = current_customer.id
+      session[:order_client_id] = [:order_client_id]
       unless params[:order_client_id]
         redirect_back(fallback_location: customers_client_plans_path)
         flash[:notice] = '※式場を選択してください' and return

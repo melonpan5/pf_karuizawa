@@ -4,6 +4,7 @@
 		<div class="col-12 mx-auto">
             <div class="title-text text-center my-5">
 						<p><span class="about-title">好きなイメージを選択してください</span></p>
+						 <%= link_to "※会員登録がお済みの方は先にログインしてください",new_customer_session_path, class: "link-text" %>
 			</div>
 					<%= search_form_for(@search, url: customers_search_client_plans_path, method: :get) do |f| %>
 					

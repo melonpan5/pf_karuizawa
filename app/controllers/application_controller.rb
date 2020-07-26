@@ -16,9 +16,19 @@ class ApplicationController < ActionController::Base
       when Admin
         admins_root_path
       when Customer
-        root_path
-       end
+        mypage_path
+      end
+  
+    #   if current_admin
+    #   admins_root_path
+    #   elsif session[:order_client_id]
+    #   new_customers_pre_plan_path
+    #   else
+    #     current_customer
+    #   root_path
+    #   end
     end
+
 
     def after_sign_up_path_for(resource) #新規登録した時の遷移先
       case resource

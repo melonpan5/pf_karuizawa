@@ -3,11 +3,12 @@
     <div class="col-12">
         <div class="title">
             <h2>マイページ</h2>
+			 <%= link_to "▶︎ 新しいプランを作成する",plan_make_path, class: "link-text" %>
         </div>
 
 
             <div class="sub-text text-center my-3">
-						<p><%= @customer.family_name %>様の問い合わせ中プラン一覧</p>
+						<p><%= @customer.family_name %>様の問い合わせ済みプラン一覧</p>
     </div>
 			<table class="table table-sm table-bordered">
 				<thead>
