@@ -1,99 +1,239 @@
 <div class="container">
-<div class="row">
-    <div class="col-xs-12">
-        <div class="title">
-            <h2>新規会員登録</h2>
-        </div>
-        <div class="title">
-            <p>プラン作成には新規会員登録が必要です</p>
-        </div>
-    </div>
-</div>
+  <div class="row">
+    <div class="col-12">
+	<%# ここからメイン　 %>
+		<div class="title mt-5"><h2>Step4　時期と予算を選択し、問い合わせを完了しよう</h2></div>
+		<%# <%= render '/layouts/errors', obj: @order_plan %>
+        <%= render "customers/shared/error_messages", resource: resource %> 
+		 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+		<%# <%= form_with(model: @order_plan, local: true, url: customers_order_plans_path, method: :post) do |f| %> 
+			<%# その他要望%> 
+        <%= f.fields_for :order_plan, resource.order_plans.build do |order_plan| %>
+   			<div class="stripe-pattern">最後の質問：開催時期とご予算について教えてください</div>
+			<div class="form-group">
+				<%= order_plan.label :実施希望年 ,class:"mb-1" %>
+				<%= order_plan.select :desired_year, OrderPlan.desired_years.keys.to_a, {}, class:"form-control"%>
+			</div>
+			<div class="form-group">
+					<%= order_plan.label :実施希望時期 ,class:"mb-1" %>
+					<%= order_plan.select :desired_timing, OrderPlan.desired_timings.keys.to_a, {}, class:"form-control" %>
+				
+			</div>
+			<div class="form-group">
+					<%= order_plan.label :実施希望日取り ,class:"mb-1" %>
+					<%= order_plan.select :desired_day, OrderPlan.desired_days.keys.to_a, {}, class:"form-control" %>
+				
+			</div>
+			<div class="form-group">
+					<%= order_plan.label :予算※自己負担金額 ,class:"mb-1" %>
+					<%= order_plan.select :budget, OrderPlan.budgets.keys.to_a, {}, class:"form-control" %>
+				
+			</div>
+        <% end %>
+			<div class="stripe-pattern">問い合わせと同時に会員登録させていただきます。会員情報を入力ください。</div>
+			<div class="form-group">
+					<%= f.label :'(姓)' ,class:"mb-1" %>
+					 <%= f.text_field :family_name %>
+					<%= f.label :'(名)' %> 
+					<%= f.text_field :first_name %>
+			</div>
+			<div class="form-group">
+					<%= f.label :'(姓)' ,class:"mb-1" %>
+					 <%= f.text_field :kana_family_name %>
+					<%= f.label :'(名)' %> 
+					<%= f.text_field :kana_first_name %>
+					  <%= f.label :email %>
+					    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+			
 
- <%# 共通ボディー開始タグここまで%>
- <div class="row">
-    <div class="col-xs-12">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "customers/shared/error_messages", resource: resource %>
-            <table class= "table table-borderless table-sm">
-                <tr>
-                    <td>
-                        <%= f.label :'(姓)' %>
-                    </td>
-                    <td>
-                        <%= f.text_field :family_name %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%= f.label :'(名)' %>
-                    </td>
-                    <td>
-                        <%= f.text_field :first_name %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%= f.label :'(カナ姓)' %>
-                    </td>
-                    <td>
-                        <%= f.text_field :kana_family_name %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%= f.label :'(カナ名)' %>
-                    </td>
-                    <td>
-                        <%= f.text_field :kana_first_name %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%= f.label :email %>
-                    </td>
-                    <td>
-                        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+
+<%# 会員登録 %>
+
                         <%= f.label :'電話番号' %>
-                    </td>
-                    <td>
+ 
                         <%= f.text_field :phone_number %>
-                    </td>
-                </tr>
-                <tr class="password-top">
-                    <td>
+
                         <%= f.label :password %>
-                    </td>
-                    <td>
+
                         <% if @minimum_password_length %>
                         <%= @minimum_password_length %> 文字以上</em>
                         <% end %><br />
                         <%= f.password_field :password, autocomplete: "new-password" %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+
                         <%= f.label :password_confirmation %>
-                    </td>
-                    <td>
+
                         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%= f.submit "会員登録", class: "btn btn-info btn-lg" %>
-                    </td>
-                </tr>
-            <% end %>
-            
-            </table>
+				</div>
+
+<%# 会員登録ここまで %>
+			<%# その他要望ここまで%> 
+            <div class="stripe-pattern">選んだプラン：<%= @client_plan.plan_name %></div>
+            <div class="sub-title"><h4>（式場：<%= @client_plan.client.name %>）</h4></div>
+			<div class="text"><%= @client_plan.plan_catch %></div>
+			<% @client_plan.plan_tags.each do |tag| %>
+				<span class= 'badge badge-success'><%= tag.name %></span>
+			<% end %>
+  			<div class="text-box"><p><%= @client_plan.plan_text %></p></div>
+			<%# プラン詳細 %>
+			<div class="order-plan-box">
+				<div class="mb-4 mt-4"> <h3>料理・飲み物</h3></div>
+					<p> 
+							<div class="item-title"><span class="item-name"><%= @food_plan.name %></span></div>
+                            <div>
+                                <%= attachment_image_tag @food_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                            </div>
+							<div><%= @food_plan.description %></div>
+							<div>お1人あたりの飲食コース料金：<%= @food_plan.unit_price.to_s(:delimited) %></div>
+							<div>飲食合計金額：<% @foodsum = @count.to_i * @food_plan.unit_price.to_i %>
+								<%= @foodsum.to_s(:delimited) %>円
+								(人数：<%= @count.to_i %>人の場合）
+							</div>
+					</p>
+
+				<div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+				</div>
 
 
-        <%= render "customers/shared/links" %>
-        </div>
-    </div>
+				<div class="mb-4 mt-4"> <h3>ケーキ</h3></div>
+					<p> 
+							<div class="item-title"><span class="item2-name"><%= @cake_plan.name %></span></div>
+                            <div>
+                                <%= attachment_image_tag @cake_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                            </div>
+							<div><%= @cake_plan.description %></div>
+							<div>ご料金(税抜)：<%= @cake_plan.unit_price.to_s(:delimited) %>円</div>
+					</p>
+
+				
+                <div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+				</div>
+
+				<div class="mb-4 mt-4"> <h3>装花</h3></div>
+					<p> 
+							<div class="item-title"><span class="item-name"><%= @flower_plan.name %></span></div>
+                            <div>
+                                <%= attachment_image_tag @flower_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                            </div>
+							<div><%= @flower_plan.description %></div>
+							<div>ご料金(税抜)：<%= @flower_plan.unit_price.to_s(:delimited) %>円</div>
+					</p>
+
+                <div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+				</div>
+				
+				<div class="mb-4 mt-4"> <h3>ドレス</h3></div>
+					<p> 
+							<div class="item-title"><span class="item2-name"><%= @dress_plan.name %></span></div>
+                            <div>
+                                <%= attachment_image_tag @dress_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                            </div>
+							<div><%= @dress_plan.description %></div>
+							<div>ご料金(税抜)：<%= @dress_plan.unit_price.to_s(:delimited) %>円</div>
+					</p>
+
+				
+                <div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+				</div>
+
+					<div class="mb-4 mt-4"> <h3>写真・動画</h3></div>
+					<p> 
+							<div class="item-title"><span class="item-name"><%= @memory_plan.name %></span></div>
+                            <div>
+                                <%= attachment_image_tag @memory_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                            </div>
+							<div><%= @memory_plan.description %></div>
+							<div>ご料金(税抜)：<%= @memory_plan.unit_price.to_s(:delimited) %>円</div>
+					</p>
+
+				
+                <div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-plus" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+				</div>
+				
+				<div class="mb-4 mt-4"> <h3>その他基本パッケージ</h3></div>
+
+					<p> 
+							<div class="item-title"><span class="item2-name"><%= @besic_plan.name %></span></div>
+							<div><%= @besic_plan.description %></div>
+							<div>ご料金(税抜)：<%= @besic_plan.unit_price.to_s(:delimited) %>円</div>
+					</p>
+
+				<div class="icon">
+					<svg width="1em" height="1em" viewBox="0 0 16 16" class="color bi bi-pause-fill" style="font-size:30px;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+					</svg>
+				</div>
+
+				<div class="mb-4 mt-4"> <h3>アイテム料金まとめ</h3></div>
+					<table class="table table-sm table-bordered">
+						<tr>
+						<th class="table-info" style="width:25%">飲食代</th>
+						<td style="width:75%"><%= @foodsum.to_s(:delimited) %>円
+									(人数：<%= @client_plan.count %>人　×　単価：<%= @food_plan.unit_price.to_s(:delimited) %>）</td>
+						</tr>
+						<tr>
+						<th class="table-info" style="width:25%">ケーキ代</th>
+						<td style="width:75%"><%= @cake_plan.unit_price.to_s(:delimited) %>円</td>
+						</tr>
+						<tr>
+						<th class="table-info" style="width:25%">装花代</th>
+						<td style="width:75%"><%= @flower_plan.unit_price.to_s(:delimited) %>円</td>
+						</tr>
+						<tr>
+						<th class="table-info" style="width:25%">衣装代</th>
+						<td style="width:75%"><%= @dress_plan.unit_price.to_s(:delimited) %>円</td>
+						</tr>
+						<tr>
+						<th class="table-info" style="width:25%">写真・動画撮影代</th>
+						<td style="width:75%"><%= @memory_plan.unit_price.to_s(:delimited) %>円</td>
+						</tr>
+						<tr>
+						<th class="table-info" style="width:25%">基本パッケージ料金</th>
+						<td style="width:75%"><%= @besic_plan.unit_price.to_s(:delimited) %>円</td>
+						</tr>
+					</table>
+				<%# 料理以外の合計金額計算 %>
+					<%	item_sum = @cake_plan.unit_price + @dress_plan.unit_price + @flower_plan.unit_price + @memory_plan.unit_price + @besic_plan.unit_price
+					%>
+					<%	in_price = 30000 * @pre_plan.count.to_i  %>
+					<% @total_price = @foodsum.to_i + item_sum.to_i %>
+					<%	self_price = @total_price.to_i - in_price.to_i  %>
+					<div class="total-price">
+						<span class="item2-name">
+							<p>合計金額　：<%= @total_price.to_s(:delimited) %>円</p>
+							<p>お2人の自己負担金額：<%= self_price.to_s(:delimited) %>円</p>
+						</span>
+					</div>
+					※50人ご招待，お1人あたりご祝儀3万円の場合
+        	</div>      
+
+			<%= f.hidden_field :client_plan_id, :value => params[:order_client_id] %>
+			<%= f.hidden_field :order_total_price, :value =>  @total_price.to_i  %>
+			<%= f.hidden_field :pre_plan_id, :value => @pre_plan.id  %>
+        	<div class="next-btn text-center m-5">
+            	<%= f.submit "このプラン内容で式場に仮予約する", class:"next btn btn-info btn-lg" %>
+		    </div>
+        <% end %>
+<%# 共通ボディー閉じタグ %>
+	</div>
+ </div>
 </div>

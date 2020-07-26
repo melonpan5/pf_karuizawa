@@ -1,8 +1,10 @@
 class Customers::OrderPlansController < ApplicationController
-  before_action :authenticate_customer!, except: [:show]
+  # before_action :authenticate_customer!, except: [:show]
 
   def new
-    @pre_plan = PrePlan.find_by(customer_id: current_customer.id)
+    # build_resource
+    @order_customer = Customer.new
+    @pre_plan = PrePlan.find(params[:pre_plan_id])
     @client_plan = ClientPlan.find(@pre_plan.client_plan_id)
     @order_plan = OrderPlan.new
     @order_plan.client_plan_id = @client_plan.id
@@ -18,24 +20,27 @@ class Customers::OrderPlansController < ApplicationController
 
   end
 
-  def confimation 
-    @pre_plan = PrePlan.find(customer_id: current_customer.id)
-    @order_plan = OrderPlan.new
-    @client_plan = ClientPlan.find_by(client_plan_id: @pre_plan.client_plan_id)
+  # def confimation 
+    
+  #   @pre_plan = PrePlan.find(customer_id: current_customer.id)
+  #   @order_plan = OrderPlan.new
+  #   @client_plan = ClientPlan.find_by(client_plan_id: @pre_plan.client_plan_id)
 
-    @food_plan = Item.find_by(id: @pre_plan.meal_item_id.to_i)
-    @cake_plan =Item.find_by(id: @pre_plan.cake_item_id.to_i)
-    @flower_plan = Item.find_by(id: @pre_plan.flower_item_id.to_i)
-    @memory_plan = Item.find_by(id: @pre_plan.memory_item_id.to_i)
-    @dress_plan = Item.find_by(id: @pre_plan.dress_item_id.to_i)
-    @besic_plan = Item.find_by(id: @pre_plan.base_pack_item_id.to_i)
-    @count = @pre_plan.count
+  #   @food_plan = Item.find_by(id: @pre_plan.meal_item_id.to_i)
+  #   @cake_plan =Item.find_by(id: @pre_plan.cake_item_id.to_i)
+  #   @flower_plan = Item.find_by(id: @pre_plan.flower_item_id.to_i)
+  #   @memory_plan = Item.find_by(id: @pre_plan.memory_item_id.to_i)
+  #   @dress_plan = Item.find_by(id: @pre_plan.dress_item_id.to_i)
+  #   @besic_plan = Item.find_by(id: @pre_plan.base_pack_item_id.to_i)
+  #   @count = @pre_plan.count
 
 
-  end
+  # end
 
   def create
     @order_plan = OrderPlan.new
+    @order_customer = Customer.new
+
     # オーダープラン情報の格納
     @order_plan.customer_id = current_customer.id
     pre_plan = PrePlan.find_by(customer_id: current_customer.id)

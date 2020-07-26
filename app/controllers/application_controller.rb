@@ -1,6 +1,20 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :set_search
+
+    # protect_from_forgery with: :exception
+    # before_action :createlogin
+    # def createlogin
+    #   if Customer.find_by(id:session[:customer_id])
+    #     current_customer = Customer.find_by(id:session[:customer_id])
+    #   else
+    #     current_customer = Customer.new
+    #     current_customer.save
+    #     session[:customer_id] = current_customer.id
+    #   end
+    #   byebug
+    # end
+
     
     def after_sign_out_path_for(a) #ログアウトした時の遷移先
       if a == :admin
@@ -22,7 +36,7 @@ class ApplicationController < ActionController::Base
     def after_sign_up_path_for(resource) #新規登録した時の遷移先
       case resource
       when Customer
-        root_path
+        thanks_path
        end
     end
 

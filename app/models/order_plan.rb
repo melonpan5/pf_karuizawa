@@ -1,5 +1,5 @@
 class OrderPlan < ApplicationRecord
-    belongs_to :customer
+    belongs_to :customer, inverse_of: :order_plan
     has_many :order_items, dependent: :destroy
 
 enum budget: {

@@ -4,7 +4,8 @@
 	<%# ここからメイン　 %>
 		<div class="title mt-5"><h2>Step4　時期と予算を選択し、問い合わせを完了しよう</h2></div>
 		<%= render '/layouts/errors', obj: @order_plan %>
-		<%= form_with(model: @order_plan, local: true, url: customers_order_plans_path, method: :post) do |f| %>
+		 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+		<%# <%= form_with(model: @order_plan, local: true, url: customers_order_plans_path, method: :post) do |f| %> %>
 			<%# その他要望%> 
    			<div class="stripe-pattern">最後の質問：開催時期とご予算について教えてください</div>
 			<div class="form-group">
@@ -26,6 +27,42 @@
 					<%= f.select :budget, OrderPlan.budgets.keys.to_a, {}, class:"form-control" %>
 				
 			</div>
+			<div class="stripe-pattern">問い合わせと同時に会員登録させていただきます。会員情報を入力ください。</div>
+			<div class="form-group">
+					<%= f.label :'(姓)' ,class:"mb-1" %>
+					 <%= f.text_field :family_name %>
+					<%= f.label :'(名)' %> 
+					<%= f.text_field :first_name %>
+			</div>
+			<div class="form-group">
+					<%= f.label :'(姓)' ,class:"mb-1" %>
+					 <%= f.text_field :kana_family_name %>
+					<%= f.label :'(名)' %> 
+					<%= f.text_field :kana_first_name %>
+					  <%= f.label :email %>
+					    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+			
+
+
+<%# 会員登録 %>
+
+                        <%= f.label :'電話番号' %>
+ 
+                        <%= f.text_field :phone_number %>
+
+                        <%= f.label :password %>
+
+                        <% if @minimum_password_length %>
+                        <%= @minimum_password_length %> 文字以上</em>
+                        <% end %><br />
+                        <%= f.password_field :password, autocomplete: "new-password" %>
+
+                        <%= f.label :password_confirmation %>
+
+                        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+				</div>
+
+<%# 会員登録ここまで %>
 			<%# その他要望ここまで%> 
             <div class="stripe-pattern">選んだプラン：<%= @client_plan.plan_name %></div>
             <div class="sub-title"><h4>（式場：<%= @client_plan.client.name %>）</h4></div>
@@ -188,6 +225,7 @@
 
 			<%= f.hidden_field :client_plan_id, :value => params[:order_client_id] %>
 			<%= f.hidden_field :order_total_price, :value =>  @total_price.to_i  %>
+			<%= f.hidden_field :pre_plan_id, :value => @pre_plan.id  %>
         	<div class="next-btn text-center m-5">
             	<%= f.submit "このプラン内容で式場に仮予約する", class:"next btn btn-info btn-lg" %>
 		    </div>

@@ -1,9 +1,9 @@
 class Customers::PrePlansController < ApplicationController
-  before_action :authenticate_customer!
+  # before_action :authenticate_customer!
     def new
-      
+
       @pre_plan = PrePlan.new
-      @pre_plan.customer_id = current_customer.id
+      # @pre_plan.customer_id = current_customer.id
       unless params[:order_client_id]
         redirect_back(fallback_location: customers_client_plans_path)
         flash[:notice] = '※式場を選択してください' and return
@@ -20,7 +20,10 @@ class Customers::PrePlansController < ApplicationController
     
       def create
         @pre_plan = PrePlan.new(pre_plan_params)
-        @pre_plan.customer_id = current_customer.id
+        if current_customer
+          @pre_plan.customer_id = current_customer.id
+        end
+
         @pre_plan.client_plan_id =  params[:pre_plan][:client_plan_id]
         unless params[:pre_plan][:meal_item_id]
           redirect_back(fallback_location: customers_client_plans_path)
@@ -45,7 +48,7 @@ class Customers::PrePlansController < ApplicationController
 
         if @pre_plan.save
 
-        redirect_to new_customers_order_plan_path
+        redirect_to new_customer_registration_path(pre_plan_id: @pre_plan.id)
         else
         redirect_back(fallback_location: customers_client_plans_path)
         flash[:notice] = '※プランのアイテムが選ばれていません。再選択してください。' and return

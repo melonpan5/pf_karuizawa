@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
 
   devise_for :admins
-  devise_for :customers
+  devise_for :customers, :controllers => {
+    :registrations => 'customers/registrations'
+   }
   root 'customers/homes#top'
   get '/about' => 'customers/homes#about', as: 'about'
   get '/mypage' => 'customers/customers#show', as: 'mypage'
