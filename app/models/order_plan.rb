@@ -2,15 +2,16 @@ class OrderPlan < ApplicationRecord
     belongs_to :customer, inverse_of: :order_plan
     has_many :order_items, dependent: :destroy
 
-enum budget: {
-〜10万: 0,
-〜50万: 1,
-〜100万: 2,
-〜150万: 3,
-〜200万: 4,
-〜300万: 5,
-〜400万: 6,
-〜500万: 7}
+    enum budget: {
+    "〜10万": 0,
+    "〜50万": 1,
+    "〜100万": 2,
+    "〜150万": 3,
+    "〜200万": 4,
+    "〜300万": 5,
+    "〜400万": 6,
+    "〜500万": 7
+    }
 
     enum desired_year: {
         "2020年": 0,

@@ -13,7 +13,6 @@ validates :flower_item_id, presence: true
 validates :dress_item_id, presence: true
 validates :memory_item_id, presence: true
 validates :base_pack_item_id, presence: true
-# validates :customer_id, presence: true
 validates :client_plan_id, presence: true
 
 end

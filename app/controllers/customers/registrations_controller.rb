@@ -6,7 +6,10 @@ class Customers::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-   
+    # unless user_signed_in?
+    #   redirect_to new_customers_order_plan_path(params[:pre_plan_id])
+    # end
+
     @order_customer = Customer.new
     @pre_plan = PrePlan.find(params[:pre_plan_id])
     @client_plan = ClientPlan.find(@pre_plan.client_plan_id)
@@ -51,7 +54,8 @@ class Customers::RegistrationsController < Devise::RegistrationsController
         @order_plan.desired_day = params[:customer][:order_plan_attributes]["0"][:desired_day]
         @order_plan.total_price = params[:customer][:order_total_price].to_i
         if @order_plan.save
-          @pre_plan.destroy
+          pre_plans = PrePlan.where(customer_id: customer.id)
+          pre_plans.destroy_all
         end
       end
       # ブロックが与えられたらresource(=User)を呼ぶ

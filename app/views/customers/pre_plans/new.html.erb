@@ -14,6 +14,7 @@
 
  <%# 共通ボディー開始タグここまで%>
 <!-- 変更フォーム -->
+
 <%= form_with model: @pre_plan, url:customers_pre_plans_path,local: :true, class:"form-horizontal" do |f| %>
 
     <%# 飲食プラン%> 
@@ -156,10 +157,10 @@
         <% end %>
     </div>
   <%# その他%> 
-  <div class="select-title"><h2>⑦ 人数</h2></div>
+  <div class="select-title"><h2>⑦ 人数の入力</h2></div>
    <div class="form-group">
         <%= f.label :※新郎新婦様含むご招待人数,class:"mb-1" %>
-        <%= f.number_field :count, :value => 50, class:"form-control" %>
+        <%= f.number_field :count, class:"form-control" %>
     </div>
     
     <%= f.hidden_field :client_plan_id, :value => @client_plan.id %>

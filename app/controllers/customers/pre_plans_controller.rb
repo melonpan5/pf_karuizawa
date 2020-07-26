@@ -45,10 +45,17 @@ class Customers::PrePlansController < ApplicationController
           redirect_back(fallback_location: customers_client_plans_path)
           flash[:notice] = '※基本パッケージが選ばれていません。再選択してください。' and return
         end
+        unless params[:pre_plan][:count]
+          redirect_back(fallback_location: customers_client_plans_path)
+          flash[:notice] = '※人数が入力されていません。再選択してください。' and return
+        end
 
         if @pre_plan.save
-
-        redirect_to new_customer_registration_path(pre_plan_id: @pre_plan.id)
+          if customer_signed_in?
+            redirect_to new_customers_order_plan_path(pre_plan_id: @pre_plan.id)
+          else
+            redirect_to new_customer_registration_path(pre_plan_id: @pre_plan.id)
+          end
         else
         redirect_back(fallback_location: customers_client_plans_path)
         flash[:notice] = '※プランのアイテムが選ばれていません。再選択してください。' and return
