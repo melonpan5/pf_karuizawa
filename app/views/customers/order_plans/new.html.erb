@@ -3,7 +3,7 @@
     <div class="col-12">
 	<%= render 'customers/homes/step_bar_1'%>
 	<%# ここからメイン　 %>
-		<div class="title mt-5"><h2>Step4　時期と予算を選択し、問い合わせを完了しよう</h2></div>
+		<div class="title mt-5"><h2>時期と予算を選択し、問い合わせを完了しよう</h2></div>
 		<%= render '/layouts/errors', obj: @order_plan %>
 		<%= form_with(model: @order_plan, local: true, url: customers_order_plans_path, method: :post) do |f| %>
 			<%# その他要望%> 
