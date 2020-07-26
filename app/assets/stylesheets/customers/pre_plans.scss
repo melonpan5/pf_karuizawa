@@ -13,9 +13,9 @@
   
   /* 選択されたラジオボタンの画像の背景色を変える */
 
-  .menue_box input[type="radio"] {
-    display:none;
-  }
+  // .menue_box input[type="radio"] {
+  //   display:none;
+  // }
 
   .menue_box{
     display:flex;
@@ -31,7 +31,7 @@
     border: solid 2px #52c1b4;
     border-radius: 3px;
     transition: .4s;
-    width: 30%;
+    width: 50%;
     margin-left: 15px;
     &.index-img{
       background-color: white;
