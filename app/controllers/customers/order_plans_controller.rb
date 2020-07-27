@@ -16,7 +16,7 @@ class Customers::OrderPlansController < ApplicationController
     @dress_plan = Item.find_by(id: @pre_plan.dress_item_id.to_i)
     @besic_plan = Item.find_by(id: @pre_plan.base_pack_item_id.to_i)
     @count = @pre_plan.count
-    byebug
+
 
   end
 
