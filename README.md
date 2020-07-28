@@ -18,6 +18,16 @@
 結婚式を検討し始めたばかりの時、本サービスでイメージを膨らます
 会場候補が決まっており、どんな結婚式をいくらであげられるか知りたい時、本サービスでシュミレーション、問い合わせする
 
+## 設計書
+[▶︎機能一覧](https://docs.google.com/spreadsheets/d/1i0laSU1ofssZdZEQpgONGtWdByM9wrW9bYLVT2J33yc/edit?usp=sharing)
+※テストケース一覧としても利用しています
 
-### 機能一覧
-https://docs.google.com/spreadsheets/d/1U0D6TvMxTP2fDmHTvlP-w_99hjXNZXTI36wjXFm2Tro/edit?usp=sharing
+[▶︎ER図](https://drive.google.com/file/d/1DfV_VM7Ah_OdgeNYCpXB7pDfVwFl5Zwh/view?usp=sharing)
+
+[▶︎テーブル定義書](https://docs.google.com/spreadsheets/d/1ygIOkFFQ7lkh0VGVv8xkY9P5ONwquPVCUSB_A4ofRKg/edit?usp=sharing)
+
+※ワイヤーフレームはドキュメントで作成しておりません（紙ベースでのラフ画で作成しました）
+
+## チャレンジ機能
+[▶︎一覧はこちら](https://docs.google.com/spreadsheets/d/1U0D6TvMxTP2fDmHTvlP-w_99hjXNZXTI36wjXFm2Tro/edit?usp=sharing)
+
