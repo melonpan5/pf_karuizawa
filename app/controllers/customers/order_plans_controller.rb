@@ -16,8 +16,6 @@ class Customers::OrderPlansController < ApplicationController
     @dress_plan = Item.find_by(id: @pre_plan.dress_item_id.to_i)
     @besic_plan = Item.find_by(id: @pre_plan.base_pack_item_id.to_i)
     @count = @pre_plan.count
-
-
   end
 
   # def confimation 
@@ -69,68 +67,61 @@ class Customers::OrderPlansController < ApplicationController
       redirect_back(fallback_location: root_path)
         flash[:notice] = '仮予約プラン送信に失敗しました' and return
     end
-
-
   end
 
 
 
-def index
-  @customer = current_customer
-  @order_plans = OrderPlan.where(customer_id: @customer.id)
-end
+  def index
+    @customer = current_customer
+    @order_plans = OrderPlan.where(customer_id: @customer.id)
+  end
 
 
-def thanks
-end
+  def thanks
+  end
 
 
-def show
-  unless current_customer || current_admin 
-    redirect_to root_path 
-  end 
-   
-  @order_plan = OrderPlan.find(params[:id])
-  @order_client_plan = ClientPlan.find(@order_plan.client_plan_id)
-  @food_plan = Item.find_by(id: @order_plan.meal_item_id)
-  @cake_plan = Item.find_by(id: @order_plan.cake_item_id)
-  @flower_plan = Item.find_by(id: @order_plan.flower_item_id)
-  @memory_plan = Item.find_by(id: @order_plan.memory_item_id)
-  @dress_plan = Item.find_by(id: @order_plan.dress_item_id)
-  @besic_plan = Item.find_by(id: @order_plan.base_pack_item_id)
-  @count = @order_plan.count
-  @desired_year = @order_plan.desired_year
-  @desired_timing = @order_plan.desired_timing
-  @desired_day = @order_plan.desired_day
-  @budget = @order_plan.budget
-end
-
-
-
-
+  def show
+    unless current_customer || current_admin 
+      redirect_to root_path 
+    end 
+    
+    @order_plan = OrderPlan.find(params[:id])
+    @order_client_plan = ClientPlan.find(@order_plan.client_plan_id)
+    @food_plan = Item.find_by(id: @order_plan.meal_item_id)
+    @cake_plan = Item.find_by(id: @order_plan.cake_item_id)
+    @flower_plan = Item.find_by(id: @order_plan.flower_item_id)
+    @memory_plan = Item.find_by(id: @order_plan.memory_item_id)
+    @dress_plan = Item.find_by(id: @order_plan.dress_item_id)
+    @besic_plan = Item.find_by(id: @order_plan.base_pack_item_id)
+    @count = @order_plan.count
+    @desired_year = @order_plan.desired_year
+    @desired_timing = @order_plan.desired_timing
+    @desired_day = @order_plan.desired_day
+    @budget = @order_plan.budget
+  end
 
 
   private
-  def order_plan_params
-    params.require(:order_plan).permit(
-      :count,
-      :meal_item_id,
-      :cake_item_id,
-      :flower_item_id,
-      :dress_item_id,
-      :memory_item_id,
-      :base_pack_item_id,
-      :customer_id,
-      :total_price,
-      :client_plan_id,
-      :client_plan_name,
-      :budget,
-      :desired_year,
-      :desired_timing,
-      :desired_day
-      )
+    def order_plan_params
+      params.require(:order_plan).permit(
+        :count,
+        :meal_item_id,
+        :cake_item_id,
+        :flower_item_id,
+        :dress_item_id,
+        :memory_item_id,
+        :base_pack_item_id,
+        :customer_id,
+        :total_price,
+        :client_plan_id,
+        :client_plan_name,
+        :budget,
+        :desired_year,
+        :desired_timing,
+        :desired_day
+        )
+    end
   end
-
-end
 
 

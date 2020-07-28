@@ -1,55 +1,47 @@
 <div class="container">
-<div class="row">
-    <div class="col-xs-12">
-        <div class="title mt-5">
-            <h2>式場アイテム編集</h2>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="title mt-5">
+                <h2>式場アイテム編集</h2>
+            </div>
+            <%= render '/layouts/errors', obj: @item %>
+            <%= form_with model: @item, url:admins_item_path,local: :true, class:"form-horizontal" do |f| %>
+                <div class="form-group">
+                    <%= f.label :登録する式場 ,class:"mb-1" %>
+                    <%= f.collection_select :client_id, Client.all, :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :アイテムグループ ,class:"mb-1" %>
+                    <%= f.collection_select :item_category_id, ItemCategory.all, :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :アイテムカテゴリー※標準アイテムかオプションとなる豪華アイテムか選択してください%>
+                    <%= f.select :category, Item.categories.keys.to_a, {}, class:"form-control" %>  
+                </div>
+                <div class="form-group">
+                    <%= f.label :アイテム名,class:"mb-1" %>
+                    <%= f.text_field :name, class:"form-control" %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :アイテム紹介文 ,class:"mb-1" %>
+                    <%= f.text_area :description, class:"form-control" %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :単価,class:"mb-1" %>
+                    <%= f.text_field :unit_price, class:"form-control" %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :商品画像,class:"mb-1" %>
+                    <%= f.attachment_field :item_image, class:"form-control" %>
+                </div>
+
+                <div class="pull-right">
+                    <%= f.submit "変更を保存する",class: "btn btn-primary" %>
+                </div>
+            <% end %>
         </div>
     </div>
-</div>
-<%= render '/layouts/errors', obj: @item %>
- <%# 共通ボディー開始タグここまで%>
-<%# 登録フォーム %>
-
-<%= form_with model: @item, url:admins_item_path,local: :true, class:"form-horizontal" do |f| %>
-       <div class="form-group">
-            <%= f.label :登録する式場 ,class:"mb-1" %>
-            <%= f.collection_select :client_id, Client.all, :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
-        </div>
-        <div class="form-group">
-            <%= f.label :アイテムグループ ,class:"mb-1" %>
-            <%= f.collection_select :item_category_id, ItemCategory.all, :id,:name, { include_blank: "--選択してください--"}, {class: "form-control"} %>
-        </div>
-        <div class="form-group">
-			<%= f.label :アイテムカテゴリー※標準アイテムかオプションとなる豪華アイテムか選択してください%>
-			<%= f.select :category, Item.categories.keys.to_a, {}, class:"form-control" %>  
-        </div>
-        <div class="form-group">
-            <%= f.label :アイテム名,class:"mb-1" %>
-            <%= f.text_field :name, class:"form-control" %>
-        </div>
-
-    <div class="form-group">
-        <%= f.label :アイテム紹介文 ,class:"mb-1" %>
-        <%= f.text_area :description, class:"form-control" %>
-    </div>
-
-    <div class="form-group">
-        <%= f.label :単価,class:"mb-1" %>
-        <%= f.text_field :unit_price, class:"form-control" %>
-    </div>
-
-    <div class="form-group">
-        <%= f.label :商品画像,class:"mb-1" %>
-        <%= f.attachment_field :item_image, class:"form-control" %>
-    </div>
-
-  
-    <div class="pull-right">
-        <%= f.submit "変更を保存する",class: "btn btn-primary" %>
-    </div>
-
-<% end %>
-
-<%# 登録フォーム %>
-<%# 共通ボディー閉じタグ %>
 </div>

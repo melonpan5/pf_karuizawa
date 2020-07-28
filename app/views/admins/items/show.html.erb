@@ -1,56 +1,50 @@
 <div class="container">
-<div class="row">
-    <div class="col-12">
-        <div class="title mt-5">
-            <h2>商品詳細</h2>
+    <div class="row">
+        <div class="col-12">
+            <div class="title mt-5">
+                <h2>商品詳細</h2>
+            </div>
         </div>
     </div>
-</div>
- <%# 共通ボディー開始タグここまで%>
-<%# item詳細 %>
-<div class="row">
-    <div class="item-img">
-    <%= attachment_image_tag @item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img" %>
+    <div class="row">
+        <div class="item-img">
+            <%= attachment_image_tag @item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img" %>
+        </div>
     </div>
-</div>
-<div class="row">
-    <table class="table table-sm table-bordered">
-        <tr>
-            <th class="table-success" style="width:25%">商品ID</th>
-            <td style="width:75%"><%= @item.id %></td>
-        </tr>
-         <tr>
-            <th class="table-success" style="width:25%">紐づく式場名</th>
-            <td style="width:75%"><%= @item.client.name %></td>
-        </tr>
-        <tr>
-            <th class="table-success" style="width:25%">商品カテゴリー</th>
-            <td style="width:75%"><%= @item.item_category.name %></td>
-        </tr>
-        <tr>
-            <th class="table-success" style="width:25%">商品名</th>
-            <td style="width:75%"><%= @item.name %></td>
-        </tr>
-        <tr>
-            <th class="table-success" style="width:25%">商品紹介文</th>
-            <td style="width:75%"><%= @item.description %></td>
-        </tr>
-        <tr>
-            <th class="table-success" style="width:25%">商品価格（税抜）</th>
-            <td style="width:75%"><%= @item.unit_price.to_s(:delimited) %></td>
-        </tr>
-    </table>
-</div>
-<%# クライアント詳細ここまで %>
-<div class="row">
-    <div class="col-xs-12">
-        <%= link_to "編集する",edit_admins_item_path(@item),class: "btn btn-primary pull-right" %>
+    <div class="row">
+        <table class="table table-sm table-bordered">
+            <tr>
+                <th class="table-success" style="width:25%">商品ID</th>
+                <td style="width:75%"><%= @item.id %></td>
+            </tr>
+            <tr>
+                <th class="table-success" style="width:25%">紐づく式場名</th>
+                <td style="width:75%"><%= @item.client.name %></td>
+            </tr>
+            <tr>
+                <th class="table-success" style="width:25%">商品カテゴリー</th>
+                <td style="width:75%"><%= @item.item_category.name %></td>
+            </tr>
+            <tr>
+                <th class="table-success" style="width:25%">商品名</th>
+                <td style="width:75%"><%= @item.name %></td>
+            </tr>
+            <tr>
+                <th class="table-success" style="width:25%">商品紹介文</th>
+                <td style="width:75%"><%= @item.description %></td>
+            </tr>
+            <tr>
+                <th class="table-success" style="width:25%">商品価格（税抜）</th>
+                <td style="width:75%"><%= @item.unit_price.to_s(:delimited) %></td>
+            </tr>
+        </table>
     </div>
-     <div class="col-xs-12">
-       <%= link_to "削除する", admins_item_path(@item), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+    <div class="row">
+        <div class="col-xs-12">
+            <%= link_to "編集する",edit_admins_item_path(@item),class: "btn btn-primary pull-right" %>
+        </div>
+        <div class="col-xs-12">
+            <%= link_to "削除する", admins_item_path(@item), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+        </div>
     </div>
-</div>
-
-<%# 登録フォーム %>
-<%# 共通ボディー閉じタグ %>
 </div>

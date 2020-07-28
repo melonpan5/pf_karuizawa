@@ -1,132 +1,116 @@
-
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-		<%# ここからメイン %>
 			<div class="title mt-5"><h2><%= @order_plan.customer.name %>様のプラン内容</h2></div>
-    </div>
-</div>
-            <div class="stripe-pattern">選んだ式場プラン：
-                <%= link_to @order_client_plan.plan_name ,customers_client_plan_path(@order_client_plan), class: "glyphicon glyphicon-cutlery text-warning" %>
-            </div>
-			<%# クライアント詳細 %>
-  			<div class="text-box"><p><%= @order_client_plan.plan_text %></p></div>
-            
-
-              <%# テーブル %>
-              <div class="sub-title"><h4>プラン内容</h4></div>
-<table class="table table-sm table-bordered">
-    <tr>
-        <th class="table-success">項目</th>
-        <th class="table-success">イメージ</th>
-		<th class="table-success">コース名</th>
-		<th class="table-success">コース内容詳細</th>
-        <th class="table-success">数量</th>
-		<th class="table-success">単価</th>
-		<th class="table-success">小計</th>
-    </tr>
-	<tr>
-		<td>飲食プラン</td>
-        <td> <%= attachment_image_tag @food_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-        </td>
-        <td><%= @food_plan.name %></td>
-		<td><%= @food_plan.description %></td>
-		<td><%= @client_plan.count %></td>
-		<td><%= @food_plan.unit_price.to_s(:delimited) %></td>
-		<td><% @foodsum = @client_plan.count.to_i * @food_plan.unit_price.to_i %>
-			<%= @foodsum.to_s(:delimited) %>
-		</td>
-	</tr>
-	<tr>
-		<td>ケーキプラン</td>
-        <td> <%= attachment_image_tag @cake_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-        </td>
-        <td><%= @cake_plan.name %></td>
-		<td><%= @cake_plan.description %></td>
-		<td>1</td>
-		<td><%= @cake_plan.unit_price.to_s(:delimited) %></td>
-		<td><%= @cake_plan.unit_price.to_s(:delimited)  %></td>
-    </tr>
-	<tr>
-		<td>ドレスプラン</td>
-        <td> <%= attachment_image_tag @dress_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-        </td>
-        <td><%= @dress_plan.name %></td>
-		<td><%= @dress_plan.description %></td>
-		<td>1</td>
-		<td><%= @dress_plan.unit_price.to_s(:delimited) %></td>
-		<td><%= @dress_plan.unit_price.to_s(:delimited)  %></td>
-    </tr>
-	<tr>
-		<td>装花プラン</td>
-        <td> <%= attachment_image_tag @flower_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-        </td>
-        <td><%= @flower_plan.name %></td>
-		<td><%= @flower_plan.description %></td>
-		<td>1</td>
-		<td><%= @flower_plan.unit_price.to_s(:delimited) %></td>
-		<td><%= @flower_plan.unit_price.to_s(:delimited)  %></td>
-    </tr>
-	<tr>
-		<td>メモリープラン</td>
-        <td> <%= attachment_image_tag @memory_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-        </td>
-        <td><%= @memory_plan.name %></td>
-		<td><%= @memory_plan.description %></td>
-		<td>1</td>
-		<td><%= @memory_plan.unit_price.to_s(:delimited) %></td>
-		<td><%= @memory_plan.unit_price.to_s(:delimited)  %></td>
-    </tr>
-	<tr>
-		<td>基本パッケージ</td>
-        <td> <%= attachment_image_tag @besic_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-        </td>
-        <td><%= @besic_plan.name %></td>
-		<td><%= @besic_plan.description %></td>
-		<td>1</td>
-		<td><%= @besic_plan.unit_price.to_s(:delimited) %></td>
-		<td><%= @besic_plan.unit_price.to_s(:delimited)  %></td>
-    </tr>
-</table>
-<%# テーブル %>
-			<%# 料理以外の合計金額計算 %>
-						<%	item_sum = @cake_plan.unit_price + @dress_plan.unit_price + @flower_plan.unit_price + @memory_plan.unit_price + @besic_plan.unit_price
-						%>
-						<%	in_price = 30000 * @order_plan.count.to_i  %>
-						<% @total_price = @foodsum.to_i + item_sum.to_i %>
-						<%	self_price = @total_price.to_i - in_price.to_i  %>
-						<div class="total-price"><span class="item2-name"><p>合計金額　：<%= @total_price.to_s(:delimited) %>　円</p>
-						<div class="total-price"><span class="item2-name"><p>お2人の自己負担金額：<%= self_price.to_s(:delimited) %>円　</p></span></div>
-						※50人ご招待，お1人あたりご祝儀3万円の場合
-
-            <%# 概要 %>
-
-                <h3>その他ご希望</h3>
-                  <table class="table table-sm table-bordered">
-                    <tr>
-                    <th class="table-info" style="width:25%">開催人数</th>
-                    <td style="width:75%"><%= @count.to_i %>人</td>
-                    </tr>
-                    <tr>
-					<th class="table-info" style="width:25%">実施希望年</th>
-                    <td style="width:75%"><%= @desired_year %></td>
-                    </tr>
-					<tr>
-					<th class="table-info" style="width:25%">実施希望時期</th>
-                    <td style="width:75%"><%= @desired_timing %></td>
-                    </tr>
-                    <tr>
-                    <th class="table-info" style="width:25%">実施希望日取り</th>
-                    <td style="width:75%"><%= @desired_day %>円</td>
-                    </tr>
-                    <tr>
-                    <th class="table-info" style="width:25%">自己負担予算</th>
-                    <td style="width:75%"><%= @budget %>円</td>
-                    </tr>
-                    </table>
-
-        </div>      
-
-<%# 共通ボディー閉じタグ %>
-</div>
+			<div class="stripe-pattern">選んだ式場プラン：
+				<%= link_to @order_client_plan.plan_name ,customers_client_plan_path(@order_client_plan), class: "glyphicon glyphicon-cutlery text-warning" %>
+			</div>
+			<div class="text-box"><p><%= @order_client_plan.plan_text %></p></div>
+			<div class="sub-title"><h4>プラン内容</h4></div>
+			<table class="table table-sm table-bordered">
+				<tr>
+					<th class="table-success">項目</th>
+					<th class="table-success">イメージ</th>
+					<th class="table-success">コース名</th>
+					<th class="table-success">コース内容詳細</th>
+					<th class="table-success">数量</th>
+					<th class="table-success">単価</th>
+					<th class="table-success">小計</th>
+				</tr>
+				<tr>
+					<td>飲食プラン</td>
+					<td> <%= attachment_image_tag @food_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+					</td>
+					<td><%= @food_plan.name %></td>
+					<td><%= @food_plan.description %></td>
+					<td><%= @client_plan.count %></td>
+					<td><%= @food_plan.unit_price.to_s(:delimited) %></td>
+					<td><% @foodsum = @client_plan.count.to_i * @food_plan.unit_price.to_i %>
+						<%= @foodsum.to_s(:delimited) %>
+					</td>
+				</tr>
+				<tr>
+					<td>ケーキプラン</td>
+					<td> <%= attachment_image_tag @cake_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+					</td>
+					<td><%= @cake_plan.name %></td>
+					<td><%= @cake_plan.description %></td>
+					<td>1</td>
+					<td><%= @cake_plan.unit_price.to_s(:delimited) %></td>
+					<td><%= @cake_plan.unit_price.to_s(:delimited)  %></td>
+				</tr>
+				<tr>
+					<td>ドレスプラン</td>
+					<td> <%= attachment_image_tag @dress_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+					</td>
+					<td><%= @dress_plan.name %></td>
+					<td><%= @dress_plan.description %></td>
+					<td>1</td>
+					<td><%= @dress_plan.unit_price.to_s(:delimited) %></td>
+					<td><%= @dress_plan.unit_price.to_s(:delimited)  %></td>
+				</tr>
+				<tr>
+					<td>装花プラン</td>
+					<td> <%= attachment_image_tag @flower_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+					</td>
+					<td><%= @flower_plan.name %></td>
+					<td><%= @flower_plan.description %></td>
+					<td>1</td>
+					<td><%= @flower_plan.unit_price.to_s(:delimited) %></td>
+					<td><%= @flower_plan.unit_price.to_s(:delimited)  %></td>
+				</tr>
+				<tr>
+					<td>メモリープラン</td>
+					<td> <%= attachment_image_tag @memory_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+					</td>
+					<td><%= @memory_plan.name %></td>
+					<td><%= @memory_plan.description %></td>
+					<td>1</td>
+					<td><%= @memory_plan.unit_price.to_s(:delimited) %></td>
+					<td><%= @memory_plan.unit_price.to_s(:delimited)  %></td>
+				</tr>
+				<tr>
+					<td>基本パッケージ</td>
+					<td> <%= attachment_image_tag @besic_plan, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+					</td>
+					<td><%= @besic_plan.name %></td>
+					<td><%= @besic_plan.description %></td>
+					<td>1</td>
+					<td><%= @besic_plan.unit_price.to_s(:delimited) %></td>
+					<td><%= @besic_plan.unit_price.to_s(:delimited)  %></td>
+				</tr>
+			</table>
+			<%	item_sum = @cake_plan.unit_price + @dress_plan.unit_price + @flower_plan.unit_price + @memory_plan.unit_price + @besic_plan.unit_price
+			%>
+			<%	in_price = 30000 * @order_plan.count.to_i  %>
+			<% @total_price = @foodsum.to_i + item_sum.to_i %>
+			<%	self_price = @total_price.to_i - in_price.to_i  %>
+			<div class="total-price"><span class="item2-name"><p>合計金額　：<%= @total_price.to_s(:delimited) %>　円</p>
+			<div class="total-price"><span class="item2-name"><p>お2人の自己負担金額：<%= self_price.to_s(:delimited) %>円　</p></span></div>
+			※50人ご招待，お1人あたりご祝儀3万円の場合
+			<h3>その他ご希望</h3>
+			<table class="table table-sm table-bordered">
+				<tr>
+				<th class="table-info" style="width:25%">開催人数</th>
+				<td style="width:75%"><%= @count.to_i %>人</td>
+				</tr>
+				<tr>
+				<th class="table-info" style="width:25%">実施希望年</th>
+				<td style="width:75%"><%= @desired_year %></td>
+				</tr>
+				<tr>
+				<th class="table-info" style="width:25%">実施希望時期</th>
+				<td style="width:75%"><%= @desired_timing %></td>
+				</tr>
+				<tr>
+				<th class="table-info" style="width:25%">実施希望日取り</th>
+				<td style="width:75%"><%= @desired_day %>円</td>
+				</tr>
+				<tr>
+				<th class="table-info" style="width:25%">自己負担予算</th>
+				<td style="width:75%"><%= @budget %>円</td>
+				</tr>
+			</table>
+		</div>      
+	</div>
 </div>

@@ -1,20 +1,17 @@
 <div class="container">
-<div class="row">
-    <div class="col-12">
-        <div class="title my-5">
-            <h2>問い合わせフォーム</h2>
-            <%= render '/layouts/errors', obj: @contact %>
+    <div class="row">
+        <div class="col-12">
+            <div class="title my-5">
+                <h2>問い合わせフォーム</h2>
+                <%= render '/layouts/errors', obj: @contact %>
+            </div>
+            <div class="title">
+                <p>いただいた内容につきましては、確認の上改めて担当者よりご連絡させて頂きます。</p>
+            </div>
         </div>
-        <div class="title">
-            <p>いただいた内容につきましては、確認の上改めて担当者よりご連絡させて頂きます。</p>
-        </div>
-        
     </div>
-</div>
-
- <%# 共通ボディー開始タグここまで%>
- <div class="row">
-    <div class="col-md-6 col-sm-6 col-xs-12">
+     <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
             <%= form_with(model: @contact, url: contacts_path, local: true) do |f| %>
             <table class= "table table-borderless table-sm">
                 <tr>
@@ -35,7 +32,7 @@
                 </tr>
                 <tr>
                     <td>
-                          <%= f.label :email, '返信先メールアドレス' %>
+                        <%= f.label :email, '返信先メールアドレス' %>
                     </td>
                     <td>
                         <%= f.text_field :email %>
@@ -46,7 +43,7 @@
                         <%= f.label :message, 'お問い合わせ内容' %>
                     </td>
                     <td>
-                       <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+                    <%= f.text_area :message, size: '10x10', class: 'form-control' %>
                     </td>
                 </tr>
                 <tr>
