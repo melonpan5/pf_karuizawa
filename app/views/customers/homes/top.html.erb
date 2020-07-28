@@ -1,13 +1,9 @@
-
-
-				<%# イメージ画像 %>
-		<div class="topimage">
-			 <%= image_tag 'topimage2.jpg' %>
-			<div class="top-title"><p>どこで、どんな時間を過ごそう？</p></div>
-            <div class="top-comment"><p>Let's make wedding plan!</p></div>
-		</div>
+<div class="topimage">
+	<%= image_tag 'topimage2.jpg' %>
+	<div class="top-title"><p>どこで、どんな時間を過ごそう？</p></div>
+    <div class="top-comment"><p>Let's make wedding plan!</p></div>
+</div>
 <div class="container">
-
 	<div class="row">
 		<div class="col-12 mt-5 mx-auto">
 			<div class="about">
@@ -22,13 +18,12 @@
 				<div class="mx-auto text-center my-3">
 					<%= image_tag 'icon.jpg', :size =>'300x300' %>
 				</div>
-				 <div class="text-center my-3">
+				<div class="text-center my-3">
            		 	<%= link_to "プランを作る", plan_make_path, class: "plan_make" %>
-           		 </div>
+           		</div>
 			</div>
 		</div>
 	</div>
-
 	<div class="row">
 		<div class="col-12 my-5 mx-auto">
 			<div class="title-text text-left my-5">

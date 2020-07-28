@@ -1,15 +1,10 @@
 <div class="container">
-<div class="row">
-    <div class="col-xs-12">
-        <div class="title">
-            <h2>気になる式場を選択</h2>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="title">
+                <h2>気になる式場を選択</h2>
+            </div>
         </div>
     </div>
-</div>
-
- <%# 共通ボディー開始タグここまで%>
-<%# クライアント一覧 %>
 <%= render 'client_plan_index', client_plans: @search_plans %>
-
-<%# 共通ボディー閉じタグ %>
 </div>

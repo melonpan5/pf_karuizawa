@@ -8,10 +8,10 @@
       <% else %>
         <%= link_to "軽井沢 de ウェディング.com", root_path, class:"navbar-brand"%>
       <% end %>
-        <%# トグル %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <%# トグル %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
         <%# トグル %>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 text-center">
@@ -28,7 +28,7 @@
             <li  class="nav-item mr-4">
             <%= link_to "Log out", destroy_customer_session_path, method: :delete, class: "link-text" %>
             </li>
-            <% elsif admin_signed_in? %>
+          <% elsif admin_signed_in? %>
             <li  class="nav-item mr-4">
             <%= link_to "管理トップ", admins_root_path, class: "link-text" %>
             </li>
@@ -51,10 +51,9 @@
             <li  class="nav-item mr-4">
             <%= link_to "Let’s make your Wedding Plan!", plan_make_path, class: "link-text" %>
             </li>
-
           <% end %>
         </ul>
       </div>
     </nav>
-</div>
+  </div>
 </header>

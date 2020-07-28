@@ -1,79 +1,66 @@
 <div class="container">
-<div class="row">
-    <div class="col-xs-12 col-12">
-    <%= render 'customers/homes/step_bar_1'%>
+    <div class="row">
+        <div class="col-xs-12 col-12">
+        <%= render 'customers/homes/step_bar_1'%>
         <div class="title mt-5">
             <h2>プランメニューを選択してね</h2>
              <%= link_to "※会員登録がお済みの方はログイン後に作成ください",new_customer_session_path, class: "link-text" %>
         </div>
-            	<%= render '/layouts/errors', obj: @pre_plan %>
-                <% if flash[:notice] %>
-                 <div class="error-comment"><h2><%= flash[:notice] %></h2></div>
-                <% end %>
-
-    </div>
-</div>
-
- <%# 共通ボディー開始タグここまで%>
-<!-- 変更フォーム -->
-
-<%= form_with model: @pre_plan, url:customers_pre_plans_path,local: :true, class:"form-horizontal" do |f| %>
-
-    <%# 飲食プラン%> 
-    <div class="select-title"><h2>① 料理・飲み物</h2></div>
-    <div class="form-group menue_box" id="food_menue_box">    
-      
-        <% @food_items.each do |item| %>
-            <div class="menue_select">
-               <%= f.label :meal_item_id,for:"radio_bottom#{item.id}" do %>
-                    <%= f.radio_button :meal_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom", class:"radio_btn"%> 
-                    <div class="menue">プラン名：<%= item.name %></div>
-                        <div class="menue">
-                            <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-                        </div>
-                        <div class="menue">
-                            <%= link_to '▶︎詳細を見る', "", remote: true,id: "newmodal#{item.id}",class: "newmodal" %>
-                            <section id="newmodal<%= item.id %>-modalArea" class="modalArea">
-                                <%= render "item_show", item: item %>
-                            </section>
-                        </div>
-                    <div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円／人</div>
-                
-                <% end %>
-            </div>
+        <%= render '/layouts/errors', obj: @pre_plan %>
+        <% if flash[:notice] %>
+            <div class="error-comment"><h2><%= flash[:notice] %></h2></div>
         <% end %>
     </div>
-    <%# ケーキプラン%> 
-    <div class="select-title"><h2>② ケーキ</h2></div>
-    <div class="form-group menue_box"  id="cake_menue_box">    
-      
-        <% @cake_items.each do |item| %>
-            <div class="menue_select">
-                <%= f.label :cake_item_id,for:"radio_bottom#{item.id}" do %>              
-                    <%= f.radio_button :cake_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
+</div>
+    <%= form_with model: @pre_plan, url:customers_pre_plans_path,local: :true, class:"form-horizontal" do |f| %>
+        <div class="select-title"><h2>① 料理・飲み物</h2></div>
+        <div class="form-group menue_box" id="food_menue_box">    
+            <% @food_items.each do |item| %>
+                <div class="menue_select">
+                <%= f.label :meal_item_id,for:"radio_bottom#{item.id}" do %>
+                        <%= f.radio_button :meal_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom", class:"radio_btn"%> 
                         <div class="menue">プラン名：<%= item.name %></div>
-                        <div class="menue">
+                            <div class="menue">
                                 <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-                        </div>
-                        <div class="menue">
+                            </div>
+                            <div class="menue">
                                 <%= link_to '▶︎詳細を見る', "", remote: true,id: "newmodal#{item.id}",class: "newmodal" %>
                                 <section id="newmodal<%= item.id %>-modalArea" class="modalArea">
                                     <%= render "item_show", item: item %>
                                 </section>
-                        </div>
-                        <div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div>
-                    <% end %>           
-            </div>
-        <% end %>
-    </div>
-       <%# 装花プラン%> 
-    <div class="select-title"><h2>③ お花</h2></div>
-    <div class="form-group  menue_box" id="flower_menue_box">    
-      
-        <% @flower_items.each do |item| %>
-            <div class="menue_select">
-               <%= f.label :flower_item_id,for:"radio_bottom#{item.id}" do %>
-                    <%= f.radio_button :flower_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
+                            </div>
+                        <div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円／人</div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+        <div class="select-title"><h2>② ケーキ</h2></div>
+        <div class="form-group menue_box"  id="cake_menue_box">    
+            <% @cake_items.each do |item| %>
+                <div class="menue_select">
+                    <%= f.label :cake_item_id,for:"radio_bottom#{item.id}" do %>              
+                        <%= f.radio_button :cake_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
+                            <div class="menue">プラン名：<%= item.name %></div>
+                            <div class="menue">
+                                    <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                            </div>
+                            <div class="menue">
+                                    <%= link_to '▶︎詳細を見る', "", remote: true,id: "newmodal#{item.id}",class: "newmodal" %>
+                                    <section id="newmodal<%= item.id %>-modalArea" class="modalArea">
+                                        <%= render "item_show", item: item %>
+                                    </section>
+                            </div>
+                            <div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div>
+                        <% end %>           
+                </div>
+            <% end %>
+        </div>
+        <div class="select-title"><h2>③ お花</h2></div>
+        <div class="form-group  menue_box" id="flower_menue_box">           
+            <% @flower_items.each do |item| %>
+                <div class="menue_select">
+                    <%= f.label :flower_item_id,for:"radio_bottom#{item.id}" do %>
+                        <%= f.radio_button :flower_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
                         <div class="menue">プラン名：<%= item.name %></div>
                         <div class="menue">
                             <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
@@ -85,19 +72,17 @@
                             </section>
                         </div>
                         <div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div>
-                <% end %>
-            </div>
-        <% end %>
-    </div>
-       <%# 装花プラン%> 
-    <div class="select-title"><h2>④ ドレス</h2></div>
-    <div class="form-group menue_box" id="dress_menue_box">    
-      
-        <% @dress_items.each do |item| %>
-            <div class="menue_select">
-               <%= f.label :dress_item_id,for:"radio_bottom#{item.id}" do %>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+        <div class="select-title"><h2>④ ドレス</h2></div>
+        <div class="form-group menue_box" id="dress_menue_box">       
+            <% @dress_items.each do |item| %>
+                <div class="menue_select">
+                <%= f.label :dress_item_id,for:"radio_bottom#{item.id}" do %>
                     <%= f.radio_button :dress_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom", checked: (1 == item.id) %> 
-                     <div class="menue">プラン名：<%= item.name %></div>
+                    <div class="menue">プラン名：<%= item.name %></div>
                     <div class="menue">
                         <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
                     </div>
@@ -109,40 +94,15 @@
                         </div>
                     <div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div>
                 <% end %>
-            </div>
-        <% end %>
-    </div>
-       <%# メモリープラン%> 
-    <div class="select-title"><h2>⑤ 写真動画</h2></div>
-    <div class="form-group menue_box" >    
-      
-        <% @memory_items.each do |item| %>
-            <div class="menue_select">
-               <%= f.label :memory_item_id,for:"radio_bottom#{item.id}" do %>
-                <%= f.radio_button :memory_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
-                    <div class="menue">プラン名：<%= item.name %></div>
-                    <div class="menue">
-                        <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
-                    </div>
-                    <div class="menue">
-                        <%= link_to '▶︎詳細を見る', "", remote: true,id: "newmodal#{item.id}",class: "newmodal" %>
-                        <section id="newmodal<%= item.id %>-modalArea" class="modalArea">
-                            <%= render "item_show", item: item %>
-                        </section>
-                    </div>
-                <div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div>
-                <% end %>
-            </div>
-        <% end %>
-    </div>
-       <%# 基本ープラン%> 
-    <div class="select-title"><h2>⑥ その他基本パッケージ</h2></div>
-    <div class="form-group menue_box">    
-      
-        <% @besic_items.each do |item| %>
-            <div class="menue_select">
-               <%= f.label :base_pack_item_id,for:"radio_bottom#{item.id}" do %>
-                    <%= f.radio_button :base_pack_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
+                </div>
+            <% end %>
+        </div>
+        <div class="select-title"><h2>⑤ 写真動画</h2></div>
+        <div class="form-group menue_box" >            
+            <% @memory_items.each do |item| %>
+                <div class="menue_select">
+                <%= f.label :memory_item_id,for:"radio_bottom#{item.id}" do %>
+                    <%= f.radio_button :memory_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
                     <div class="menue">プラン名：<%= item.name %></div>
                     <div class="menue">
                         <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
@@ -154,29 +114,41 @@
                         </section>
                     </div>
                     <div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div>
-                 <% end %>
-            </div>
-        <% end %>
-    </div>
-  <%# その他%> 
-  <div class="select-title"><h2>⑦ 人数の入力</h2></div>
-   <div class="form-group">
-        <%= f.label :※新郎新婦様含むご招待人数,class:"mb-1" %>
-        <%= f.number_field :count, class:"form-control" %>
-    </div>
-    
-    <%= f.hidden_field :client_plan_id, :value => @client_plan.id %>
-
-    <div class="pull-right">
-        <%= f.submit "開催時期・予算の入力へ",class: "btn btn-info btn-lg" %>
-    </div>
-
-<% end %>
-
-<%# クライアント一覧ここまで %>
-
-<%# 登録フォーム %>
-<%# 共通ボディー閉じタグ %>
+                <% end %>
+                </div>
+            <% end %>
+        </div>
+        <div class="select-title"><h2>⑥ その他基本パッケージ</h2></div>
+        <div class="form-group menue_box">      
+            <% @besic_items.each do |item| %>
+                <div class="menue_select">
+                    <%= f.label :base_pack_item_id,for:"radio_bottom#{item.id}" do %>
+                        <%= f.radio_button :base_pack_item_id, item.id ,id:"radio_bottom#{item.id}", value:"radio_bottom" %> 
+                        <div class="menue">プラン名：<%= item.name %></div>
+                        <div class="menue">
+                            <%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", class:"index-img", size: "200x200" %>
+                        </div>
+                        <div class="menue">
+                            <%= link_to '▶︎詳細を見る', "", remote: true,id: "newmodal#{item.id}",class: "newmodal" %>
+                            <section id="newmodal<%= item.id %>-modalArea" class="modalArea">
+                                <%= render "item_show", item: item %>
+                            </section>
+                        </div>
+                        <div class="menue">ご料金(税抜)：<%= item.unit_price.to_s(:delimited) %>円</div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+        <div class="select-title"><h2>⑦ 人数の入力</h2></div>
+        <div class="form-group">
+            <%= f.label :※新郎新婦様含むご招待人数,class:"mb-1" %>
+            <%= f.number_field :count, class:"form-control" %>
+        </div>
+        <%= f.hidden_field :client_plan_id, :value => @client_plan.id %>
+        <div class="pull-right">
+            <%= f.submit "開催時期・予算の入力へ",class: "btn btn-info btn-lg" %>
+        </div>
+    <% end %>
 </div>
 
 <%# モーダルJS %>

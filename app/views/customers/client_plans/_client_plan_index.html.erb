@@ -1,27 +1,23 @@
-
 <div class="plan_index_box">
-
     <% client_plans.each do |client_plan| %>
-
         <div class="client-plan-box ml-2 my-3">
-         <%= link_to customers_client_plan_path(client_plan) do %>
-            <p><%= client_plan.client.name %> </p>
-            <ul>
-                <li> <% client_plan.plan_tags.each do |tag| %>
-                    <span class= 'badge badge-info'><%= tag.name %></span>
-                    <% end %>
-                </li>
-                <li>
-                <p>¥<%= client_plan.total_price.to_s(:delimited) %>/50人 </p>
-                </li>
-                <li>
-                <div class="img">
-                    <%= attachment_image_tag client_plan.client, :client1_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-image-box"%>
-                </div>
-                </li>
-            </ul>
-                <% end %>
+            <%= link_to customers_client_plan_path(client_plan) do %>
+                <p><%= client_plan.client.name %> </p>
+                <ul>
+                    <li> <% client_plan.plan_tags.each do |tag| %>
+                        <span class= 'badge badge-info'><%= tag.name %></span>
+                        <% end %>
+                    </li>
+                    <li>
+                        <p>¥<%= client_plan.total_price.to_s(:delimited) %>/50人 </p>
+                    </li>
+                    <li>
+                        <div class="img">
+                            <%= attachment_image_tag client_plan.client, :client1_image, format: 'jpeg', fallback: "no_image.jpg", class:"client-image-box"%>
+                        </div>
+                    </li>
+                </ul>
+            <% end %>
         </div>
-
     <% end %>
 </div>
