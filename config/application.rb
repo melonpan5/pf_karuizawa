@@ -17,5 +17,6 @@ module Pf01
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
+    config.web_console.whitelisted_ips = '10.0.2.2'
   end
 end
