@@ -19,7 +19,10 @@ class Customers::ClientPlansController < ApplicationController
 
    
   end
+
   def search_client_plans
+    @search = ClientPlan.ransack(params[:q])
+    @search_plans = @search.result.includes(:plan_tags).distinct
     @client_plans = ClientPlan.all.order(created_at: :desc)
   end
 

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
-    before_action :set_search
+    # before_action :set_search
 
     
     def after_sign_out_path_for(a) #ログアウトした時の遷移先
@@ -29,7 +29,6 @@ class ApplicationController < ActionController::Base
     #   end
     end
 
-
     def after_sign_up_path_for(resource) #新規登録した時の遷移先
       case resource
       when Customer
@@ -37,17 +36,17 @@ class ApplicationController < ActionController::Base
        end
     end
 
-    def set_search
-      @search = ClientPlan.ransack(params[:q])
-      # plan_tag_categoryごとにplan_tagを抽出
-      @taste_tags = PlanTag.where(category: 0)
-      @outside_image_tags = PlanTag.where(category: 1)
-      @inside_image_tags = PlanTag.where(category: 2)
-      @dress_tags = PlanTag.where(category: 3)
-      @situation_tags = PlanTag.where(category: 4)
-      @search_plans = @search.result.includes(:plan_tags).distinct
+    # def set_search
+    #   @search = ClientPlan.ransack(params[:q])
+    #   # plan_tag_categoryごとにplan_tagを抽出
+    #   @taste_tags = PlanTag.where(category: 0)
+    #   @outside_image_tags = PlanTag.where(category: 1)
+    #   @inside_image_tags = PlanTag.where(category: 2)
+    #   @dress_tags = PlanTag.where(category: 3)
+    #   @situation_tags = PlanTag.where(category: 4)
+    #   @search_plans = @search.result.includes(:plan_tags).distinct
     
-    end
+    # end
   
     protected
   

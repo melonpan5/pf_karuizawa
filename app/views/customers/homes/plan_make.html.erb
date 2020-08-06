@@ -12,7 +12,7 @@
 						<div class="tag_select_box mb-2">
 							<div class="tag_bg">
 									<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
-									<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
+									<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id ,nil %>
 										<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
 									<%end%>
 							</div>
@@ -26,7 +26,7 @@
 							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
 										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
-										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
+										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id ,nil %>
 											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
 										<%end%>
 								</div>
@@ -39,7 +39,7 @@
 							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
 										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
-										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
+										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id ,nil %>
 											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
 										<%end%>
 								</div>
@@ -52,7 +52,7 @@
 							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
 										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
-										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
+										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id ,nil %>
 
 											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
 										<%end%>
@@ -66,7 +66,7 @@
 							<div class="tag_select_box mb-2">
 								<div class="tag_bg">
 										<%= f.label :tag_id,for:"check_box_bottom#{tag.id}" do %>
-										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id %>
+										<%= f.check_box :plan_tags_id_in,{name:"q[plan_tags_id_in][]",id:"check_box_bottom#{tag.id}", class:"checkBoxes"},tag.id ,nil %>
 
 											<%= attachment_image_tag tag, :tag_image, format: 'jpeg', fallback: "no_image.jpg", class:"tag-image-box"%>
 										<%end%>

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :admins
   devise_for :customers, :controllers => {
     :registrations => 'customers/registrations'
@@ -31,6 +30,7 @@ Rails.application.routes.draw do
     resources :item_categories, only: [:index, :edit, :update, :destroy, :create]
     resources :items, only: [:new, :create, :show, :index, :edit, :update, :destroy]
     resources :client_plans, only: [ :create, :index, :edit, :update, :destroy]
+    resources :blogs
     get 'client_plans/new' => 'client_plans#new'
     get 'client_plans/client_select' => 'client_plans#client_select'
     get 'client_plans/:id' => 'client_plans#show'
