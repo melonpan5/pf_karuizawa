@@ -1,5 +1,5 @@
 class Admins::BlogsController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: [:index, :show]
   def index
     @posts = Blog.all.order(created_at: :desc)
     @posts = Blog.page(params[:page]).per(10)

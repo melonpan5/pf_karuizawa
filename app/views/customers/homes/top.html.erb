@@ -26,10 +26,10 @@
 	</div>
 	<div class="row">
 		<div class="col-12 my-5 mx-auto">
-			<div class="title-text text-left my-5">
+			<div class="title-text text-center my-5">
 				<p><span class="about-title">新着式場プラン</span></p>
 			</div>
-			<div class="top_client_plans_box">
+			<div class="top_client_plans_box text-center">
 				<% @client_plans.each do |client_plan| %>
 					<div  class="top_client_plan my-2 ml-2">
 						<%= link_to(customers_client_plan_path(client_plan), class: 'list-content') do %>
@@ -47,6 +47,30 @@
 			</div>
 			<div class="morelink text-right mb-5">
 				<%= link_to "> More plans", customers_client_plans_path%>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-lg-6 col-sm-6 my-5 mx-auto">
+			<div class="title-text text-left my-5">
+				<p><span class="about-title">ウェディング情報</span></p>
+			</div>
+			<div class="post_box">
+				<% @posts.each do |post| %>
+					<div  class="post-title text-left my-2 ml-2">
+						<%= link_to(admins_blog_path(post), class: 'list-content') do %>
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1H2a2 2 0 0 1 2-2z"/>
+						<path d="M2 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2z"/>
+						<path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+						</svg>
+						<%= post.title %>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+			<div class="morelink text-right mb-5">
+				<%= link_to "> More topics", admins_blogs_path%>
 			</div>
 		</div>
 	</div>
