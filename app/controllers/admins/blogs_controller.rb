@@ -29,7 +29,7 @@ class Admins::BlogsController < ApplicationController
 
   def update
     @post = Blog.find(params[:id])
-    if @post.update(post_params)
+    if @post.update(blog_params)
       redirect_to admins_blog_path(@post)
     else
       render "edit"
