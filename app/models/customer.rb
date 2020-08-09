@@ -12,9 +12,9 @@ class Customer < ApplicationRecord
     has_many :order_plan, inverse_of: :customer
     accepts_nested_attributes_for :order_plan
 
-  # validates :family_name, length: {maximum: 20, minimum: 1},presence: true
-  # validates :first_name, length: {maximum: 20, minimum: 1},presence: true
-  # validates :kana_family_name, length: {maximum: 20, minimum: 1}
-  # validates :kana_first_name, length: {maximum: 20, minimum: 1}
-  # validates :phone_number, length: { in: 10..11 }
+  validates :family_name, length: {maximum: 20, minimum: 1},presence: true
+  validates :first_name, length: {maximum: 20, minimum: 1},presence: true
+  validates :kana_family_name, length: {maximum: 20, minimum: 1}
+  validates :kana_first_name, length: {maximum: 20, minimum: 1}
+  validates :phone_number, length: { in: 10..11 }
 end
