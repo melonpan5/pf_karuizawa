@@ -4,6 +4,7 @@ class Admins::HomesController < ApplicationController
   def top
     @order_plans = OrderPlan.page(params[:page]).per(5)
     
+    
   end
 
   def order_plan_show

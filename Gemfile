@@ -76,6 +76,7 @@ gem 'dotenv-rails'
 gem 'ransack'
 gem 'rails-i18n'
 gem 'refile-s3'
+gem 'trix'
 group :production do
   gem 'mysql2'
 end

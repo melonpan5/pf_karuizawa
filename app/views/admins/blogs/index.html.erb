@@ -1,2 +1,32 @@
-<h1>Admins::Blogs#index</h1>
-<p>Find me in app/views/admins/blogs/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-10">
+			<div class="title mt-5"><h2>記事一覧</h2></div>
+            <table class="table table-borderless　table-responsive">
+                <thead>
+                    <tr>
+                        <th class="table-success ">記事ID</th>
+                        <th class="table-success ">投稿日時</th>
+                        <th class="table-success ">カテゴリー</th>
+                        <th class="table-success ">タイトル</th>
+                        <th class="table-success "></th>
+                        <th class="table-success "></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @posts.each do |post| %>
+                    <tr class="active">
+                        <td><%= post.id %></td>
+                         <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+                        <td><%= post.tag %></td>
+                        <td><%= post.title %></td>
+                        <td><%= link_to "詳細", admins_blog_path(post),class: "btn-sm btn-primary" %></td>
+                         <td><%= link_to "編集", edit_admins_blog_path(post),class: "btn-sm btn-primary" %></td>
+                    </tr>
+                    <% end %>
+                    <%= paginate @posts %>
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>

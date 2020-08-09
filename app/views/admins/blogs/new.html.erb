@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-10">
+			<div class="title mt-5"><h2>記事新規投稿</h2></div>
+        <% if flash[:notice] %>
+          <p><%= flash[:notice] %></p>
+        <% end %>
+				<%= render '/layouts/errors', obj: @post %>
+			  <%= form_with(model: @post, url: admins_blogs_path, local: true) do |f| %>
+           <div class="form-group">
+            <%= f.label :カテゴリー%>
+					  <%= f.select :tag, Blog.tags.keys.to_a, {}, class:"form-control" %>  
+          </div>
+          <div class="form-group">
+            <%= f.label :タイトル, class:"mb-1" %>
+            <%= f.text_field :title, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :本文 %>
+            <%= f.hidden_field :text, id: :article_text %>
+            <%# <%= f.hidden_field :blog_images_images, id: :post_images, multiple: true%>            <trix-editor input="article_text"></trix-editor>
+          </div>
+          <div class="form-group">
+          <%= f.label :トップ画像 %>
+          <%= f.attachment_field :blog_images_images, multiple: true %>
+          </div>
+
+          <div class="pull-right">
+          <%= f.submit "新規登録",class: "btn btn-info" %>
+          </div>
+		  	<% end %>
+    </div>
+	</div>
+</div>

@@ -1,2 +1,43 @@
-<h1>Admins::Blogs#show</h1>
-<p>Find me in app/views/admins/blogs/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="title mt-5">
+                <h2>記事詳細</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <%= render '/layouts/errors', obj: @post %>
+            <div class="blog-title">
+                <%= @post.title %>
+            </div>
+            <div class="blog-day">
+                <%= @post.tag %> | <%= @post.created_at.strftime('%Y/%m/%d') %>
+            </div>
+             <div class="blog-image">
+                <% if @post.blog_images.present? %>
+                    <% @post.blog_images.each do |image| %>
+                        <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+                    <% end %>
+                <% end %>
+            </div>
+            <div class="blog-text">
+                <%# 記事%>
+                <%= sanitize @post.text, tags: %w(h1 h2 h3 h4 h5 h6 ul ol li p a img table tr td em br strong div), attributes:  %w(id class href) %>
+                <%# 記事 %>
+            </div>
+        </div>
+    </div>
+	<div class="row">
+		<div class="col-xs-12 mr-2">
+			<%= link_to "編集する",edit_admins_blog_path(@post),class: "btn btn-primary pull-right" %>
+		</div>
+		<div class="col-xs-12 mr-2">
+		<%= link_to "削除する", admins_blog_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+		</div>
+        <div class="col-xs-12 mr-2">
+		<%= link_to "一覧に戻る", admins_blogs_path, class: "btn btn-info" %>
+		</div>
+	</div>
+</div>

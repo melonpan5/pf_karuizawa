@@ -5,4 +5,6 @@ class Blog < ApplicationRecord
     validates :title, presence: true
     validates :tag, presence: true
     validates :text, presence: true
+    has_many :blog_images, dependent: :destroy
+    accepts_attachments_for :blog_images, attachment: :image
 end
